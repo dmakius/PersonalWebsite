@@ -1,0 +1,128 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+
+body{
+	background-color:#2f4f4f;
+}
+#mainWrapper{
+	width:1200px;
+}
+
+#logo{
+	border:1px solid black;
+	width:1200px;
+	background-color:green;
+	border-radius:8px;
+}
+#logo span{
+	padding-left:20px;
+}
+#menu{
+	background-color:#222;
+	font-size:28px;
+	font-family:sans-serif;
+	border-radius:8px;
+	width:1200px;
+}
+
+#menu ul{
+	list-style-type: none;
+	padding-left:20px;
+	margin:0;
+	position:relative;
+	z-index:1;
+}
+#menu ul li{
+	margin-left:0;
+
+	display:inline-block;
+	width:175px;
+	height:50px;
+}
+
+#menu ul li:hover{
+	background-color:#333;
+}
+
+#menu ul li a{
+	display:block;
+	padding-left:15px;
+	margin-top:10px;
+	padding-top:0px;
+	text-decoration: none;
+}
+
+#menu ul ul{
+	display:none;
+	z-index:100;
+	position:absolute;
+	background-color:#333;
+	padding:20px;
+	opacity:0.9;
+	margin-top:7px;
+	margin-left:0px;
+	width:175px;
+	
+}
+#menu ul ul a{
+	margin:0;
+}
+#menu ul li:hover > ul {
+	display:inline;
+}
+#menu ul ul li a{
+	display:inline;
+	margin:0;
+}
+
+#menu ul ul li a:hover{
+	color:red;
+}
+
+.post{
+	background-color:white;
+	margin-left:50px;
+	width:1000px;
+	border:1px solid black;
+}
+
+#footer{
+	height:70px;
+	width:100%;
+	z-index:-3;
+	display:inline-block;
+	background-color:#222;
+	border: 1px solid black;
+	margin-top: 20px;
+	border-radius: 8px;
+	text-align:right;
+	opacity:0.8;
+}
+
+#footer span{
+	display:inline-block;
+	font-size: 35px;
+	font-family:arial;
+	color:purple;
+	font-style:bold block;
+	padding-top:10px;
+	padding-right:25px;
+	text-shadow:3px 3px 3px black;
+}
+
+
+

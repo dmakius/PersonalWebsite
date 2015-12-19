@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DM| The Personal Website</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id = mainWrapper>
+<div id = topContainer>
+	<div id = "logo">
+		<h1><span>The Personal Website of Daniel Makover</span></h1>
+		<p><span>a long long time ago, in a galazy far far away.....</span></p>
+	</div>
+	<br>
+
+	<div id = menu>
+		<div id = menu_wrapper>
+		<ul>
+			<li><%= link_to "Home", root_path %></li>
+			<li><a href = "#">Resume</a>
+				<ul>
+					<li><%= link_to "English", resume_english_path %></li>
+					<li><%= link_to "Hebrew", resume_hebrew_path %></li>
+				</ul></li>
+			<li><a href = "#">Pics</a></li>
+			<li><%= link_to "Blog", posts_path %></li>
+			<li><a href = "#">Games</a>
+				<ul>
+					<li><%= link_to "Pong", games_pong_path %></li>
+					<li><%= link_to "Snake", games_snake_path %></li>
+					<li><%= link_to "BreakOut", games_breakout_path %></li>
+				</ul></li>
+			<li><a href = "#">Contact</a></li>
+		</ul>
+		</div>
+	</div>
+</div>
+
+<%= yield %>
+
+
+<div id = "footer"><span>Powered by HaShem (C)</span></div>
+</div>
+</body>
+</html>

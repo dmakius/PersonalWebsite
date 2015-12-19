@@ -1,0 +1,19 @@
+// Place all the styles related to the resume controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.resumeHolder embed{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	width:650px;
+	height:750px;
+}
+
+button{
+	margin-left:850px;
+}
+
+button a {
+	text-decoration:none;
+}
