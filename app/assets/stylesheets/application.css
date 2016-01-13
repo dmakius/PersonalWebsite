@@ -10,26 +10,34 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
+ //= require resume
+ //= require posts
  */
  
 
 body{
-	background-color:#2f4f4f;
+	background-color:#6A8792;
 }
 #mainWrapper{
 	width:1200px;
+	display:block; 
+	margin-left:auto;
+	margin-right:auto;
 }
 
 #logo{
 	border:1px solid black;
+	height:75px;
 	width:1200px;
-	background-color:green;
+	background-color:#79AD9C;
 	border-radius:8px;
 }
 #logo span{
-	padding-left:20px;
+	margin:0;
+	padding-left:25px;
+	font-family:sans-serif;
+	color: black;
 }
 #menu{
 	background-color:#222;
@@ -64,6 +72,7 @@ body{
 	margin-top:10px;
 	padding-top:0px;
 	text-decoration: none;
+	color:white;
 }
 
 #menu ul ul{
@@ -93,12 +102,6 @@ body{
 	color:red;
 }
 
-.post{
-	background-color:white;
-	margin-left:50px;
-	width:1000px;
-	border:1px solid black;
-}
 
 #footer{
 	height:70px;

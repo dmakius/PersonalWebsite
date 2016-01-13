@@ -6,7 +6,17 @@ gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 
+#postgreSQL 
 gem 'pg'
+
+#ActiveAdmin
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
+gem 'ransack',     github: 'activerecord-hackery/ransack'
+gem 'formtastic',  github: 'justinfrench/formtastic'
+
+gem 'devise'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

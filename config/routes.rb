@@ -1,22 +1,15 @@
 Rails.application.routes.draw do
-  resources :posts 
-  resources :categories
-  get 'posts/index'
-  
-  get 'posts/new'
-        
-  get 'posts/create'
-  
-  get 'posts/show'
-    
-  get 'posts/edit'
-    
-  get 'posts/destroy'
-        
-  get 'categories/index'
-        
-  get 'categories/show'
-  
+
+ 
+     get 'contact/index'
+
+  get 'pictures/sketches'
+
+  get 'pictures/pics'
+
+  resources :posts do
+      resources :categories
+  end
   get 'resume/english'
 
   get 'resume/hebrew'
@@ -92,4 +85,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   end

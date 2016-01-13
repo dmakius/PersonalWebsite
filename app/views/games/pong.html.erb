@@ -1,22 +1,20 @@
 <style>
-#myCanvas{
+#myPongCanvas{
 	border:1px solid black; 
 	display:block; 
 	margin-left:auto;
 	margin-right:auto;
 	}
-#startButton{
-	display:block;
-	width:85px;height:30px;
-	font-size:24px;
-	border:2px solid green;
+h1 {
+font-family:sans-serif;
 }
 </style>
-<h1>Games#pong</h1>
-<%= javascript_include_tag "pongGame" %>
-<div class = gameHolder><canvas id = "myPongCanvas"></canvas>
-	<div id ="startButton" onclick = "start_game()">Start</div>
+<h1>Pong</h1>
+<div class = gameHolder>
+<canvas id = "myPongCanvas"></canvas>
 </div>
+
+<script type = "text/javascript" src = "/Games/pongGame.js"></script>
 
 <script type = "text/javascript">
 window.addEventListener("keydown", function(e) 

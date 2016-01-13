@@ -1,12 +1,30 @@
-<h1>Welcome to my Perosnal Website</h1>
-<div id = "content" style= width:1000px font-size:24px>
-<%=image_tag("mainPic.jpg", :alt => "mainPic")%>
 <style>
+h1{
+	
+	font-family:sans-serif;
+}
+#content{
+	font-size:18px;
+	font-family:sans-serif;
+}
+#content img{
+	width:450px;
+	height:500px;
+	float:left;
+	margin-right:15px;
+	border:1px solid black;
+}
+
 #mainPic{
 	width:150px;
 }
 </style>
-<p>My name is Daniel Makover and this is my first attempt at a website. I grew up
+
+<h1>Welcome to my Perosnal Website</h1>
+<div id = content>
+
+	<img src= "mainPic.jpg">
+	<p>My name is Daniel Makover and this is my first attempt at a website. I grew up
  with almost no formal training in computers and decided to teach myself. Given 
  the fact that I never tooko a class I'd say I did a pretty decent job.</p>
  
@@ -23,4 +41,5 @@
  my main goal was to demonstrate my mastery of front end developement with JQUERY, 
  I also wanted to show that have have a personality and can do other things aside from
   code on the computer. To put it in plain words: I have a life.</p>
-  </div>
+
+</div>

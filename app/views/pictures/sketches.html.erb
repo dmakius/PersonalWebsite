@@ -1,0 +1,71 @@
+<style>
+#picsWrapper{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	width:1000px;
+	height:650px;
+	border:1px solid black;
+}
+#backButton{
+	border:1px solid black;
+	float:left;
+	height:50px;
+	width:50px;
+	margin-top:250px;
+}
+#nextButton{
+	border:1px solid black;
+	float:right;
+	height:50px;
+	width:50px;
+	margin-top:250px;
+}
+#picHolder{
+	border:1px solid black;
+	height:600px;
+	width:750px;
+	 display: table;
+    margin-left: 60px;
+    margin-top:25px;
+	}
+
+#picsWrapper div{
+	display:inline-block;
+}
+#picsWrapper img{
+	width:750px;
+	height:600px;
+	margin:0;	
+}
+#backButton img{
+	width:50px;
+	height:50px;
+}
+
+#nextButton img{
+	width:50px;
+	height:50px;
+}
+</style>
+
+
+<hr>
+<h1>This Page is Under Construction</h1>
+<hr>
+
+<div id = "picsWrapper">
+	<div id = "backButton" onclick = "back()"><img src = '/arrowL.jpg'></div>
+	<div id = "picHolder"><img src = '/Sketches/pics1.jpg'></div>
+	<div id = "nextButton" onclick = "next()"><img src = '/arrowR.jpg'></div>
+</div>
+
+<script type = "text/javascript">
+	function back(){
+		alert("back");
+	}
+	function next(){
+		alert("next!");
+	}
+	function displayPic(){}
+</script>
