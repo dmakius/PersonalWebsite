@@ -96,7 +96,7 @@ function renderFrame()
 	ctx.fillStyle = "red";
 	ctx.font="bold 24px Arial";
 	ctx.fillText("Player Score: " + score, 10, 475);
-	ctx.fillText("Computer Score: " + score, 350, 475);
+	ctx.fillText("Computer Score: " + score, 450, 475);
 	drawNet()
 }
 
