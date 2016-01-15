@@ -266,7 +266,7 @@ function renderFrame()
 	ctx.fillStyle = "red";
 	ctx.font="bold 24px Arial";
 	ctx.fillText("Score: " + score, 10, 475);
-	ctx.fillText("Lives: " + lives, 650, 475);
+	ctx.fillText("Lives: " + lives, 550, 475);
 	
 	//game over sign
 	if(over)

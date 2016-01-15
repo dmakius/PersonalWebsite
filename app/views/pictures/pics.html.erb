@@ -1,3 +1,32 @@
-<hr>
-<h1>This Page is Under Construction</h1>
-<hr>
+
+
+<div id = "picsWrapper">
+	<div id = "backButton" onclick = "back()"><img src = '/arrowL.jpg'></div>
+	<div id = "picHolder"></div>
+	<div id = "nextButton" onclick = "next()"><img src = '/arrowR.jpg'></div>
+</div>
+
+
+
+<script type = "text/javascript">
+	var photoNumber = 1;
+	
+	function displayPhoto(photoNumber){
+		var pic = document.getElementById("picHolder");
+		pic.innerHTML = '<img src = "/photos/photo'+ photoNumber + '.jpg">';
+	}
+	
+	function back(){
+		photoNumber -= 1;
+		photoNumber = Math.max(1, photoNumber);
+		displayPhoto(photoNumber)
+	}
+	function next(){
+		photoNumber += 1;
+		photoNumber = Math.min(9, photoNumber);
+		displayPhoto(photoNumber)
+	}
+	
+	displayPhoto(photoNumber);
+	
+</script>
