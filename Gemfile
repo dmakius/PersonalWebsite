@@ -17,6 +17,8 @@ gem 'formtastic',  github: 'justinfrench/formtastic'
 
 gem 'devise'
 
+gem 'mail_form', '~> 1.5', '>= 1.5.1'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

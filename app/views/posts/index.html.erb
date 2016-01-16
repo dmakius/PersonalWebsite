@@ -4,7 +4,7 @@
 <div class = post>
 	<tr>
 	<td><h2><%= link_to post.title, post%></h2></td>
-	<td><p><small>Category:<%=  %></small></p></td>
+	<td><p><small><strong>Category: </strong><%= post.category.name %></small></p></td>
 	<td><p><%= post.body%></p></td>
 	
 	<p><td><%= link_to "Show", post_path(post) %></td>

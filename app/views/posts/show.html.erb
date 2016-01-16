@@ -1,6 +1,6 @@
-<h1>Posts#show</h1>
 <div class = "post">
 <strong><p><%= @post.title%></p></strong>
+<p><small><strong>Category: </strong><%= @post.category.name %></small></p>
 <p><%= @post.body%></p>
 
 <p><%= link_to 'Edit', edit_post_path(@post) %> |

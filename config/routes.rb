@@ -1,23 +1,21 @@
 Rails.application.routes.draw do
-
- 
-     get 'contact/index'
+  
+  resources :posts 
+  resources :categories
+  resources :contacts 
+  
+  get 'contact/index'
 
   get 'pictures/sketches'
-
   get 'pictures/pics'
 
-  resources :posts do
-      resources :categories
-  end
-  get 'resume/english'
+  
 
+  get 'resume/english'
   get 'resume/hebrew'
 
   get 'games/snake'
-
   get 'games/breakout'
-
   get 'games/pong'
 
   get 'welcome/home'
@@ -30,6 +28,8 @@ Rails.application.routes.draw do
   
   get '/english', :to => 'pages#english'
   get '/hebrew', :to => 'pages#hebrew'
+
+  match '/send_mail', to: 'contact#send_mail', via: 'post'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
