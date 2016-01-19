@@ -14,10 +14,10 @@
 	<%= f.text_area :message, as: :text %>
 	<br>
 
-	<div class = "hidden">
+	<div style = "display:none">
 	<%= f.label :nickname %><br>
 	<%= f.text_field :nickname, hint: "Do Not Fill Out" %>
-	<br>
+	
 	</div>
 	<br>
 	<%= f.submit 'Send Message'%>

@@ -18,17 +18,13 @@
 		<div id = menu_wrapper>
 		<ul>
 			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Blog", posts_path %></li>
+			<li><%= link_to "Sketches", pictures_sketches_path %></li>
 			<li><a href = "#">Resume</a>
 				<ul>
 					<li><%= link_to "English", resume_english_path %></li>
 					<li><%= link_to "Hebrew", resume_hebrew_path %></li>
 				</ul></li>
-			<li><a href = "#">Pics</a>
-			<ul>
-					<li><%= link_to "Photos", pictures_pics_path %></li>
-					<li><%= link_to "Sketches", pictures_sketches_path %></li>
-				</ul></li>
-			<li><%= link_to "Blog", posts_path %></li>
 			<li><a href = "#">Games</a>
 				<ul>
 					<li><%= link_to "Pong", games_pong_path %></li>

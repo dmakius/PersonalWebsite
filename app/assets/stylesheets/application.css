@@ -18,7 +18,7 @@
  
 
 body{
-	background-color:#6A8792;
+	background-color:#F5FFFE;
 }
 #mainWrapper{
 	width:1200px;
@@ -31,8 +31,8 @@ body{
 	border:1px solid black;
 	height:75px;
 	width:1200px;
-	background-color:#79AD9C;
-	border-radius:8px;
+	background-color:#BBBFE8;
+	opacity:0.8;
 }
 #logo span{
 	margin:0;
@@ -44,14 +44,13 @@ body{
 	background-color:#222;
 	font-size:28px;
 	font-family:sans-serif;
-	border-radius:8px;
 	width:1200px;
 }
 
 #menu ul{
 	list-style-type: none;
 	padding-left:20px;
-	margin:0;
+	margin:0px;
 	position:relative;
 	z-index:1;
 }
@@ -112,7 +111,6 @@ body{
 	background-color:#222;
 	border: 1px solid black;
 	margin-top: 20px;
-	border-radius: 8px;
 	text-align:right;
 	opacity:0.8;
 }
@@ -121,7 +119,7 @@ body{
 	display:inline-block;
 	font-size: 35px;
 	font-family:arial;
-	color:purple;
+	color:#F5E7EB;
 	font-style:bold block;
 	padding-top:10px;
 	padding-right:25px;
