@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
       @post = Post.all
+      @category = Category.all
   end
  
  def show
@@ -9,6 +10,7 @@ class PostsController < ApplicationController
 
   def new
       @post = Post.new
+      @category = Category.all
   end
   
   def edit
@@ -18,7 +20,7 @@ class PostsController < ApplicationController
   def create
       @post = Post.new(post_params)
       if @post.save
-        redirect_to @post
+        redirect_to posts_path, :notice => "You post has been SAVED"
       else
         render 'new'
     end
@@ -37,12 +39,11 @@ class PostsController < ApplicationController
   def destroy
       @post = Post.find(params[:id])
       @post.destroy
-      
       redirect_to posts_path
   end
   
   private
   def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :category_id, :admin_user_id)
   end
 end
