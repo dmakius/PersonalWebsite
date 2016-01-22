@@ -1,5 +1,5 @@
 <h1>Contact</h1>
-<div class = "" >
+<div>
 
 <%= form_for @contact do |f| %>
 	<%= f.label :name %><br>
@@ -11,10 +11,11 @@
 	<br>
 
 	<%= f.label :message %><br>
-	<%= f.text_area :message, as: :text %>
+	<%= f.text_area :message, as: :text , :size => "50x10"%>
 	<br>
 
 	<div style = "display:none">
+		
 	<%= f.label :nickname %><br>
 	<%= f.text_field :nickname, hint: "Do Not Fill Out" %>
 	
