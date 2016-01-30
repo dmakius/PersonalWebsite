@@ -42,6 +42,16 @@ healthUpImage.src = "/images/healthUp.jpg";
 var badGuyImage = new Image();
 badGuyImage.src = "/images/bad_guy.jpg";
 
+var dieSound = new Audio("/audio/die.mp3");
+var explosionSound = new Audio("/audio/explosion.mp3");
+var shootSound = new Audio("/audio/beam.mp3");
+var introSound = new Audio("/audio/intro.mp3");
+var mainSound = new Audio("/audio/main.mp3");
+var enemyHitSound = new Audio("/audio/enemyHit.mp3");
+var healthSound = new Audio("/audio/health.mp3");
+var hurtSound = new Audio("/audio/playerHurt.mp3");
+
+
 for(var i = 0; i < 2; i++)
 {
 	var bullet = new Object;
@@ -105,6 +115,7 @@ function updateFrame(){
 	}
 	if(keys[90]){//going left
 		pause = true;
+		mainSound.pause();
 	}
 	
 	document.onkeydown = onKeyDown;
@@ -154,6 +165,7 @@ function updateFrame(){
 				bullets.splice(i,1);
 				badGuys[j].health -= 10;
 				badGuys[j].hit = true;
+				enemyHitSound.cloneNode(true).play();
 				
 				if(badGuys[j].health <= 0){
 					var curBadGuy = badGuys[j];
@@ -168,7 +180,8 @@ function updateFrame(){
 	//checking player and HpCollision
 	hpBoost = checkCollisions(player, hP);
 	if(hpBoost ==  true)
-	{
+	{	
+		healthSound.play();
 		hpBoost = false;
 		hP.x = 900;
 		life = 100;
@@ -180,17 +193,20 @@ function updateFrame(){
 		var collision = checkCollisions(rockFeild[i], player)
 		if(collision == true  && player.hit == false)
 		{
+			hurtSound.play();
 			life -= 10;
 			player.hit = true;
 			
 			//player dies
 			if(life <= 0)
 			{
-				//dieSound.play();
+				dieSound.play();
 				life = 0;
 				player.dead = true;
 				createExplosion(player);
 				gameOver = true;
+				mainSound.pause();
+				mainSound.currentTime = 0;
 			}
 		}
 	}
@@ -198,17 +214,20 @@ function updateFrame(){
 		var collision = checkCollisions(badGuys[i], player)
 		if(collision == true  && player.hit == false)
 		{
+			hurtSound.play();
 			life -= 25;
 			player.hit = true;
 			
 			//player dies
 			if(life <= 0)
 			{
-				//dieSound.play();
+				dieSound.play();
 				life = 0;
 				player.dead = true;
 				createExplosion(player);
 				gameOver = true;
+				mainSound.pause();
+				mainSound.currentTime = 0;
 			}
 		}
 	}
@@ -217,7 +236,6 @@ function updateFrame(){
 		updatePlayerHit();
 	}
 		
-	
 }
 function drawFrame(){
 		
@@ -243,6 +261,7 @@ function drawFrame(){
 		ctx.fillText("Health: " + life,550, 25);	
 }
 function introScreen(){
+	introSound.play();
 	ctx.fillStyle = "Black";
 	ctx.fillRect(0,0, canvas.width, canvas.height);
 	ctx.fillStyle = "Orange";
@@ -254,15 +273,22 @@ function introScreen(){
 	
 	if(keys[32]){
 		intro = false;
+		introSound.pause();
+		introSound.currentTime = 0;
+		mainSound.addEventListener('ended', function() {
+		    this.currentTime = 0;
+		    this.play();
+		}, false);
+		mainSound.play();
 	}
 }
-
 function pauseScreen(){
 	ctx.fillStyle = "Orange";
 	ctx.font = "bold 48px Arial";
 	ctx.fillText("PAUSE " ,250, 300);
 	if(keys[90]){
 		pause = false;
+		mainSound.play();
 	}
 }
 function gameOverScreen(){
@@ -417,7 +443,7 @@ function doFire(){
 		bullet.height = 5;
 		bullet.width = 5;
 		bullets.splice(1, 0, bullet);
-		//shootSound.play();
+		shootSound.cloneNode(true).play();
 	}
 	}
 }
@@ -463,7 +489,7 @@ function drawHp(){
 
 function createExplosion(curRock){
 	var explosion = new Object();
-	//explosionSound.play();
+	explosionSound.cloneNode(true).play();
 	explosion.x = curRock.x;
 	explosion.y = curRock.y;
 	explosion.alpha = 1; 
@@ -531,6 +557,9 @@ function onKeyDown(e){
 		case 32:
 			doFire();
 			break;
+		case 90:
+			pause();
+			break;
 	}
 }
 function onKeyUp(e){
@@ -539,6 +568,9 @@ function onKeyUp(e){
 	{
 		case 32:
 			doFire();
+			break;
+		case 90:
+			pause();
 			break;
 	}
 			
