@@ -9,16 +9,17 @@ Rails.application.routes.draw do
 
   get 'pictures/sketches'
   get 'pictures/pics'
-
   
-
   get 'resume/english'
   get 'resume/hebrew'
 
   get 'games/snake'
   get 'games/breakout'
   get 'games/pong'
-
+  
+  get 'games/asteroids' 
+  # get '/public/Games/asteroids/ship.jpg', to: 'games#asteroids'
+  
   get 'welcome/home'
   
   get 'home/download_pdf'

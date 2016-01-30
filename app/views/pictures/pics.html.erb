@@ -1,32 +1,60 @@
+<style>
+	.picFrame{
+		margin-left:100px;
+		margin-top:50px;
+		vertical-align:center;
+		border:1px solid black;
+		width:800px;
+		height:500px;
+	}
+	
+
+	
+	#nextButton{
+		margin-top:-250px;
+	}
+	
+	.picInfo{
+		
+		border:1px solid black;
+	}
+</style>
 
 
-<div id = "picsWrapper">
-	<div id = "backButton" onclick = "back()"><img src = '/arrowL.jpg'></div>
-	<div id = "picHolder"></div>
-	<div id = "nextButton" onclick = "next()"><img src = '/arrowR.jpg'></div>
+<div id = "picHolder">
+	<div id = "backButton"><img src = '/arrowL.jpg'></div>
+		<% n = 1%>
+		<% @picture.each do |pic|%>
+			
+			<div id = "picFrame<%=n%>"class = "picFrame"style = "display:none">
+				<img src = "<%= pic.url %>">
+				<div class = '.picInfo'><%= pic.title%></div>	
+			</div>
+			<% n = n + 1%>	
+		<%end%>
+	
+	<div id = "nextButton"><img src = '/arrowR.jpg'></div>
 </div>
 
-
-
 <script type = "text/javascript">
-	var photoNumber = 1;
+	$(document).ready(function(){
+		var n = 1;
+		$('#picFrame' + n + '').css('display', 'block');
 	
-	function displayPhoto(photoNumber){
-		var pic = document.getElementById("picHolder");
-		pic.innerHTML = '<img src = "/photos/photo'+ photoNumber + '.jpg">';
-	}
-	
-	function back(){
-		photoNumber -= 1;
-		photoNumber = Math.max(1, photoNumber);
-		displayPhoto(photoNumber)
-	}
-	function next(){
-		photoNumber += 1;
-		photoNumber = Math.min(9, photoNumber);
-		displayPhoto(photoNumber)
-	}
-	
-	displayPhoto(photoNumber);
-	
+		$('#backButton').click(function(){
+			n -= 1;
+			n = Math.max(0, n);
+			alert(n);
+			$('#picFrame' + n + '').css('display', 'block');
+			$('#picFrame' + (n + 1) + '').css('display', 'none');
+			
+		});
+		$('#nextButton').click(function(){
+			n += 1;
+			n = Math.min(10,n);
+			alert(n);
+			$('#picFrame' + n + '').css('display', 'block');
+			$('#picFrame' +(n - 1)+ '').css('display', 'none');
+		});
+	});
 </script>

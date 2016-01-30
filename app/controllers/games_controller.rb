@@ -1,4 +1,8 @@
 class GamesController < ApplicationController
+  
+  def asteroids
+  end
+  
   def snake
   end
 

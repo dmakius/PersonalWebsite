@@ -11,6 +11,8 @@ var keys = [];
 var block = 10; 
 var d = "left";
 
+var intro = true, pause = false, gameOver = false, gameOverCounter = 200;
+
 var fruit = {
 	x:0,
 	y:0,
@@ -19,9 +21,29 @@ var fruit = {
 }
 
 function _init_snake(){
-	createSnake();
-	createFruit();
-	setInterval(mainLoop, 30);
+	if (intro == false){
+		introScreen();
+		if(keys[32]){
+			intro = false;
+			alert(intro);
+		}
+		setInterval(_init_snake, 30);
+	}else{
+		createSnake();
+		createFruit();
+		setInterval(mainLoop, 30);
+	}
+}
+	
+function introScreen(){
+	ctx.fillStyle = "Black";
+	ctx.fillRect(0,0, canvas.width, canvas.height);
+	ctx.fillStyle = "Green";
+	ctx.font = "bold 64px Arial";
+	ctx.fillText("Snake " ,175, 250);
+	ctx.font = "bold 18px Arial";
+	ctx.fillText("Press Space bar to Start " , 250, 300);	
+	ctx.fillText("(Press z bar to PAUSE)" , 250, 320);
 }
 	
 function createSnake()

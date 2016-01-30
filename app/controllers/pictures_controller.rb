@@ -3,5 +3,6 @@ class PicturesController < ApplicationController
   end
 
   def pics
+    @picture = Picture.all
   end
 end

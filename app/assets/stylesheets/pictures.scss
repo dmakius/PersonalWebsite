@@ -2,18 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#picsWrapper{
-	display:block;
-	margin-left:auto;
-	margin-right:auto;
-	width:1000px;
-	height:650px;
-}
-
-#picsWrapper div{
-	
-}
-
 #backButton{
 	display:block;
 	float:left;
@@ -24,9 +12,7 @@
 #nextButton{
 	display:block;
 	float:right;
-	height:100px;
-	width:100px;
-	margin-top:-325px;
+	margin-top:-300px;
 }
 
 #picHolder{
@@ -38,8 +24,20 @@
 	height:600px;
 	width:750px;
 }
+#picWrapper{
+	height:600px;
+	width:750px;
+}
 
+#picHolder img {
+	display:inline-block;
+}
+#picHolder div {
+	display:inline-block;
+}
 img {
+	display:inline-block;
+	vertical-align:center;
 	width:750px;
 	height:600px;
 }
