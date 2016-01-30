@@ -42,14 +42,14 @@ healthUpImage.src = "/images/healthUp.jpg";
 var badGuyImage = new Image();
 badGuyImage.src = "/images/bad_guy.jpg";
 
-var dieSound = new Audio("/audio/die.mp3");
-var explosionSound = new Audio("/audio/explosion.mp3");
-var shootSound = new Audio("/audio/beam.mp3");
-var introSound = new Audio("/audio/intro.mp3");
-var mainSound = new Audio("/audio/main.mp3");
-var enemyHitSound = new Audio("/audio/enemyHit.mp3");
-var healthSound = new Audio("/audio/health.mp3");
-var hurtSound = new Audio("/audio/playerHurt.mp3");
+var dieSound = new Audio("/audios/die.mp3");
+var explosionSound = new Audio("/audios/explosion.mp3");
+var shootSound = new Audio("/audios/beam.mp3");
+var introSound = new Audio("/audios/intro.mp3");
+var mainSound = new Audio("/audios/main.mp3");
+var enemyHitSound = new Audio("/audios/enemyHit.mp3");
+var healthSound = new Audio("/audios/health.mp3");
+var hurtSound = new Audio("/audios/playerHurt.mp3");
 
 
 for(var i = 0; i < 2; i++)
