@@ -28,23 +28,18 @@ var hP = {
 
 var playerImage = new Image();
 playerImage.src = "/images/ship.jpg";
-// playerImage.src = "../assets/ship.jpg";
-
 var rockImage = new Image();
 rockImage.src = "/images/rock.jpg";
-
 var explosionImage = new Image();
 explosionImage.src = "/images/explosion.jpg";
-
 var healthUpImage = new Image();
 healthUpImage.src = "/images/healthUp.jpg";
-
 var badGuyImage = new Image();
 badGuyImage.src = "/images/bad_guy.jpg";
 
 var dieSound = new Audio("/audios/die.mp3");
 var explosionSound = new Audio("/audios/explosion.mp3");
-var shootSound = new Audio("/audios/beam.mp3");
+var shootSound = new Audio("/https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/beam.mp3");
 var introSound = new Audio("/audios/intro.mp3");
 var mainSound = new Audio("/audios/main.mp3");
 var enemyHitSound = new Audio("/audios/enemyHit.mp3");
