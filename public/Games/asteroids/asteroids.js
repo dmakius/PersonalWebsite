@@ -39,7 +39,7 @@ badGuyImage.src = "/images/bad_guy.jpg";
 
 var dieSound = new Audio("/audios/die.mp3");
 var explosionSound = new Audio("/audios/explosion.mp3");
-var shootSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/beam.mp3");
+var shootSound = new Audio("curl https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/beam.mp3");
 var introSound = new Audio("/audios/intro.mp3");
 var mainSound = new Audio("/audios/main.mp3");
 var enemyHitSound = new Audio("/audios/enemyHit.mp3");
