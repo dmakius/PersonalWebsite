@@ -89,4 +89,13 @@ Rails.application.configure do
     :domain           => 'heroku.com',
     :enable_starttls_auto => true
   }
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['makoverwebsite'],
+      :access_key_id => ENV['AKIAJEH2I4YRNIXIB5EA'],
+      :secret_access_key => ENV['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']
+    }
+  }
+  
 end
