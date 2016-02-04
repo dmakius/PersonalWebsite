@@ -37,14 +37,14 @@ healthUpImage.src = "/images/healthUp.jpg";
 var badGuyImage = new Image();
 badGuyImage.src = "/images/bad_guy.jpg";
 
-var dieSound = new Audio("/audios/die.mp3");
-var explosionSound = new Audio("/audios/explosion.mp3");
+var dieSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/die.mp3");
+var explosionSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/explosion.mp3");
 var shootSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/beam.mp3");
-var introSound = new Audio("/audios/intro.mp3");
-var mainSound = new Audio("/audios/main.mp3");
-var enemyHitSound = new Audio("/audios/enemyHit.mp3");
-var healthSound = new Audio("/audios/health.mp3");
-var hurtSound = new Audio("/audios/playerHurt.mp3");
+var introSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/intro.mp3");
+var mainSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/main.mp3");
+var enemyHitSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/enemyHit.mp3");
+var healthSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/health.mp3");
+var hurtSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/playerHurt.mp3");
 
 
 for(var i = 0; i < 2; i++)
