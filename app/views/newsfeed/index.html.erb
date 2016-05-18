@@ -1,0 +1,25 @@
+<style>
+#newsItem{
+	height:150px;
+	border:1px solid black;
+	background-color: #FCF6FF
+}
+#newsItem p{padding-left:10px;}
+#newsItem h3{padding-left:0px; }
+#newsItem a {text-decoration:none;}
+#newsItem strong{padding-left:10px;}
+</style>
+
+<h1>Today's Top Stories</h1>
+<div>
+<% @results.each do |result| %>
+	<div id = "newsItem">
+		<h3><%= link_to simple_format(result.title), result.uri, target: '_blank' %></h3>
+		<strong>Source:</strong> <%=result.publisher %>
+		<%= simple_format result.content%>
+		<hr>
+	<div>
+		<br>
+<%end%>
+</div>
+

@@ -2,12 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.resumeHolder embed{
-	display:block;
-	margin-left:auto;
-	margin-right:auto;
+.resumeHolder {
 	width:675px;
 	height:775px;
+	embed{
+		display:block;
+		margin-left:auto;
+		margin-right:auto;
+		width:675px;
+		height:775px;
+		}
 }
 
 button{

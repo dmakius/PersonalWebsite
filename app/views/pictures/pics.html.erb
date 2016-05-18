@@ -1,39 +1,75 @@
 <style>
-	.picFrame{
+	#holder{
 		margin-left:100px;
 		margin-top:50px;
 		vertical-align:center;
-		border:1px solid black;
-		width:800px;
+		width:1000px;
 		height:500px;
+		background-color:#919AEF;
+		border:1px double black;
 	}
 	
-
+	.button img{width:50px; height:50px;}
 	
-	#nextButton{
-		margin-top:-250px;
+	#nButton{
+		float:right;
+		margin-top:-200px;
+	}
+	#bButton{
+		float:left;
+		margin-top:235px;
 	}
 	
+	.picInfo{	
+		border:4px double black;
+	}
+	
+	.picFrame{
+		margin-left:75px;
+		margin-top:50px;
+		width:850px;
+		height:400px; 
+	}
+	
+	.picFrame img {
+		margin:0;
+		width:500px;
+		height:400px;
+		border: 1px solid black;
+	}
 	.picInfo{
-		
-		border:1px solid black;
+		margin-top:-350px;
+		margin-left:525px;
+		height:250px;
+		width:350px;
+		background-color:#F3F7EC;
+	}
+	
+	
+	.picInfo p {margin:10px; font-family:sans-serif;}
+	.picInfo h2 {margin:10px;font-family:sans-serif;}
+	
+	.picFrame div{
+		display:block;
 	}
 </style>
 
 
-<div id = "picHolder">
-	<div id = "backButton"><img src = '/arrowL.jpg'></div>
+<div id = "holder">
+	<div id = "bButton" class = "button"><img src = '/arrowL.jpg'></div>
 		<% n = 1%>
 		<% @picture.each do |pic|%>
-			
 			<div id = "picFrame<%=n%>"class = "picFrame"style = "display:none">
 				<img src = "<%= pic.url %>">
-				<div class = '.picInfo'><%= pic.title%></div>	
+				<div class = "picInfo">
+					<h2><%= pic.title%></h2>
+					<p><%= pic.about%></p>
+				</div>	
 			</div>
 			<% n = n + 1%>	
 		<%end%>
 	
-	<div id = "nextButton"><img src = '/arrowR.jpg'></div>
+	<div id = "nButton" class = "button"><img src = '/arrowR.jpg'></div>
 </div>
 
 <script type = "text/javascript">
@@ -41,20 +77,20 @@
 		var n = 1;
 		$('#picFrame' + n + '').css('display', 'block');
 	
-		$('#backButton').click(function(){
+		$('#bButton').click(function(){
 			n -= 1;
-			n = Math.max(0, n);
-			alert(n);
-			$('#picFrame' + n + '').css('display', 'block');
-			$('#picFrame' + (n + 1) + '').css('display', 'none');
+			n = Math.max(1, n);
+			//alert(n);
+			$('#picFrame' + n).fadeIn("slow").css('display', 'block');
+			$('#picFrame' + (n + 1) + '').fadeOut("slow").css('display', 'none');
 			
 		});
-		$('#nextButton').click(function(){
+		$('#nButton').click(function(){
 			n += 1;
-			n = Math.min(10,n);
-			alert(n);
-			$('#picFrame' + n + '').css('display', 'block');
-			$('#picFrame' +(n - 1)+ '').css('display', 'none');
+			n = Math.min(6,n);
+			//alert(n);
+			$('#picFrame' + n).fadeIn("slow").css('display', 'block');
+			$('#picFrame' +(n - 1)+ '').fadeOut("slow").css('display', 'none');
 		});
 	});
 </script>

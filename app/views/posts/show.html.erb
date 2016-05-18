@@ -1,9 +1,9 @@
-<br>
-<div class = "post">
-<strong><p><%= @post.title%></p></strong>
-<p><small><strong>Category: </strong><%= @post.category.name %></small></p>
-<p><%= @post.body%></p>
-
-<p><%= link_to 'Back', posts_path %></p>
-<hr>
+<div class = "container">
+	<div class = "post">
+	<strong><h2><%= @post.title%></h2></strong>
+	<p><small><strong>Category: </strong><%= @post.category.name %></small></p>
+	<p><%= @post.body%></p>
+	<hr>
+	</div>
+	<button class = "btn"><%= link_to 'Back', posts_path %></button>
 </div>

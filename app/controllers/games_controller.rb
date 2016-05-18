@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  def mmrunner
+  end
   
   def asteroids
   end

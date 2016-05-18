@@ -537,10 +537,9 @@ function updatePlayerHit(){
 }
 
 function restart(){
-	var rbutton= document.getElementById("rbutton");
-	rbutton.style.zIndex  = "-100";
 	player.dead = false;
 	life = 100;
+	score = 0;
 	rockFeild = [];
 	badGuys = [];
 	createRockFeild();

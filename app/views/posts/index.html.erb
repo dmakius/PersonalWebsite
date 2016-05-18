@@ -1,12 +1,15 @@
-<h1 style = "color:#462A4C;">My BLOG</h1>
-
-<% @post.each do |post| %>
-<div class = post>
-	<tr>
-	<td><h2><%= link_to post.title, post%></h2></td>
-	<td><p><small><strong>Category: </strong><%= post.category.name %></small></p></td>
-	<td><p><%= post.body%></p></td>
-	<p class = "links"><%= link_to "Read More", post %></p>
-	<hr>
-</div><br>
-<%end%>
+<div class= "container">
+	<h1 class = "post" style = "color:#462A4C;">My BLOG</h1>
+	<% @post.each do |post| %>
+		<div class = "row">
+			<div class = "col-md-12 post">
+				<h2><%= link_to post.title, post%></h2>
+				<p><small><strong>Date: </strong><%= post.created_at.strftime("%d %b. %Y")%></small></p>
+				<p><small><strong>Category: </strong><%= post.category.name %></small></p>
+				<p><%= post.body%></p>
+				<%= link_to "Read More", post %>
+				<hr>
+			</div>
+		</div>
+	<%end%>
+</div>

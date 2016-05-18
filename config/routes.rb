@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'newsfeed/index'
+
+  get 'newsfeed/show'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :posts 
@@ -16,6 +20,7 @@ Rails.application.routes.draw do
   get 'games/snake'
   get 'games/breakout'
   get 'games/pong'
+   get 'games/mmrunner'
   
   get 'games/asteroids' 
   # get '/public/Games/asteroids/ship.jpg', to: 'games#asteroids'

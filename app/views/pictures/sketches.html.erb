@@ -1,33 +1,46 @@
 
-
+<!-- 
 <div id = "picsWrapper">
 	<div id = "backButton" onclick = "back()"><img src = '/arrowL.jpg'></div>
 	<div id = "picHolder"></div>
 	<div id = "nextButton" onclick = "next()"><img src = '/arrowR.jpg'></div>
 </div>
 
-
-
+ -->
+ <div class = "row">
+ 	<div class = "col-md-2" id = "bButton" style = "margin-top:200px;"><img src = '/arrowL.jpg'></div>
+ 	
+ 	<div class = "col-md-8" id = "">
+ 		<% n = 1%>
+ 		<% @picture.each do |pic|%>
+ 			<div id = "picFrame<%=n%>" style = "display:none;">
+ 				<h2 style = "text:center;" ><%= pic.title%></h2>
+ 				<div class= "thumbnail"><img src = "<%= pic.url %>" style = "height:600px; width:100%"></div>
+ 			</div>
+ 			<% n = n + 1%>	
+ 		<%end%>
+ 	</div>
+ 	<div class = "col-md-2" id = "nButton" style = "margin-top:200px;"><img src = '/arrowR.jpg'></div>
+ </div>
 <script type = "text/javascript">
-	var picNumber = 1;
+	$(document).ready(function(){
+		var n = 1;
+		$('#picFrame' + n + '').css('display', 'block');
 	
-	function drawSketch(picNumber){
-		var pic = document.getElementById("picHolder");
-		pic.innerHTML = '<img src = "/Sketches/pic'+ picNumber + '.jpg">';
-	}
-	
-	function back(){
-		picNumber -= 1;
-		picNumber = Math.max(1, picNumber);
-		drawSketch(picNumber);
-	}
-	function next(){
-		picNumber += 1;
-		picNumber = Math.min(21, picNumber);
-		drawSketch(picNumber);
-	}
-	function displayPic(){}
-	
-	drawSketch(picNumber);
-	
+		$('#bButton').click(function(){
+			n -= 1;
+			n = Math.max(1, n);
+			//alert(n);
+			$('#picFrame' + n + '').fadeIn("slow").css('display', 'block');
+			$('#picFrame' + (n + 1) + '').fadeOut("slow").css('display', 'none');
+			
+		});
+		$('#nButton').click(function(){
+			n += 1;
+			n = Math.min(6,n);
+			//alert(n);
+			$('#picFrame' + n).fadeIn("slow").css('display', 'block');
+			$('#picFrame' +(n - 1)+ '').fadeOut("slow").css('display', 'none');
+		});
+	});
 </script>

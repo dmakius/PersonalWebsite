@@ -1,25 +1,10 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_self
- //= require resume
- //= require posts
- //= require pictures
- */
- 
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 body{
 	background-color:white;
 }
+
 #mainWrapper{
 	width:1200px;
 	display:block; 
@@ -29,10 +14,9 @@ body{
 
 #logo{
 	border:2px solid black;
-	height:75px;
-	width:1200px;
 	background-color:#818BEA;
 	opacity:0.8;
+	border-radius: 25px;
 }
 #logo span{
 	margin:0;
@@ -100,21 +84,27 @@ body{
 #menu ul ul li a:hover{
 	color:red;
 }
-
+.logo{
+	border:1px solid grey;
+	background-color:#1C3D4A;
+	opacity:0.8;
+	border-radius: 5px;
+	vertical-align:center;
+}
 
 #footer{
 	height:70px;
 	width:100%;
 	z-index:-3;
 	display:inline-block;
-	background-color:#222;
+	background-color:#1C3D4A;
 	border: 1px solid black;
 	margin-top: 20px;
 	text-align:right;
 	opacity:0.8;
 }
 
-#footer span{
+.logoText{
 	display:inline-block;
 	font-size: 35px;
 	font-family:arial;

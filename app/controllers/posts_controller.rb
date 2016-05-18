@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   def index
-      @post = Post.all
-      @category = Category.all
+      @post = Post.all.order("created_at desc")
   end
  
  def show

@@ -2,14 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#backButton{
+.skecth{
+	 width:90%;
+	 height:90%;
+}
+
+#bButton{
 	display:block;
 	float:left;
 	height:100px;
 	width:100px;
 	margin-top:300px;
 }
-#nextButton{
+#nButton{
 	display:block;
 	float:right;
 	margin-top:-300px;
