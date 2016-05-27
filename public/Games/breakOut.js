@@ -5,7 +5,7 @@ canvas = document.getElementById("myBreakoutCanvas");
 ctx = canvas.getContext("2d");
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
-
+paddle = false;
 
 var keys = [];
 
@@ -60,7 +60,7 @@ function populateBricks()
 }
 
 
-function checkCollisions(object1, object2)
+function checkCollisions(object1, object2, isPaddle)
 {
 
 	var vectorX = (object1.x + object1.width/2) - (object2.x + object2.width/2);
@@ -101,6 +101,9 @@ function checkCollisions(object1, object2)
 				collision = "b";
 			}
 		}
+		//detect down collision with paddle
+		if((oX >= oY) && (vectorY < 0) && (isPaddle = true)){ collision = "bb"; paddle = false;}
+
 		else //left or right collision
 		{
 			if(vectorX > 0)
@@ -119,40 +122,21 @@ function checkCollisions(object1, object2)
 
 function translateCollision(collision)
 {
-	if(collision == "t")
-	{
-		ball.velY *= -1;
-	}
-	if(collision == "b")
-	{
-		ball.velY *= -1;
-	}
-	if(collision == "l")
-	{
-		ball.velX *= -1;
-	}
-	if(collision == "r")
-	{
-		ball.velX *= -1;
-	}
+	if(collision == "t"){ball.velY *= -1;}
+	if(collision == "b"){ball.velY *= -1;}
+	if(collision == "l"){ball.velX *= -1;}
+	if(collision == "r"){ball.velX *= -1;}
+	if(collision == "bb"){alert();}
+
 }
 
 function drawLevel()
 {
 	for (var i = 0; i < BRICKS.length; i++)
 	{
-		if(BRICKS[i].type == 2)
-		{
-			ctx.fillStyle = "green";	
-		}
-		if(BRICKS[i].type == 1)
-		{
-			ctx.fillStyle = "purple";	
-		}
-		if(BRICKS[i].type == 0)
-		{
-			ctx.fillStyle = "black";
-		}
+		if(BRICKS[i].type == 2){ctx.fillStyle = "green";}
+		if(BRICKS[i].type == 1){ctx.fillStyle = "purple";}
+		if(BRICKS[i].type == 0){ctx.fillStyle = "black";}
 		
 		ctx.fillRect(BRICKS[i].x, BRICKS[i].y, brickWidth, brickHeight);
 		ctx.strokeRect(BRICKS[i].x+ 1, BRICKS[i].y + 1, brickWidth - 2, brickHeight - 2);
@@ -199,25 +183,25 @@ function updateFrame()
 	ball.y += ball.velY;	
 	
 	for(var i = 0; i < BRICKS.length; i++)//check brick collisions
-	{
-		collision = checkCollisions(ball, BRICKS[i]);	
+	{	
+		paddle = false;
+		collision = checkCollisions(ball, BRICKS[i], paddle);	
 		translateCollision(collision);	
 	}
 	
 	//check player and ball collisions
-	collision = checkCollisions(ball, player);	
+	paddle = true;
+	collision = checkCollisions(ball, player, paddle);	
 	translateCollision(collision);
 	
 	//keep the ball inside
 	if(ball.x >= canvas.width || ball.x <= 0)
 	{
 		ball.velX *= -1;
-
 	}
 	if(ball.y <= 0)
 	{
 		ball.velY *= -1;
-		
 	}
 	
 	//dying
@@ -253,7 +237,10 @@ function renderFrame()
 	drawLevel();
 	
 	ctx.fillStyle = "blue";
-	ctx.fillRect(ball.x, ball.y, ball.width, ball.height);
+	ctx.beginPath();
+	ctx.arc(ball.x, ball.y, ball.width, 0,Math.PI*2, true );
+	ctx.fill();
+	//ctx.fillRect(ball.x, ball.y, ball.width, ball.height);
 	
 	//ctx.beginPath();
 	//ctx.arc(ball.x, ball.x, ball.width,0,Math.PI*2, false);

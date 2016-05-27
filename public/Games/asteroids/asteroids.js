@@ -264,7 +264,7 @@ function introScreen(){
 	ctx.fillText("ASTEROIDS " ,175, 250);
 	ctx.font = "bold 18px Arial";
 	ctx.fillText("Press Space bar to Start " , 250, 300);	
-	ctx.fillText("(Press z bar to PAUSE)" , 250, 320);
+	ctx.fillText("(Press z to PAUSE)" , 275, 320);
 	
 	if(keys[32]){
 		intro = false;
