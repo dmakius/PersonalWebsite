@@ -93,8 +93,9 @@ Rails.application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => ENV['makoverwebsite'],
-      :access_key_id => ENV['AKIAJEH2I4YRNIXIB5EA'],
-      :secret_access_key => ENV['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']
+       #Dear Hacker's FUCK YOU! You ain't getting Nothing ;-)
+      :access_key_id => ENV[''],
+      :secret_access_key => ENV['']
     }
   }
   
