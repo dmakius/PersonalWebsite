@@ -18,8 +18,15 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem "paperclip", "~> 5.0.0.beta1"
+gem "paperclip-dropbox", ">= 1.1.7"
+gem "figaro"
+
+
+#Bootstrap Gems
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

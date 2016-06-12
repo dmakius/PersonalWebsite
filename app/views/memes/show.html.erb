@@ -1,0 +1,17 @@
+<div class = "container">
+<p id="notice"><%= notice %></p>
+
+<p>
+<div class = "row">
+	<div class = "col-md-3 thumbnail"><%=  image_tag(@meme.avatar.url(:medium))%></div>
+</div>
+
+<div class = "row">
+	<strong>This File is Located At:</strong><%= @meme.avatar %>
+</div>
+<br>
+<div class = "row">
+	<button class = "btn"><%= link_to 'Delete Photo', @meme, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+	<button class = "btn"><%= link_to 'Back', memes_path %></button>
+</div>
+</div>

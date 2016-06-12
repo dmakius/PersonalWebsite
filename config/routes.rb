@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :memes
   #the Home Page
   root 'welcome#index'
 

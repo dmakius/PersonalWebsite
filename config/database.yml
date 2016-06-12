@@ -12,7 +12,7 @@ default: &default
   host:     localhost
   schema_search_path: public
   min_messages: warning
- 
+
 
 development:
   <<: *default

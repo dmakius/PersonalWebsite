@@ -1,0 +1,19 @@
+<div class = 'well row' id = "thumbNails">
+	<div class = "col-md-1 thumbnail" id = "lArrow"style = "float:left; margin-top:15px">
+	<i class ="glyphicon glyphicon-arrow-left  col-md-1" style = "font-size:50px; "></i></div>
+	
+	<div class = "col-md-10">
+		<div id = "scroller">
+		<ul>
+			<% @meme.each do |meme|%>
+				<li><%= image_tag(meme.avatar.url(:medium)) %></li> 
+			<%end%>
+		</ul>
+		</div>
+	</div>
+	
+	<div class = "col-md-1 thumbnail" id = "rArrow" style = "float:right; vertical-align:center; margin-top:15px">
+	<i class="glyphicon glyphicon-arrow-right col-md-1 " style = "font-size:50px; margin-right:50px"></i>
+	</div>
+
+</div>

@@ -1,0 +1,20 @@
+<%= form_for(@meme) do |f| %>
+  <% if @meme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meme.errors.count, "error") %> prohibited this meme from being saved:</h2>
+
+      <ul>
+      <% @meme.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "feild">
+     <%= f.file_field :avatar %><br>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

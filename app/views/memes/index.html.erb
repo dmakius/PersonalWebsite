@@ -1,0 +1,84 @@
+<div class = "container">
+<p id="notice"><%= notice %></p>
+  
+  <%= javascript_tag("memeGenerator.js") %>
+
+    <h1>Meme Generator</h1>
+   
+    <div class = "row">
+      <div class = "col-md-5">
+      <table class = "table">
+      <tr>
+          <td>
+          <button class = "btn" id = "downloadMeme">
+          <a id="downloadLnk" download="YourFileName.jpg" class="button" >Download</a></button></td>
+          <td><button class = "btn" style = "float:right"><%= link_to 'See All Memes', memes_path %></button> </td><td></td>
+          <td><button class = "btn" style = "float:right"><%= link_to 'Add A Photo', new_meme_path %></button></td>
+          <td><button class = "btn" ><%= link_to 'See All Pictures', memes_path  %></button></td>
+      </tr>
+      </table>
+      </div>
+    </div>
+
+  <div class = "row well">  
+    <div class = "col-md-6">
+      <canvas id= "memeCanvas"  class= "canvas__canvas" style = "height:450px; width:600px">  Your browser does not support the CANVAS element.
+                Try the latest Firefox, Google Chrome, Safari or Opera.</canvas>
+    </div>
+    
+    <!-- filler collunm-->
+    <div class = "col-md-1"></div> 
+    
+    <div class = "col-md-3">
+      File Name: <br>
+      <input type="text" name="tLine" id = 'fileName'>
+    <br><br>
+      Top Line:<br>
+        <input type="text" name="tLine" id = 'tLine'><br><br>
+        Button Line:<br>
+      <input type="text" name="bLine" id = 'bLine'><br>
+      <br>Font Size:
+      <select>
+        <% n = 12 %>
+        <% 12.times do %>
+          <option value = "<%= n%>"><%= n%></option>
+      <% n = n + 2%>
+        <%end%>
+      </select><br>
+      <form>
+        <br>Color:<br>
+          <input type="radio" name = "color" id = "colorO" class= "radioColor" checked> Orange<br>
+          <input type="radio" name = "color" id = "colorR"  class= "radioColor"  > Red<br>
+        <input type="radio" name = "color" id = "colorG"  class= "radioColor" > Green<br>
+        <input type="radio" name = "color" id = "colorW"  class= "radioColor" > White<br>
+      </form>
+    </div>
+
+    <div class = "col-md-2">
+    <p>Move Top Text Box</p>
+    <table class= "table">
+      <tr>
+        <td><button id = "tMoveUp">UP</button></td><td></td>
+        <td><button id = "tMoveDown">DOWN</button></td>
+      </tr>
+      <tr>
+        <td><button id = "tMoveLeft">LEFT</button></td><td></td>
+        <td><button id = "tMoveRight">RIGHT</button></td>
+      </tr>
+      </table>
+      <p>Move Bottom Text Box </p>
+      <table class= "table">
+      <tr>
+        <td><button id = "bMoveUp">UP</button></td>
+        <td><button id = "bMoveDown">DOWN</button></td>
+      </tr>
+      <tr>
+        <td><button id = "bMoveLeft">LEFT</button></td>
+        <td><button id = "bMoveRight">RIGHT</button></td>
+      </tr>
+      </table>
+    </div>
+  </div>
+  <%= render 'picture_header' %>  
+</div>
+
