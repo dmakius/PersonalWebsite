@@ -11,5 +11,6 @@ class Meme < ActiveRecord::Base
     	:dropbox_credentials => Rails.root.join("config/dropbox.yml"),
     	:path => ":style/:id_:filename"
     end
-    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+    #validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+    validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg",     "image/png"] }
 end
