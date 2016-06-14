@@ -3,6 +3,7 @@ ruby "2.2.1"
 
 gem 'rails', '4.2.4'
 
+#database 
 gem 'pg'
 
 #ActiveAdmin
@@ -10,7 +11,6 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 gem 'ransack',     github: 'activerecord-hackery/ransack'
 gem 'formtastic',  github: 'justinfrench/formtastic'
-
 gem 'devise'
 
 gem 'mail_form', '~> 1.5', '>= 1.5.1'
