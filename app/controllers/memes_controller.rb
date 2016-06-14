@@ -3,10 +3,6 @@ class MemesController < InheritedResources::Base
 		@meme = Meme.all
 	end
 	
-	def new
-		@meme = Meme.new
-	end
-
 	def create
 		@meme = Meme.new(meme_params)
 		 respond_to do |format|
