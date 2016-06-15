@@ -19,11 +19,14 @@
  			</div>
  			<% n = n + 1%>	
  		<%end%>
+ 		<span id = "maxPics" style = "display:none;"><%= @picture.length %></span>
  	</div>
  	<div class = "col-md-2" id = "nButton" style = "margin-top:200px;"><img src = '/arrowR.jpg'></div>
  </div>
+
 <script type = "text/javascript">
 	$(document).ready(function(){
+		var limit = $('#maxPics').text();
 		var n = 1;
 		$('#picFrame' + n + '').css('display', 'block');
 	
@@ -37,7 +40,7 @@
 		});
 		$('#nButton').click(function(){
 			n += 1;
-			n = Math.min(6,n);
+			n = Math.min(limit,n);
 			//alert(n);
 			$('#picFrame' + n).fadeIn("slow").css('display', 'block');
 			$('#picFrame' +(n - 1)+ '').fadeOut("slow").css('display', 'none');
