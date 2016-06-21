@@ -9,7 +9,7 @@ class MemesController < InheritedResources::Base
 
 	def create
 		@meme = Meme.new(meme_params)
-		 respond_to do |format|
+		respond_to do |format|
       	if @meme.save
 	       format.html { redirect_to @meme, notice: 'Picture was successfully Uploaded.' }
 	       format.json { render :show, status: :created, location: @meme }
