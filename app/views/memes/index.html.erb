@@ -1,28 +1,9 @@
 <div class = "container">
-<p id="notice"><%= notice %></p>
-  
-  <%= javascript_tag("memeGenerator.js") %>
-
-    <h1>Meme Generator</h1>
-   
-    <div class = "row">
-      <div class = "col-md-5">
-      <table class = "table">
-      <tr>
-          <td>
-          <button class = "btn" id = "downloadMeme">
-          <a id="downloadLnk" download="YourFileName.jpg" class="button" >Download</a></button></td>
-          <td><button class = "btn" style = "float:right"><%= link_to 'See All Memes', memes_path %></button> </td><td></td>
-          <td><button class = "btn" style = "float:right"><%= link_to 'Add A Photo', new_meme_path %></button></td>
-          <td><button class = "btn" ><%= link_to 'See All Pictures', memes_path  %></button></td>
-      </tr>
-      </table>
-      </div>
-    </div>
+  <h1>Meme Generator</h1>
 
   <div class = "row well">  
     <div class = "col-md-6">
-      <canvas id= "memeCanvas"  class= "canvas__canvas" style = "height:450px; width:600px">  Your browser does not support the CANVAS element.
+      <canvas id= "memeCanvas"  class= "canvas__canvas" style = "height:450px; width:600px; border:1px solid black; background-color:white;">  Your browser does not support the CANVAS element.
                 Try the latest Firefox, Google Chrome, Safari or Opera.</canvas>
     </div>
     
@@ -47,11 +28,14 @@
       </select><br>
       <form>
         <br>Color:<br>
-          <input type="radio" name = "color" id = "colorO" class= "radioColor" checked> Orange<br>
-          <input type="radio" name = "color" id = "colorR"  class= "radioColor"  > Red<br>
+        <input type="radio" name = "color" id = "colorO" class= "radioColor" checked> Orange<br>
+        <input type="radio" name = "color" id = "colorR"  class= "radioColor"  > Red<br>
         <input type="radio" name = "color" id = "colorG"  class= "radioColor" > Green<br>
         <input type="radio" name = "color" id = "colorW"  class= "radioColor" > White<br>
       </form>
+      <br>
+      <button class = "btn btn-primary btn-lg" id = "downloadMeme">
+          <a id="downloadLnk" download="YourFileName.jpg" style = 'color:white;'>Download <br> Meme</a></button> <br>
     </div>
 
     <div class = "col-md-2">
@@ -77,8 +61,12 @@
         <td><button id = "bMoveRight">RIGHT</button></td>
       </tr>
       </table>
+        <br>
+
+          <button class = "btn btn-lg" style = "float:center;"><%= link_to 'Add A Photo', new_meme_path %></button>
+          <br><br>
+          <button class = "btn btn-lg" ><%= link_to 'See All Pictures', memes_path, :class => 'railsLink' %></button>
     </div>
   </div>
   <%= render 'picture_header' %>  
 </div>
-

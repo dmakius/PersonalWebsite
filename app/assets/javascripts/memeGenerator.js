@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$('#memeCanvas').ready(function(){
 			var WIDTH = 650, HEIGHT = 500;
 			var canvas = document.getElementById("memeCanvas");
 			var ctx = canvas.getContext('2d');
@@ -11,20 +11,19 @@ $(document).ready(function(){
 			var xBottom = 20, yBottom = 125;
 			var fImage = new Image();
 			var topLine = "", bottomLine = "";
-			
+		
 			fImage.setAttribute('crossOrigin', 'anonymous');
-			fImage.src = '';
-			
+			fImage.src = 'http://localhost:3000/system/memes/avatars/000/000/030/medium/hqdefault.jpg?1466484194';
+			drawCanvas();
 
 			var scrollerMargin = 0;
 
 			function download() {
-			memeName = document.getElementById("fileName").value
-			document.getElementById("downloadLnk").download = memeName + ".jpg"
-
-   			 var dt = canvas.toDataURL('image/jpeg');
-   			 this.href = dt;
-   			 file = document.getElementById("downloadLnk");
+				memeName = document.getElementById("fileName").value
+				document.getElementById("downloadLnk").download = memeName + ".jpg"
+   				var dt = canvas.toDataURL('image/jpeg');
+   				this.href = dt;
+   				file = document.getElementById("downloadLnk");
 
 			};
 			
