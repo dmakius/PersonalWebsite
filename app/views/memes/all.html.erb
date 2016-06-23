@@ -1,0 +1,17 @@
+<div class = "contrainer">
+	<div class = "row">
+		<div class = "col-md-12">
+		<span style = "font-size:48px;"><strong>All Photos</strong></span>
+		<button class = "btn-lg btn-primary" style = "float:right" ><%= link_to "Create a Meme", memes_path, {:class => 'railsLink'} %>
+		</button>
+	</div></div><br>
+	<div class = "row">
+		<% @meme.each do |m| %>
+		<div class = "col-md-3">
+			<div class = "thumbnail sThumb">
+				<%= image_tag(m.avatar(:medium)) %>
+			</div>
+		</div>
+		<%end%>
+	</div>
+</div>

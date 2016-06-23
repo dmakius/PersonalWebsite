@@ -61,11 +61,8 @@
         <td><button id = "bMoveRight">RIGHT</button></td>
       </tr>
       </table>
-        <br>
-
-          <button class = "btn btn-lg" style = "float:center;"><%= link_to 'Add A Photo', new_meme_path %></button>
-          <br><br>
-          <button class = "btn btn-lg" ><%= link_to 'See All Pictures', memes_path, :class => 'railsLink' %></button>
+        
+          <button class = "btn-lg btn-info" ><%= link_to 'See All Pictures', memes_all_path, :class => 'railsLink' %></button>
     </div>
   </div>
   <%= render 'picture_header' %>  

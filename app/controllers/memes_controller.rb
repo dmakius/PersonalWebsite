@@ -3,6 +3,10 @@ class MemesController < InheritedResources::Base
 		@meme = Meme.all
 	end
 	
+	def all
+		@meme = Meme.all
+	end
+
 	def new
 		@meme = Meme.new
 	end
