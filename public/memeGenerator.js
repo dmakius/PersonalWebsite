@@ -4,11 +4,14 @@ $('#memeCanvas').ready(function(){
 			var ctx = canvas.getContext('2d');
 			var mirror = document.getElementById('mirror');
 		
+			canvas.height = 450;
+			canvas.width = 600;
+
 			var fontSize = 12, fontColor = "Orange";
 
 			//cordiates for the text boxes 
-			var xTop = 20, yTop = 25;
-			var xBottom = 20, yBottom = 125;
+			var xTop = 20, yTop = 50;
+			var xBottom = 20, yBottom = 425;
 			var fImage = new Image();
 			var topLine = "", bottomLine = "";
 		
@@ -30,7 +33,7 @@ $('#memeCanvas').ready(function(){
 			};
 			
 			 downloadLnk.addEventListener('click', download, false);
-		
+
 			function drawCanvas(){
 				ctx.clearRect(0,0,HEIGHT, WIDTH);
 				ctx.drawImage(fImage, 0,0, fImage.width, fImage.height, 0, 0, canvas.width, canvas.height);
@@ -55,13 +58,6 @@ $('#memeCanvas').ready(function(){
 			$('#fileName').on('keyup', function(){
 				memeN = $(this).val();
 				$('#memeName').val(memeN); 
-			});
-
-			//submit button
-			$('#test').on('click',function(){
-				var dataURL =  canvas.toDataURL('image/png');
-				$('#data').text(dataURL);
-				console.log(dataURL);
 			});
 			
 			$('select').change(function(){fontSize = this.value;drawCanvas();});
