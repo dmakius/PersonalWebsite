@@ -6,7 +6,7 @@ $('#memeCanvas').ready(function(){
 		
 			var fontSize = 12, fontColor = "Orange";
 
-			//cordiates for the text boxes
+			//cordiates for the text boxes 
 			var xTop = 20, yTop = 25;
 			var xBottom = 20, yBottom = 125;
 			var fImage = new Image();
@@ -14,17 +14,19 @@ $('#memeCanvas').ready(function(){
 		
 			fImage.setAttribute('crossOrigin', 'anonymous');
 			fImage.src = 'http://localhost:3000/system/memes/avatars/000/000/030/medium/hqdefault.jpg?1466484194';
-			drawCanvas();
 
 			var scrollerMargin = 0;
 
 			function download() {
-				memeName = document.getElementById("fileName").value
-				document.getElementById("downloadLnk").download = memeName + ".jpg"
-   				var dt = canvas.toDataURL('image/jpeg');
-   				this.href = dt;
-   				file = document.getElementById("downloadLnk");
-
+				memeName = document.getElementById("fileName").value;
+				if(memeName){
+					document.getElementById("downloadLnk").download = memeName + ".png"
+	   				var dt = canvas.toDataURL('image/png');
+	   				this.href = dt;
+	   				file = document.getElementById("downloadLnk");
+   				}else{
+   					alert("Please Enter a filename to download the meme");
+   				}
 			};
 			
 			 downloadLnk.addEventListener('click', download, false);
@@ -55,9 +57,6 @@ $('#memeCanvas').ready(function(){
 				$('#memeName').val(memeN); 
 			});
 
-			$('col-md-9 ul li img').on("click", function(){
-			});
-
 			//submit button
 			$('#test').on('click',function(){
 				var dataURL =  canvas.toDataURL('image/png');
@@ -67,7 +66,7 @@ $('#memeCanvas').ready(function(){
 			
 			$('select').change(function(){fontSize = this.value;drawCanvas();});
 			
-			//move the rollbar
+			//move the picture rollbar
 			$('#lArrow').on("click", function(){
 				$('#scroller').animate({marginLeft: scrollerMargin += 155}, "slow");
 			});
@@ -88,11 +87,12 @@ $('#memeCanvas').ready(function(){
 			$('#bMoveLeft').click(function(){xBottom -= 5;drawCanvas();});
 			$('#bMoveRight').click(function(){xBottom += 5;drawCanvas();});
 
+			//selecting Color
 			$('.radioColor').click(function(){
 				if($('#colorO').is(':checked')){fontColor = "Orange"; drawCanvas();}
 				if($('#colorR').is(':checked')){fontColor = "Red";drawCanvas();}
 				if($('#colorG').is(':checked')){fontColor = "Green";drawCanvas();}
 				if($('#colorW').is(':checked')){fontColor = "White";drawCanvas();}
 			});
-
+			drawCanvas();
 });
