@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :contacts 
   
+  get 'weather' => 'welcome#weather'
   get 'contact/index'
 
   #picture Routes

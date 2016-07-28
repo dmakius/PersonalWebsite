@@ -23,4 +23,7 @@ class WelcomeController < ApplicationController
   def hebrew
   end
 
+  def weather
+  end
+
 end
