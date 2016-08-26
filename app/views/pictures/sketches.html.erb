@@ -8,20 +8,31 @@
 
  -->
  <div class = "row">
- 	<div class = "col-md-2" id = "bButton" style = "margin-top:200px;"><img src = '/arrowL.jpg'></div>
- 	
- 	<div class = "col-md-8" id = "">
+ 	<div class = "col-md-12">
  		<% n = 1%>
  		<% @picture.each do |pic|%>
  			<div id = "picFrame<%=n%>" style = "display:none;">
- 				<h2 style = "text:center;" ><%= pic.title%></h2>
+ 				 <h2><%= pic.title%></h2>
  				<div class= "thumbnail"><img src = "<%= pic.url %>" style = "height:600px; width:100%"></div>
  			</div>
  			<% n = n + 1%>	
  		<%end%>
  		<span id = "maxPics" style = "display:none;"><%= @picture.length %></span>
  	</div>
- 	<div class = "col-md-2" id = "nButton" style = "margin-top:200px;"><img src = '/arrowR.jpg'></div>
+ </div>
+
+ <div class = "row">
+ 	<div class = "col-md-12">
+	 	<div style = "float:left;"id = "bButton">
+	 		<i class ="glyphicon glyphicon-arrow-left" style = "font-size:50px"></i>
+	 	</div>
+ 
+	 	<div style = "float:right;" id = "nButton">
+	 		<i class ="glyphicon glyphicon-arrow-right" style = "font-size:50px"></i>
+	 		
+	 	</div>
+	 </div>
+
  </div>
 
 <script type = "text/javascript">
