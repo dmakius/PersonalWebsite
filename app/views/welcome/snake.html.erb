@@ -11,12 +11,14 @@ font-family:sans-serif;
 	margin-right:auto;
 	}
 </style>
-<div class = gameHolder><canvas id = "mySnakeCanvas"></canvas></div>
+<div class = gameHolder><canvas id = "mySnakeCanvas" class='img-responsive'></canvas></div>
 
 <script type = "text/javascript" src = "/Games/snake.js"></script>
 
 <script type = "text/javascript">
-window.addEventListener("keydown", function(e) 
+
+	window.addEventListener("keydown", function(e) 
 {  space and arrow keys if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) 
 { e.preventDefault(); } }, false);
+
 </script>
