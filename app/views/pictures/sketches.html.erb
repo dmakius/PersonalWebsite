@@ -13,7 +13,7 @@
  		<% @picture.each do |pic|%>
  			<div id = "picFrame<%=n%>" style = "display:none;">
  				 <h2><%= pic.title%></h2>
- 				<div class= "thumbnail"><img src = "<%= pic.url %>" style = "height:600px; width:100%"></div>
+ 				<div class= "thumbnail"><img src = "<%= pic.url %>" style = "height:550px; width:100%" class = "img-responsive"></div>
  			</div>
  			<% n = n + 1%>	
  		<%end%>
