@@ -5,10 +5,14 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width">
+
 </head>
 <body>
 
-<div class = "container" >
+<div class = "container">
+<div class = "container">
+
 	<br>
 	<div class = "row ">
 		<div class = "col-md-12 logo">
@@ -17,68 +21,71 @@
 	</div><br>
 
 	<!-- NAV BAR  BEGINS-->
-<div class = "row">
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	    </div>
-
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">
-	      	<li><%= link_to "Home", root_path %></li>
-	        <li class="dropdown">
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><%= link_to "Pong", pong_path %></li>
-	            <li><%= link_to "Snake", snake_path%></li>
-	            <li><%= link_to "BreakOut", breakout_path%></li>
-	            <li role="separator" class="divider"></li>
-	            <li><%= link_to "Asteroids", asteroids_path%></li>
-	          </ul>
-	        </li>
-
- 			<li class="dropdown">
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	           	<li><%= link_to "Meme Generator", memes_path %></li>
-	            <li role="separator" class="divider"></li>
-	            <li><%= link_to "Weather App", weather_path ,'data-no-turbolink' => true%></li>
-	          </ul>
-	        </li>
-	       	 
-	        <li><%= link_to "Sketches", pictures_sketches_path %></li>
-	        <li><%= link_to "Blog", posts_path %></li>
-	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	      	<li class="dropdown">
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resume<span class="caret"></span></a>
-	              <ul class="dropdown-menu">
-	              <li><%= link_to "English", english_path %></li>
-	              <li><%= link_to "Hebrew", hebrew_path %></li>
-	              </ul>
-	        </li>
-	        <li><%= link_to "Contact", new_contact_path %></li>
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
-
-
-	<%= yield %>
-
 	<div class = "row">
-		<div class = "col-md-12 logo" id = "footer"><span class = "logoText">Powered by HaShem</span><span class="glyphicon glyphicon-copyright-mark" style = "color:black; font-size:24px;"></span>
+		<nav class="navbar-default">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		      	<li><%= link_to "Home", root_path %></li>
+		        <li class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><%= link_to "Pong", pong_path %></li>
+		            <li><%= link_to "Snake", snake_path%></li>
+		            <li><%= link_to "BreakOut", breakout_path%></li>
+		            <li role="separator" class="divider"></li>
+		            <li><%= link_to "Asteroids", asteroids_path%></li>
+		          </ul>
+		        </li>
+
+	 			<li class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		           	<li><%= link_to "Meme Generator", memes_path %></li>
+		            <li role="separator" class="divider"></li>
+		            <li><%= link_to "Weather App", weather_path ,'data-no-turbolink' => true%></li>
+		          </ul>
+		        </li>
+		       	 
+		        <li><%= link_to "Sketches", pictures_sketches_path %></li>
+		        <li><%= link_to "Blog", posts_path %></li>
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		      	<li class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resume<span class="caret"></span></a>
+		              <ul class="dropdown-menu">
+		              <li><%= link_to "English", english_path %></li>
+		              <li><%= link_to "Hebrew", hebrew_path %></li>
+		              </ul>
+		        </li>
+		        <li><%= link_to "Contact", new_contact_path %></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+
+
+		<%= yield %>
+
+		<div class = "row">
+			<div class = "col-md-12 logo" id = "footer">
+				<span class = "logoText">Powered by HaShem</span>
+				<span class="glyphicon glyphicon-copyright-mark" style = "color:black; font-size:24px;"></span>
+			</div>
 		</div>
+	<br>
 	</div>
-<br>
 </div>
 </div>
 </body>
