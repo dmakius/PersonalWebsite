@@ -15,8 +15,12 @@ weatherApp.config(function($routeProvider){
 		templateUrl: 'angularTemplates/main.html',
 		controller: 'mainController'
 	})
-	.when('/forcast', {
-		templateUrl: 'angularTemplates/forcast.html',
+	.when('/forcast_f', {
+		templateUrl: 'angularTemplates/forcast_f.html',
+		controller: 'forcastController'
+	})
+	.when('/forcast_c', {
+		templateUrl: 'angularTemplates/forcast_c.html',
 		controller: 'forcastController'
 	})
 	.otherwise({
@@ -53,6 +57,11 @@ weatherApp.controller("forcastController",['$scope', '$resource','mainService',f
 	$scope.convetToFahrenheit = function(degK){
 		return Math.round((1.8* (degK -273)) + 32);
 	}
+	
+	$scope.convetToCelcius = function(degK){
+		return Math.round((degK -273));
+	}
+
 	$scope.convertDate = function(ts){
 		return new Date(ts *1000)
 	}
