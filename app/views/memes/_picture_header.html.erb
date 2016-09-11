@@ -1,19 +1,23 @@
-<div class = 'well row' id = "thumbNails">
-	<div class = "col-md-1 thumbnail" id = "lArrow"style = "float:left; margin-top:15px">
-	<i class ="glyphicon glyphicon-arrow-left  col-md-1" style = "font-size:50px; "></i></div>
-	
-	<div class = "col-md-10">
-		<div id = "scroller">
-		<ul>
-			<% @meme.each do |meme|%>
-				<li><%= image_tag(meme.avatar.url(:medium)) %></li> 
-			<%end%>
-		</ul>
+<div class="container-fluid">
+	<div class = 'well row' >
+		<div class = "col-md-1 thumbnail" id = "lArrow" style = "float:left; margin-top:15px">
+			<i class ="glyphicon glyphicon-arrow-left" style = "font-size:50px; float:left; z-index:20px;
+			"></i>
 		</div>
-	</div>
-	
-	<div class = "col-md-1 thumbnail" id = "rArrow" style = "float:right; vertical-align:center; margin-top:15px">
-	<i class="glyphicon glyphicon-arrow-right col-md-1 " style = "font-size:50px; margin-right:50px"></i>
-	</div>
+					
+		<div class = "col-md-10 col-sm-10 col-xs-10">
+			<div id = "scroller" style= "overflow-x: hidden;">
+			<ul>
+				<% @meme.each do |meme|%>
+					<li><%= image_tag(meme.avatar.url(:medium)) %></li> 
+				<%end%>
+			</ul>
+			</div>
+		</div>
+		
+		<div class = "col-md-1 thumbnail" id="rArrow" style= "float:right; margin-top:5px; z-index:20px;">
+			<i class="glyphicon glyphicon-arrow-right" style = "font-size:50px; float:right;"></i>
+		</div>
 
+</div>
 </div>
