@@ -16,7 +16,7 @@ $('#memeCanvas').ready(function(){
 			var topLine = "", bottomLine = "";
 		
 			fImage.setAttribute('crossOrigin', 'anonymous');
-			fImage.src = 'http://localhost:3000/system/memes/avatars/000/000/030/medium/hqdefault.jpg?1466484194';
+			fImage.src = 'https://dl.dropboxusercontent.com/1/view/z4w7bxbstdzbqar/Apps/DanielMakover-PersonalWebsite/medium/35_DE.jpg';
 
 			var scrollerMargin = 0;
 
@@ -48,6 +48,7 @@ $('#memeCanvas').ready(function(){
 
 			//highliting the thumbnials
 			$('.scroller ul li img').on('click', this ,function(){
+				alert("pic selected");
 				console.log(this.src);
 				$("img").removeClass("selected");
 				$(this).addClass("selected");
