@@ -1,23 +1,15 @@
-<div class="container-fluid">
-	<div class = 'well row' >
-		<div class = "col-md-1 thumbnail" id = "lArrow" style = "float:left; margin-top:15px">
-			<i class ="glyphicon glyphicon-arrow-left" style = "font-size:50px; float:left; z-index:20px;
-			"></i>
-		</div>
-					
-		<div class = "col-md-10 col-sm-10 col-xs-10">
-			<div id = "scroller" style= "overflow-x: hidden;">
-			<ul>
-				<% @meme.each do |meme|%>
-					<li><%= image_tag(meme.avatar.url(:medium)) %></li> 
-				<%end%>
-			</ul>
-			</div>
-		</div>
-		
-		<div class = "col-md-1 thumbnail" id="rArrow" style= "float:right; margin-top:5px; z-index:20px;">
-			<i class="glyphicon glyphicon-arrow-right" style = "font-size:50px; float:right;"></i>
-		</div>
 
-</div>
-</div>
+  <div class = 'row well'>
+  	<i class ="glyphicon glyphicon-chevron-left thumbnail" id = "lArrow" style = "float:left; margin-top:35px"></i>
+    <div class = "col-md-11 col-sm-11 col-xs-10 scroll-holder">
+  		<div id = "scroller" class = "scroller" >
+    		<ul>
+    			<% @meme.each do |meme|%>
+    				<li><%= image_tag(meme.avatar.url(:medium)) %></li> 
+    			<%end%>
+    		</ul>
+      </div>
+  	</div>
+  	<i class="glyphicon glyphicon-chevron-right thumbnail" id='rArrow' style = "float:right; margin-top:35px"></i>
+  </div>
+

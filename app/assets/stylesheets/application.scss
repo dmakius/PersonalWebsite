@@ -110,12 +110,14 @@ body{
 }
 
 img{ width:150px; height:100px;}
-.col-md-10{padding-left:10px; padding-right:10px}
-.col-md-10 ul li {display:inline;}
-.col-md-10{overflow:hidden; padding-left:5px}
-.col-md-10 ul{width:3000px; padding:0px}
+.scroller{padding-left:10px; padding-right:10px}
+.scroller ul li {display:inline;}
+.scroller ul{width:3000px; padding:0px}
 .selected{border:1px solid red;}
 .rollbar {vertical-align: center; margin-left:auto; padding:0;}
+
+.scroll-holder{overflow:hidden; padding-left:5px}
+
 
 a:hover{text-decoration:none;}
 

@@ -47,7 +47,7 @@ $('#memeCanvas').ready(function(){
 			$('#bLine').on('keyup',function(){bottomLine = $(this).val();drawCanvas();});
 
 			//highliting the thumbnials
-			$('.col-md-10 ul li img').on('click', this ,function(){
+			$('.scroller ul li img').on('click', this ,function(){
 				console.log(this.src);
 				$("img").removeClass("selected");
 				$(this).addClass("selected");
