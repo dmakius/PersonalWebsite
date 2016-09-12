@@ -48,7 +48,6 @@ $('#memeCanvas').ready(function(){
 
 			//highliting the thumbnials
 			$('.scroller ul li img').on('click', this ,function(){
-				alert("pic selected");
 				console.log(this.src);
 				$("img").removeClass("selected");
 				$(this).addClass("selected");
