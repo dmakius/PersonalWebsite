@@ -54,11 +54,11 @@ weatherApp.controller("forcastController",['$scope', '$resource','mainService',f
 	});
 	//console.log($scope.weather);
 
-	$scope.convetToFahrenheit = function(degK){
+	$scope.convertToFahrenheit = function(degK){
 		return Math.round((1.8* (degK -273)) + 32);
 	}
 	
-	$scope.convetToCelcius = function(degK){
+	$scope.convertToCelcius = function(degK){
 		return Math.round((degK -273));
 	}
 

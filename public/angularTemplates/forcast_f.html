@@ -5,7 +5,7 @@
 
 <table width="100%">
 <tr>
-	<td width="100px"><strong>The Temperautre is:</strong> {{convetToFahrenheit(forecast.list[0].main.temp)}} F </td>
+	<td width="100px"><strong>The Temperautre is:</strong> {{convertToFahrenheit(forecast.list[0].main.temp)}} F </td>
 	<td width="100px"><strong>Weather Conditions:</strong> {{forecast.list[0].weather[0].description}}</td>
 </tr>
 <tr>
@@ -23,11 +23,11 @@
 		<div class = "col-md-2 panel panel-default">
 				<div class = "panel panel-heading">
 					<strong>Time:</strong> {{convertDate(w.dt) | date: 'EEE, hh a'}}
-					
 				</div>
-				<strong>temperature:</strong> {{convetToFahrenheit(w.main.temp)}}F 
-				<p><em>{{forecast.list[0].weather[0].description}}</em></p>
+				<strong>temperature:</strong> {{convertToFahrenheit(w.main.temp)}}F 
+				<p><em>{{w.weather[0].description}}</em></p>
 				<p><strong>humidity:</strong> {{w.main.humidity}} %</p>
+				
 			</div>
 		</div>
 	</div>

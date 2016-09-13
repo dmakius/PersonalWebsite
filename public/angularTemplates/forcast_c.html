@@ -4,7 +4,7 @@
 <h2>Today's Forecast for: {{city}} </h2>
 <table width="100%">
 <tr>
-	<td width="100px"><strong>The Temperautre is:</strong> {{convetToCelcius(forecast.list[0].main.temp)}} C </td>
+	<td width="100px"><strong>The Temperautre is:</strong> {{convertToCelcius(forecast.list[0].main.temp)}} C </td>
 	<td width="100px"><strong>Weather Conditions:</strong> {{forecast.list[0].weather[0].description}}</td>
 </tr>
 <tr>
@@ -24,10 +24,12 @@
 					<strong>Time:</strong> {{convertDate(w.dt) | date: 'EEE, hh a'}}
 					
 				</div>
-				<strong>temperature:</strong> {{convetToCelsius(w.main.temp)}} C 
-				<p><em>{{forecast.list[0].weather[0].description}}</em></p>
+				<strong>temperature:</strong> {{convertToCelcius(w.main.temp)}} C 
+				<p><em>{{w.weather[0].description}}</em></p>
 				<p><strong>humidity:</strong> {{w.main.humidity}} %</p>
 			</div>
+
 		</div>
+		
 	</div>
 <hr>
