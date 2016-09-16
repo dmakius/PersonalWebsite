@@ -38,10 +38,12 @@ weatherApp.config(function($routeProvider){
         redirectTo: '/'
      });
 });
+
 //SERVICES
 weatherApp.service('mainService', function(){
 	this.city = "";
 });
+
 //CONTROLLERS
 weatherApp.controller("mainController",['$scope','$log','mainService', function($scope, $log, mainService){
 	$scope.title = "Main";
@@ -56,6 +58,12 @@ weatherApp.controller("forcastController",['$scope', '$resource','mainService',f
 	$scope.city = mainService.city;
 	$scope.cnt = 7;
 	$scope.forecast = [];
+
+	$scope.addMap =function(){
+		 var map = document.getElementById("google_map");
+		 console.log(map);
+		 map.src = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCVyMA5TUXJAmmklhlvK8kYv7n8FhNRPjE&q=" + mainService.city;
+	}();
 	
 	$scope.weatherAppId = 'e1f50df08bce0b26b34b813be1c63de3';
 	$scope.weatherAPI = $resource('http://api.openweathermap.org/data/2.5/forecast/daily');
