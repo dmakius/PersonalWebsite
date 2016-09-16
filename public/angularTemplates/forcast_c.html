@@ -27,7 +27,7 @@
 	<div ng-repeat= "w in forecast.list| limitTo:7 | startFrom : 1" >
 		<div class = "col-md-2 panel panel-default">
 				<div class = "panel panel-heading">
-					<strong>{{convertDate(w.dt) | date: 'EEE'}}</strong>
+					<strong>{{convertDate(w.dt) | date: 'EEE, MMM d'}}</strong>
 				</div>
 				<p><strong>High:</strong> {{convertToCelcius(w.temp.max)}} C</p>
 				<p><strong>Low:</strong> {{convertToCelcius(w.temp.min)}} C</p>
