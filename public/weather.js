@@ -1,5 +1,16 @@
 var weatherApp = angular.module('weatherApp', ['ngRoute', 'ngResource']);
 
+weatherApp.filter('startFrom', function() {
+    return function(input, start) {
+        if(input) {
+            start = +start; //parse to int
+            return input.slice(start);
+        }
+        return [];
+    }
+});
+
+
 // angular.module('weatherApp').run(['$compile', '$rootScope', '$document', function($compile, $rootScope, $document) {
 //    return $document.on('page:load', function() {
 //       var body, compiled;
@@ -43,16 +54,17 @@ weatherApp.controller("mainController",['$scope','$log','mainService', function(
 weatherApp.controller("forcastController",['$scope', '$resource','mainService',function($scope ,$resource, mainService){
 	$scope.title = "forcast";
 	$scope.city = mainService.city;
+	$scope.cnt = 7;
 	$scope.forecast = [];
 	
 	$scope.weatherAppId = 'e1f50df08bce0b26b34b813be1c63de3';
-	$scope.weatherAPI = $resource('http://api.openweathermap.org/data/2.5/forecast');
-	$scope.weather = $scope.weatherAPI.get({appid:$scope.weatherAppId, q:$scope.city});
+	$scope.weatherAPI = $resource('http://api.openweathermap.org/data/2.5/forecast/daily');
+	$scope.weather = $scope.weatherAPI.get({appid:$scope.weatherAppId, q:$scope.city, mode:'json', cnt:7});
+
 
 	$scope.$watch('weather', function(){
 		$scope.forecast = $scope.weather
 	});
-	//console.log($scope.weather);
 
 	$scope.convertToFahrenheit = function(degK){
 		return Math.round((1.8* (degK -273)) + 32);
