@@ -11,6 +11,9 @@ class WelcomeController < ApplicationController
   def snake
   end
 
+  def tetris
+  end
+  
   def breakout
   end
 

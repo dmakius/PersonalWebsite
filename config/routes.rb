@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/breakout' => 'welcome#breakout'
   get '/pong' => 'welcome#pong'
   get '/mmrunner' => 'welcome#mmrunner'
+  get '/tetris' => 'welcome#tetris'
   
   get '/asteroids' => 'welcome#asteroids'
   # get '/public/Games/asteroids/ship.jpg', to: 'games#asteroids'
