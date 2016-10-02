@@ -35,7 +35,7 @@ var dropInterval = 1000;
 var lastTime = 0;
 var level = 1;
 
-var rowsCleared = 9;
+var rowsCleared = 0;
 
 //the main loop, repeats every 
 function update(time = 0){
