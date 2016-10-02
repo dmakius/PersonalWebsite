@@ -1,6 +1,10 @@
 var canvas = document.getElementById("tetris");
 var ctx = canvas.getContext("2d");
 
+var nextCanvas = document.getElementById("nextPeice");
+var nCtx = nextCanvas.getContext("2d");
+
+nCtx.scale(15,15);
 ctx.scale(20,20);
 
 //player object
@@ -9,6 +13,8 @@ var player = {
 	matrix: null,
 	score:0,
 }
+
+var pieces = "ILJOTSZ";//array of possible pieces
 
 //array of all possible colors
 var colors = [
@@ -27,6 +33,9 @@ var arena = createMatrix(12,20);//creates a 12x20 matrix
 var dropCounter = 0;
 var dropInterval = 1000;
 var lastTime = 0;
+var level = 1;
+
+var rowsCleared = 9;
 
 //the main loop, repeats every 
 function update(time = 0){
@@ -41,8 +50,13 @@ function update(time = 0){
 }
 
 function draw(){
+	nCtx.fillStyle = "black";
+	nCtx.fillRect(0,0, 150, 200);
+	drawNextMatrix(nextMatrix, {x:1, y:1});
+
 	ctx.fillStyle = "black";
 	ctx.fillRect(0,0, canvas.width, canvas.height);
+
 	drawMatrix(arena,{x:0, y:0});//draws the arena 
 	drawMatrix(player.matrix, player.pos);//draws the player
 }
@@ -53,6 +67,19 @@ function drawMatrix(matrix, offshot){
 			if(matrix[y][x] !== 0){
 				ctx.fillStyle = colors[matrix[y][x]]; //use the correct color
 				ctx.fillRect(x + offshot.x,//offshoot is the correct coordinate of the player
+							y + offshot.y,
+							  1, 1);
+			}
+		}
+	}
+}
+
+function drawNextMatrix(matrix, offshot){
+	for (var y = 0 ; y < matrix.length; y++){//iterates through arean row
+		for(var x = 0; x < matrix[y].length; x++){//iterates arena collunm
+			if(matrix[y][x] !== 0){
+				nCtx.fillStyle = colors[matrix[y][x]]; //use the correct color
+				nCtx.fillRect(x + offshot.x,//offshoot is the correct coordinate of the player
 							y + offshot.y,
 							  1, 1);
 			}
@@ -143,7 +170,6 @@ function collide(arena, player){
 	return false;
 }
 
-//
 function playerRotate(dir){
 	var pos = player.pos.x;
 	var offset = 1;
@@ -183,8 +209,8 @@ function rotate(matrix, dir){
 	}
 }
 function playerReset(){
-	var pieces = "ILJOTSZ";//array of possible pieces
-	player.matrix = createPiece(pieces[pieces.length *Math.random() | 0]);//randomly selects piece
+	player.matrix = nextMatrix;
+	nextMatrix = createPiece(pieces[pieces.length *Math.random() | 0]);//randomly selects piece
 	player.pos.y = 0;
 	player.pos.x = (arena[0].length/2 |0) - (player.matrix[0].length/2 |0);
 
@@ -211,6 +237,16 @@ function arenaSweep(){
 
 		player.score += rowCount * 10;
 		rowCount *= 2;
+		rowsCleared ++;
+		console.log(rowsCleared);
+		console.log(dropInterval);
+		if(rowsCleared >= 10){								//next level
+			level ++;
+			rowsCleared = 0;
+			dropInterval -= 100;
+			updateLevel();
+
+		}
 	}
 }
 
@@ -223,7 +259,7 @@ function playerDrop(){
 		arenaSweep();						//check for complete rows to clear	
 		updateScore();
 	}
-	dropCounter =0;
+	dropCounter = 0;
 }
 function playerMove(dir){
 	player.pos.x += dir;
@@ -231,6 +267,10 @@ function playerMove(dir){
 		player.pos.x -=  dir;
 	}
 }
+function updateLevel(){
+	document.getElementById("level").innerText = level;
+}
+
 function updateScore(){
 	document.getElementById("score").innerText = player.score;
 }
@@ -242,6 +282,9 @@ document.addEventListener("keydown", function(e){
 	else if (e.keyCode == 38){ playerRotate(1);}
 	else if (e.keyCode == 81){ playerRotate(-1);}
 });
+
+nextMatrix = createPiece(pieces[pieces.length *Math.random() | 0]);
+updateLevel();
 updateScore();
 playerReset();
 update();
