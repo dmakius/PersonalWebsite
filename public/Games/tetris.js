@@ -220,6 +220,8 @@ function playerReset(){
 			arena[y].fill(0);
 		}
 		player.score = 0;
+		level = 0;
+		dropInterval = 1000;
 	}
 }
 
