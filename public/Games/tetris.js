@@ -68,7 +68,7 @@ function drawMatrix(matrix, offshot){
 				ctx.fillStyle = colors[matrix[y][x]]; //use the correct color
 				ctx.fillRect(x + offshot.x,//offshoot is the correct coordinate of the player
 							y + offshot.y,
-							  1, 1);
+							  0.9, 0.9);
 			}
 		}
 	}
@@ -81,7 +81,7 @@ function drawNextMatrix(matrix, offshot){
 				nCtx.fillStyle = colors[matrix[y][x]]; //use the correct color
 				nCtx.fillRect(x + offshot.x,//offshoot is the correct coordinate of the player
 							y + offshot.y,
-							  1, 1);
+							  0.9, 0.9);
 			}
 		}
 	}
