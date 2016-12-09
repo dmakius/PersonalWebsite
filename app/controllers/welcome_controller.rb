@@ -29,4 +29,7 @@ class WelcomeController < ApplicationController
   def weather
   end
 
+  def verticalmario
+  end
+
 end

@@ -26,6 +26,7 @@ gem "paperclip", "~> 5.0.0.beta1"
 gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
 
+gem 'jquery-turbolinks'
 
 #Bootstrap Gems
 gem 'bootstrap-sass', '~> 3.3.6'

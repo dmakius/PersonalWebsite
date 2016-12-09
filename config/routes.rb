@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/pong' => 'welcome#pong'
   get '/mmrunner' => 'welcome#mmrunner'
   get '/tetris' => 'welcome#tetris'
+  get '/verticalmario' => 'welcome#verticalmario'
   
   get '/asteroids' => 'welcome#asteroids'
   # get '/public/Games/asteroids/ship.jpg', to: 'games#asteroids'

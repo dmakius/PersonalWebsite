@@ -6,9 +6,9 @@
 				<h2><%= link_to post.title, post%></h2>
 				<p><small><strong>Date: </strong><%= post.created_at.strftime("%d %b. %Y")%></small></p>
 				<p><small><strong>Category: </strong><%= post.category.name %></small></p>
-				<p><%= truncate(post.body, :length => 80, :escape => false)%></p>
+				<p><%= truncate(post.body.html_safe, :length => 80, :escape => false)%></p>
 				<%= link_to "Read More", post %>
-				<hr>
+				<hr>  
 			</div>
 		</div>
 	<%end%>
