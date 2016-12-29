@@ -1,61 +1,60 @@
+<!-- importing external libraries -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
 
-<!-- 
-<div id = "picsWrapper">
-	<div id = "backButton" onclick = "back()"><img src = '/arrowL.jpg'></div>
-	<div id = "picHolder"></div>
-	<div id = "nextButton" onclick = "next()"><img src = '/arrowR.jpg'></div>
+<!-- custom on page css -->
+<style>
+.swiper-container {
+    width: 700px;
+    height: 500px;
+}   
+.swipe-pic{
+	height:90%; 
+	width:75%; 
+	display:block; 
+	margin:auto;
+}   
+</style>
+
+<br>
+<!-- Slider main container -->
+<div class="swiper-container" style = "width:100%">
+	<!-- Additional required wrapper -->
+   <div class="swiper-wrapper">
+   <!-- Slides -->
+		<% @picture.each do |pic|%>
+	      	<div class="swiper-slide"><img src = "<%= pic.url %>" class = "img-responsive swipe-pic"></div>
+	    <% end %>        
+	</div>
+
+	<!-- If we need pagination -->
+	<div class="swiper-pagination"></div>
+	    
+	<!-- If we need navigation buttons -->
+	<div class="swiper-button-prev"></div>
+	<div class="swiper-button-next"></div>
+	    
+	<!-- If we need scrollbar -->
+	<div class="swiper-scrollbar"></div>
 </div>
 
- -->
- <div class = "row">
- 	<div class = "col-md-12">
- 		<% n = 1%>
- 		<% @picture.each do |pic|%>
- 			<div id = "picFrame<%=n%>" style = "display:none;">
- 				 <h2><%= pic.title%></h2>
- 				<div class= "thumbnail"><img src = "<%= pic.url %>" style = "height:550px; width:100%" class = "img-responsive"></div>
- 			</div>
- 			<% n = n + 1%>	
- 		<%end%>
- 		<span id = "maxPics" style = "display:none;"><%= @picture.length %></span>
- 	</div>
- </div>
 
- <div class = "row">
- 	<div class = "col-md-12">
-	 	<div style = "float:left;"id = "bButton">
-	 		<i class ="glyphicon glyphicon-arrow-left" style = "font-size:50px"></i>
-	 	</div>
- 
-	 	<div style = "float:right;" id = "nButton">
-	 		<i class ="glyphicon glyphicon-arrow-right" style = "font-size:50px"></i>
-	 		
-	 	</div>
-	 </div>
-
- </div>
-
-<!-- picture changing logic -->
-<script type = "text/javascript">
-	$(document).ready(function(){
-		var limit = $('#maxPics').text();
-		var n = 1;
-		$('#picFrame' + n + '').css('display', 'block');
-	
-		$('#bButton').click(function(){
-			n -= 1;
-			n = Math.max(1, n);
-			//alert(n);
-			$('#picFrame' + n + '').fadeIn("slow").css('display', 'block');
-			$('#picFrame' + (n + 1) + '').fadeOut("slow").css('display', 'none');
-			
-		});
-		$('#nButton').click(function(){
-			n += 1;
-			n = Math.min(limit,n);
-			//alert(n);
-			$('#picFrame' + n).fadeIn("slow").css('display', 'block');
-			$('#picFrame' +(n - 1)+ '').fadeOut("slow").css('display', 'none');
-		});
-	});
-</script>
+<script>        
+  //initiate the swiper
+  var mySwiper = new Swiper ('.swiper-container', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+    
+    // If we need pagination
+    pagination: '.swiper-pagination',
+    
+    // Navigation arrows
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+    
+    // And if we need scrollbar
+    scrollbar: '.swiper-scrollbar',
+  });     
+  </script>
+</body>
