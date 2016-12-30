@@ -171,7 +171,7 @@ function moveDown(){
 	console.log("moveDown");
 }
 
-var startButton = document.getElementById("startBtn").addEventListener("click", function(){
+document.getElementById("startBtn").addEventListener("click", function(){
 	var btn = document.getElementById("startText");
 	if(gameStart == false){
 		startFunction();

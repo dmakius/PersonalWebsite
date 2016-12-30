@@ -9,13 +9,9 @@
 h1 {
 font-family:sans-serif;
 }
-.controllers{
-	display: block;
-	margin:auto;
-}
 
-.controller-button{
-	background-color: blue;
+.glyphicon {
+    font-size: 75px;
 }
 </style>
 <script type = "text/javascript" src = "/Games/pongGame.js"></script>
@@ -26,21 +22,23 @@ font-family:sans-serif;
 	<br>
 
 	<div class = "hidden-md hidden-lg">
-		<div class = "controllers">
-			
-			<!-- up and down buttons -->
-			<span id = "upBtn" class = "glyphicon glyphicon-circle-arrow-up" style = "float:left;"></span>
-			<span id = "downBtn" class = "glyphicon glyphicon-circle-arrow-down" style = "float:right;"></span>
-			
+		<div>
+			<!-- up button -->
+			<div id = "upBtn">
+				<span class = "glyphicon glyphicon-circle-arrow-up" style = "float:left;"></span>
+			</div>
+
+			<!-- down button -->
+			<div id = "downBtn">
+				<span class = "glyphicon glyphicon-circle-arrow-down" style = "float:right;"></span>
+			</div>
+		</div>
 			<br>
 
 			<!-- Start Button -->
-			<button id = "startBtn"  class = "btn btn-default btn-lrg" style = "display: block;
-	margin:auto;">
+			<button id = "startBtn"  class = "btn btn-default btn-lrg" style = "display: block; margin:auto;">
 				<span id = "startText">Start</span>
-			</button>
-
-		</div>
+			</button>	
 	</div>
 
 
