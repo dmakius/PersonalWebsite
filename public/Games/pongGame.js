@@ -166,33 +166,24 @@ function moveDown(){
 	console.log("moveDown");
 }
 
-// var interval;
-// $('#btnDown').mousedown(function(){
-// 	console.log(interval);
-// 	interval = setInterval(moveDown, 100);
-// }).mouseup(function(){
-// 	clearInterval(interval);
-// });
-
 var startButton = document.getElementById("startBtn").addEventListener("click", function(){
 	startFunction();
-	document.getElementById("startText").innerHtml("");
 });
 
-document.getElementById("downBtn").addEventListener("click", function(){
+document.getElementById("downBtn").addEventListener("touchstart", function(){
 	movingDown = true;
 	console.log("mouse over");
 });
-document.getElementById("downBtn").addEventListener("mouseleave", function(){
+document.getElementById("downBtn").addEventListener("touchend", function(){
 	movingDown = false;
 	console.log("mouse gone");
 });
 
-document.getElementById("upBtn").addEventListener("click", function(){
+document.getElementById("upBtn").addEventListener("touchstart", function(){
 	movingUp = true;
 	console.log("mouse over");
 });
-document.getElementById("upBtn").addEventListener("mouseleave", function(){
+document.getElementById("upBtn").addEventListener("touchend", function(){
 	movingUp = false;
 	console.log("mouse gone");
 });
