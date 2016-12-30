@@ -1,10 +1,14 @@
 var ready = function() {
-var HEIGHT = 500, WIDTH = 700, keys = [], canvas, ctx, score = 0, computerScore= 0, intro = true;
-var gameStart  = false;
-canvas = document.getElementById("myPongCanvas");
-ctx = canvas.getContext("2d");
-canvas.width = WIDTH;
-canvas.height = HEIGHT;
+
+	var HEIGHT = 500, WIDTH = 700, keys = [], canvas, ctx, score = 0, computerScore= 0, intro = true;
+	var gameStart  = false;
+	canvas = document.getElementById("myPongCanvas");
+	ctx = canvas.getContext("2d");
+	canvas.width = WIDTH;
+	canvas.height = HEIGHT;
+
+	var movingDown = false;
+	var movingUp = false;
 
 //the ball object
 var ball = {
@@ -26,11 +30,6 @@ var computer = {
 	y:100,
 	width:5,
 	height:100,
-}
-
-function _init_pong(){
-
-
 }
 
 function mainLoop(){
@@ -56,15 +55,17 @@ function introFrame(){
 	ctx.fillText("The First to 11 WINS!!!!", 20, 325);
 }
 
-function updateFrame()
-{
-	 var paddleMiddle = player.y + player.height/2;
-	 var computerMiddle = computer.y + computer.height/2;
+function updateFrame(){
+	var paddleMiddle = player.y + player.height/2;
+	var computerMiddle = computer.y + computer.height/2;
 	
 	//the player's movements
 	if(keys[40]){player.y += 10;}//going down
 	if(keys[38]){player.y -= 10;}//going up
 	player.y = Math.min( Math.max(player.y, 0), 400);//keeping the player in bounds
+
+	if(movingDown == true){player.y += 10;}
+	if(movingUp == true){player.y -= 10;}
 	
 	//the balls movements
 	ball.y += ball.velY;
@@ -101,12 +102,10 @@ function updateFrame()
 		//ease the movement toawrds the ideal poosition
 		computer.y += (desty - computer.y)*0.15;
 	}
-	computer.y = Math.min( Math.max(computer.y, 0), 400);
-	
+	computer.y = Math.min( Math.max(computer.y, 0), 400);	
 }
 	
-function renderFrame()
-{
+function renderFrame(){
 	ctx.clearRect(0,0, canvas.width, canvas.height);
 	ctx.fillStyle = "black";
 	ctx.fillRect(0,0, canvas.width, canvas.height);
@@ -138,6 +137,7 @@ function drawNet(){
 		ctx.fillRect(canvas.width/2, brickHeight*i, 10, 20)
 	}
 }
+
 function serve(dir){
 	if(dir == 1)
 	{
@@ -154,11 +154,50 @@ function serve(dir){
 	}
 }
 	
-function start_game(){
-	mainLoop();
-	var startB = document.getElementById("startButton");
-	startB.style.zIndex = -100;
+
+function startFunction(){
+	console.log("Starting Game");
+	console.log(gameStart);
+	gameStart = true;
 }
+
+function moveDown(){
+	player.y += 10;
+	console.log("moveDown");
+}
+
+// var interval;
+// $('#btnDown').mousedown(function(){
+// 	console.log(interval);
+// 	interval = setInterval(moveDown, 100);
+// }).mouseup(function(){
+// 	clearInterval(interval);
+// });
+
+var startButton = document.getElementById("startBtn").addEventListener("click", function(){
+	startFunction();
+	document.getElementById("startText").innerHtml("");
+});
+
+document.getElementById("downBtn").addEventListener("click", function(){
+	movingDown = true;
+	console.log("mouse over");
+});
+document.getElementById("downBtn").addEventListener("mouseleave", function(){
+	movingDown = false;
+	console.log("mouse gone");
+});
+
+document.getElementById("upBtn").addEventListener("click", function(){
+	movingUp = true;
+	console.log("mouse over");
+});
+document.getElementById("upBtn").addEventListener("mouseleave", function(){
+	movingUp = false;
+	console.log("mouse gone");
+});
+
+
 
 document.body.addEventListener("keydown", function(e){
 	keys[e.keyCode] = true});
