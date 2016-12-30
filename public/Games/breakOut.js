@@ -7,6 +7,9 @@ canvas.width = WIDTH;
 canvas.height = HEIGHT;
 var paddle = false;
 
+var movingRight = false, movingLeft = false;
+var pause = false;
+
 var keys = [];
 
 var bricksPerRow = 70;
@@ -43,8 +46,7 @@ var ball = {
 	width:5
 }
 
-function populateBricks()
-{
+function populateBricks(){
 	for(var i = 0; i < level1.length; i++)
 	{
 		for (var j = 0; j < level1[i].length; j++)
@@ -116,13 +118,20 @@ function _init_breakout(){
 }
 
 function mainLoop(){
-	if(!over){updateFrame();}
+	if(!over){
+		if(!pause){updateFrame()};}
 	renderFrame();
 	window.requestAnimationFrame(mainLoop);
 }
 function updateFrame(){
+	//keyboard controls
 	if(keys[39]){player.x += 10;}
 	if(keys[37]){player.x -= 10;}
+
+	//touchscreen controls
+	if(movingLeft == true){player.x -= 10;}
+	if(movingRight == true){player.x += 10;}
+
 	if(player.x <= 0){player.x = Math.max(player.x, 0);}
 	if((player.x + player.width) > 600){player.x = Math.min(player.x, 600)}
 	
@@ -173,11 +182,6 @@ function renderFrame(){
 	ctx.beginPath();
 	ctx.arc(ball.x, ball.y, ball.width, 0,Math.PI*2, true );
 	ctx.fill();
-	//ctx.fillRect(ball.x, ball.y, ball.width, ball.height);
-	
-	//ctx.beginPath();
-	//ctx.arc(ball.x, ball.x, ball.width,0,Math.PI*2, false);
-	//ctx.fill();
 	
 	ctx.fillStyle = "pink";
 	ctx.fillRect(player.x, player.y, player.width, player.height);
@@ -199,6 +203,35 @@ function renderFrame(){
 	}	
 }
 
+
+//on screen buttons
+document.getElementById("rightBtn").addEventListener("touchstart", function(){
+	movingRight = true;
+});
+document.getElementById("rightBtn").addEventListener("touchend", function(){
+	movingRight = false;
+});
+
+document.getElementById("leftBtn").addEventListener("touchstart", function(){
+	movingLeft = true;
+});
+document.getElementById("leftBtn").addEventListener("touchend", function(){
+	movingLeft = false;
+});
+
+//pause buttons
+document.getElementById("startBtn").addEventListener("click", function(){
+	var btn = document.getElementById("startText");
+	if(pause == false){
+		pause = true;
+		btn.innerHTML = "Resume";
+	}else if(pause ==true){
+		pause = false;
+		btn.innerHTML = "Pause";
+	}	
+});
+
+//keyboard buttons
 document.body.addEventListener("keydown", function(e){
 	keys[e.keyCode] = true});
 

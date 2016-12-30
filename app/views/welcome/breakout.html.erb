@@ -8,11 +8,37 @@ font-family:sans-serif;
 	margin-left:auto;
 	margin-right:auto;
 	}
+
+.glyphicon {
+    font-size: 75px;
+}
 </style>
 <h1>Break Out</h1>
 <div class = gameHolder><canvas id = "myBreakoutCanvas" class='img-responsive'></canvas></div>
 
 <script type = "text/javascript" src = "/Games/breakOut.js"></script>
+
+<br>
+
+	<div class = "hidden-md hidden-lg">
+		<div>
+			<!-- right button -->
+			<div id = "leftBtn">
+				<span class = "glyphicon glyphicon-circle-arrow-left" style = "float:left;"></span>
+			</div>
+
+			<!-- left button -->
+			<div id = "rightBtn">
+				<span class = "glyphicon glyphicon-circle-arrow-right" style = "float:right;"></span>
+			</div>
+		</div>
+			<br>
+
+			<!-- Start Button -->
+			<button id = "startBtn"  class = "btn btn-default btn-lrg" style = "display: block; margin:auto;">
+				<span id = "startText">Pause</span>
+			</button>	
+	</div>
 
 <script type = "text/javascript">
 window.addEventListener("keydown", function(e) 
