@@ -7,6 +7,8 @@ var ready = function() {
 	canvas.width = WIDTH;
 	canvas.height = HEIGHT;
 
+	var pause = false;
+
 	var movingDown = false;
 	var movingUp = false;
 
@@ -38,7 +40,10 @@ function mainLoop(){
 		if(keys[32]){gameStart = true}
 	}
 	else if( gameStart == true){
-		updateFrame();
+		
+		if(pause != true){
+			updateFrame();
+		}
 		renderFrame();
 	}
 	
@@ -167,7 +172,18 @@ function moveDown(){
 }
 
 var startButton = document.getElementById("startBtn").addEventListener("click", function(){
-	startFunction();
+	var btn = document.getElementById("startText");
+	if(gameStart == false){
+		startFunction();
+		btn.innerHTML = "Pause";
+	}else if(pause == false){
+		pause = true;
+		btn.innerHTML = "Resume";
+	}else if(pause ==true){
+		pause = false;
+		btn.innerHTML = "Pause";
+	}	
+	
 });
 
 document.getElementById("downBtn").addEventListener("touchstart", function(){
