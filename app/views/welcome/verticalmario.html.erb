@@ -1,25 +1,44 @@
-<style>#marioGame{margin-top:25px;} #marioGame canvas {display : block;   margin : auto;}</style>
+<style>#marioGame{margin-top:25px;} 
+#marioGame canvas {display : block;   margin : auto;}
+
+.testClass{
+	border:5px solid red;
+}
+
+</style>
 
 <script  type='text/javascript' src = "/Games/verticalMario/phaser.min.js"></script>
 <script  type='text/javascript' src = "/Games/verticalMario/bootState.js"></script>
 <script  type='text/javascript' src = "/Games/verticalMario/preloadState.js"></script>
 <script  type='text/javascript' src = "/Games/verticalMario/gameState.js"></script>
 
-<div class = "row">
 
-	<div class = "col-md-12">
-	<h2>Vertical Mario</h2>
-		<div id = "marioGame"></div>
-	</div>
-</div>
+
+<h2>Vertical Mario</h2>
+<div id = "marioGame"></div>
+
 
 <script>
-	window.onload = function(){
-		var game = new Phaser.Game(450, 400, Phaser.CANVAS, 'marioGame');
+$(document).ready(function(){
 
-		game.state.add('bootState', Game.bootState);
-		game.state.add('preloadState', Game.preloadState);
-		game.state.add('gameState', Game.gameState);
-		game.state.start('bootState');
-	}
+//startings instance of game
+var game = new Phaser.Game(450, 400, Phaser.CANVAS, 'marioGame');
+
+//loading gamy states
+game.state.add('bootState', Game.bootState);	
+game.state.add('preloadState', Game.preloadState);
+game.state.add('gameState', Game.gameState);
+//starts game
+game.state.start('bootState');
+
+game.stage.canvas.id = 'myCanvases';	
+$('#myCanvas').addClass('img-responsive');
+//turn of scrolling from keyboard
+window.addEventListener("keydown", function(e) { 
+{ e.preventDefault(); } }, false);
+});
+</script>
+<script>
+
+
 </script>

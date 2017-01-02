@@ -21,5 +21,6 @@ Game.bootState.prototype = {
 	create:function(){	
 		//go to Preload State
 		this.state.start('preloadState');
+		
 	}
 }
