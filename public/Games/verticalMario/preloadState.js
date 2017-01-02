@@ -23,9 +23,10 @@ Game.preloadState.prototype = {
   		this.game.load.audio('main', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/sounds/main-theme.mp3');
   		this.game.load.audio('dead', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/sounds/dead.mp3');
  
-		//load all sprites
-		this.game.load.spritesheet('player', 'assets/dude.png', 32, 48);
+		//load spritesheets
 		this.game.load.spritesheet("enemy","https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/goombas.png", 32,32);
+  		
+  		//load images
   		this.game.load.image('wall', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/wall.png');
   		this.game.load.image('background', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/bg.png');
   		this.game.load.image('coin', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/coin.png');
@@ -35,6 +36,7 @@ Game.preloadState.prototype = {
 	},
 	
 	create:function(){
+		console.log();
 		//go to game state
 		this.state.start('gameState')
 	}

@@ -12,23 +12,28 @@ var gameOver = false, gameOverTimer;
 Game.gameState.prototype = {
     create: function(){
       gameOverTimer = null;
+      
       console.log(this.game.time.now);
       console.log(gameOverTimer);
     	this.timer = this.game.time.events.loop(3000, this.addPlatforms, this); 
 
   		this.game.physics.startSystem(Phaser.Physics.ARCADE);
- 		//this.game.stage.backgroundColor = '479cde';
 
- 		background = this.game.add.sprite(0,0, 'background');
+      //background 
+ 		 background = this.game.add.sprite(0,0, 'background');
 
-    coinSound = this.game.add.audio('getCoin');
-    jumpSound = this.game.add.audio('jump');
-    mainSound = this.game.add.audio('main');
-    deadSound = this.game.add.audio('dead');
+      //add sounds
+      coinSound = this.game.add.audio('getCoin');
+      jumpSound = this.game.add.audio('jump');
+      mainSound = this.game.add.audio('main');
+      deadSound = this.game.add.audio('dead');
 
-   mainSound.play();
-
- 		player = this.game.add.sprite(100, 220, 'mario');
+      //play music
+      mainSound.play();
+      console.log("TESTING");
+      console.log(mainSound.play());
+ 		
+    player = this.game.add.sprite(100, 220, 'mario');
     player.dead = false;
  		player.enableBody = true;
     //player.body.collideWorldBounds = true;
@@ -54,7 +59,7 @@ Game.gameState.prototype = {
 
  		 platform1 = this.game.add.group();
  		 platform1.enableBody = true;
-    	platform1.createMultiple(250, 'wall');
+    platform1.createMultiple(250, 'wall');
 
     	coins = this.game.add.group();
     	coins.enableBody = true;
