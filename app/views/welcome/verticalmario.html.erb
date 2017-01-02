@@ -20,23 +20,25 @@
 
 <script>
 $(document).ready(function(){
+	//startings instance of game
+	var game = new Phaser.Game(450, 400, Phaser.CANVAS, 'marioGame');
 
-//startings instance of game
-var game = new Phaser.Game(450, 400, Phaser.CANVAS, 'marioGame');
+	//loading gamy states
+	game.state.add('bootState', Game.bootState);	
+	game.state.add('preloadState', Game.preloadState);
+	game.state.add('gameState', Game.gameState);
 
-//loading gamy states
-game.state.add('bootState', Game.bootState);	
-game.state.add('preloadState', Game.preloadState);
-game.state.add('gameState', Game.gameState);
-//starts game
-game.state.start('bootState');
+	//starts game
+	game.state.start('bootState');
 
-game.stage.canvas.id = 'myCanvases';	
-$('#myCanvas').addClass('img-responsive');
-//turn of scrolling from keyboard
-window.addEventListener("keydown", function(e) { 
-{ e.preventDefault(); } }, false);
-});
+	game.stage.canvas.id = 'myCanvases';	
+	console.log("testing");
+ 	$('#myCanvas').addClass('img-responsive');
+
+	//turn of scrolling from keyboard
+	window.addEventListener("keydown", function(e) { 
+	{ e.preventDefault(); } }, false);
+	});
 </script>
 <script>
 

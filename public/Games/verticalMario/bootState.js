@@ -19,6 +19,10 @@ Game.bootState.prototype = {
 	},
 
 	create:function(){	
+		//scale the canvas to fit page
+		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		this.scale.pageAlignHorizontally = true;
+   		this.scale.pageAlignVertically = true;
 		//go to Preload State
 		this.state.start('preloadState');
 		

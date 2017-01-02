@@ -126,12 +126,12 @@ Game.gameState.prototype = {
           player.body.gravity.y = 0;
           player.body.velocity.y = 0;
           gameOverTimer = this.game.time.now;
-          console.log("game over time: " + gameOverTimer);
+          //console.log("game over time: " + gameOverTimer);
           player.dead = false;
         }
       }
-        //onsole.log("game time:" + this.game.time.now);
-        console.log("game Over Time:" + gameOverTimer);
+      //onsole.log("game time:" + this.game.time.now);
+      // console.log("game Over Time:" + gameOverTimer);
 
         if(this.game.time.now >= gameOverTimer + 4000 && gameOver == true){
           gameOverTimer = null;
