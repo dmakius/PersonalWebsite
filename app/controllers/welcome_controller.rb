@@ -1,4 +1,6 @@
+
 class WelcomeController < ApplicationController
+include Mobylette::RespondToMobileRequests
   def home
   end
    

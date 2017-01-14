@@ -4,12 +4,16 @@ var ctx = canvas.getContext("2d");
 var nextCanvas = document.getElementById("nextPeice");
 var nCtx = nextCanvas.getContext("2d");
 
+var pause = false;
+
+var pMLeft = false, pMRight = false, pMDown = false, pMUp = false;
+
 nCtx.scale(15,15);
 ctx.scale(20,20);
 
 //player object
 var player = {
-	pos:{x:0, y:0},
+	pos:{x:0, y:0}, 
 	matrix: null,
 	score:0,
 }
@@ -39,11 +43,13 @@ var rowsCleared = 0;
 
 //the main loop, repeats every 
 function update(time = 0){
-	const deltaTime = time - lastTime;
-	lastTime = time;
-	dropCounter += deltaTime;
-	if(dropCounter >= dropInterval){
-		playerDrop();
+	if(pause == false){
+		const deltaTime = time - lastTime;
+		lastTime = time;
+		dropCounter += deltaTime;
+		if(dropCounter >= dropInterval){
+			playerDrop();
+		}
 	}
 	draw();
 	requestAnimationFrame(update);
@@ -133,7 +139,7 @@ function createPiece(type){
 	}
 	
 }
-//creatingt he matrix
+//creating the matrix
 function createMatrix(w,h){
 	var matrix = [];
 	while(h--){
@@ -254,6 +260,7 @@ function arenaSweep(){
 
 function playerDrop(){
 	player.pos.y ++;
+	mobileControls();
 	if(collide(arena, player)){
 		player.pos.y--;						//puts player back in 'bounds'						
 		merge(arena, player);				//merge the peices to the arena
@@ -263,6 +270,15 @@ function playerDrop(){
 	}
 	dropCounter = 0;
 }
+
+function mobileControls(){
+	console.log("Mobile Controles!");
+	if(pMLeft){playerMove(-1);}
+	if(pMRight){playerMove(1);}
+	if(pMUp){playerRotate(1);}
+	if(pMDown){playerDrop(); dropCounter =0;}
+}
+
 function playerMove(dir){
 	player.pos.x += dir;
 	if(collide(arena, player)){
@@ -285,9 +301,50 @@ document.addEventListener("keydown", function(e){
 	else if (e.keyCode == 81){ playerRotate(-1);}
 });
 
+//onscreen controllers
+document.getElementById("rightBtn").addEventListener("touchstart", function(){
+	pMRight = true;
+});
+document.getElementById("rightBtn").addEventListener("touchend", function(){
+	pMRight = false;
+});
+document.getElementById("leftBtn").addEventListener("touchstart", function(){
+	pMLeft = true;
+});
+document.getElementById("leftBtn").addEventListener("touchend", function(){
+	pMLeft = false;
+});
+document.getElementById("downBtn").addEventListener("touchstart", function(){
+	pMDown = false;
+});
+document.getElementById("downBtn").addEventListener("touchend", function(){
+	pMDown = false;
+});
+document.getElementById("upBtn").addEventListener("touchstart", function(){
+	pMUp = true;	
+});
+document.getElementById("upBtn").addEventListener("touchend", function(){
+	pMUp = false;
+});
+//pause button
+document.getElementById("pauseBtn").addEventListener("touchstart", function(){
+	var btn = document.getElementById("pauseText");
+	if(pause == false){
+		pause = true;
+		btn.innerHTML = "Resume";
+	}else if(pause ==true){
+		pause = false;
+		btn.innerHTML = "Pause";
+	}	
+	
+});
+
+
+
 nextMatrix = createPiece(pieces[pieces.length *Math.random() | 0]);
 updateLevel();
 updateScore();
 playerReset();
 update();
+
 

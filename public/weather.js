@@ -54,6 +54,7 @@ weatherApp.controller("forcastController",['$scope', '$resource','mainService',f
 		 var map = document.getElementById("google_map");
 		 console.log(map);
 		 map.src = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCVyMA5TUXJAmmklhlvK8kYv7n8FhNRPjE&q=" + mainService.city;
+	
 	}();
 	
 	$scope.weatherAppId = 'e1f50df08bce0b26b34b813be1c63de3';

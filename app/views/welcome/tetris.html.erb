@@ -12,23 +12,90 @@
 	margin-right:auto;
 }
 
-</style>
-<br><br>
+.glyphicon {
+    font-size: 30px;
+}
 
+body { -webkit-touch-callout: none !important; }
+a { -webkit-user-select: none !important; }
+
+</style>
+<br>
+	<!-- tetris game -->
 	<div class = "row"> 
 		<div id = "tetris-holder" class = "col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3">
-			<div class = "hidden-xs" style ="margin-top:50px; width:100px; float:left;">
+			<div class = "hidden-xs" style ="margin-top:15px; width:100px; float:left;">
 				<div><strong>LEVEL:</strong><div id ="level"></div></div><br>
 				<div><strong>SCORE:</strong><div id ="score"></div></div>
 				<div><h4>Next Peice</h4><canvas id ="nextPeice" width= "75" height ="75" style = "margin-top:15px;"></canvas></div>
 			</div>
+			<div>
 				<canvas id = "tetris" class='img-responsive' width = "240" height = "400" style = "float:left; padding-left:10px; padding-top:10px; padding-bottom:10px;"></canvas>
 			</div>
+		</div>
+	</div>
+
+
+<!-- on screen controllers -->
+<div class = "hidden-md hidden-lg">
+	<div class = "row">
+		<div class= "col-xs-1 col-sm-1"></div>
+		<div class= "col-xs-6 col-sm-6" >
+			<table style = "display:block; margin:auto;">
+				<tr>
+					<td></td>
+					<td>
+						<div id = "upBtn">
+							<span class = "glyphicon glyphicon-circle-arrow-up"></span>
+						</div>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<div id = "leftBtn"> 
+							<span class = "glyphicon glyphicon-circle-arrow-left"></span>
+						</div>
+					</td>
+					<td></td>
+					<td>
+						<div  id = "rightBtn">
+							<span class = "glyphicon glyphicon-circle-arrow-right"></span>
+						</div>
+					</td>
+				</tr>
+				</tr>
+					<td></td>
+					<td>
+						<div id = "downBtn">
+							<span class = "glyphicon glyphicon-circle-arrow-down"></span>
+						</div>
+					</td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+			
+		<div class = "col-xs-4 col-sm-4">
+			<button id = "pauseBtn"  class = "btn btn-default btn-lrg" style = "margin-top:25px;">
+				<span id = "pauseText">Pause</span>
+			</button>	
+		</div>
 	</div>
 </div>
+
 <script src = "/Games/tetris.js"></script>
 <script type = "text/javascript">
-window.addEventListener("keydown", function(e) 
-{ // space and arrow keys if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) 
-{ e.preventDefault(); } }, false);
+$(function(){ 
+	window.addEventListener("keydown", function(e) 
+	{ // space and arrow keys if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) 
+	{ e.preventDefault(); } }, false);
+
+	function onBodyLoad() {
+	  $("span").bind('taphold', function(event) {
+	  event.preventDefault();
+	 });
+	}
+});
+	
 </script>

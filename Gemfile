@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby "2.2.1"
 
 gem 'rails', '4.2.4'
@@ -12,6 +12,9 @@ gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 gem 'ransack',     github: 'activerecord-hackery/ransack'
 gem 'formtastic',  github: 'justinfrench/formtastic'
 gem 'devise'
+
+# mobile compatibility for games
+gem 'mobylette', '~> 3.5'
 
 gem 'mail_form', '~> 1.5', '>= 1.5.1'
 gem 'aws-sdk'
