@@ -7,7 +7,7 @@ $('#memeCanvas').ready(function(){
 			canvas.height = 450;
 			canvas.width = 600;
 
-			var fontSize = 12, fontColor = "Orange";
+			var fontSize = 24, fontColor = "Orange";
 
 			//cordiates for the text boxes 
 			var xTop = 20, yTop = 50;
