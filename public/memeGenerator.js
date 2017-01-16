@@ -24,7 +24,7 @@ $('#memeCanvas').ready(function(){
     			localStorage.setItem( "savedImageData", canvas.toDataURL("image/png") );
 			}
 
-			
+
 			fImage.src = src;
 
 			if ( fImage.complete || fImage.complete === undefined ) {
@@ -59,18 +59,25 @@ $('#memeCanvas').ready(function(){
 				ctx.font = "bold " + fontSize+ "px Arial" ;
 				ctx.fillText(topLine , xTop, yTop);
 				ctx.fillText(bottomLine , xBottom, yBottom);
+				console.log(fImage.src);
+			}
+
+			function drawReadyCanvas(){
+				for(var i = 0; i < 3; i ++){
+					drawCanvas();
+				}
 			}
 			
-			$('#tLine').on('keyup',function(){topLine = $(this).val();drawCanvas();});
-			$('#bLine').on('keyup',function(){bottomLine = $(this).val();drawCanvas();});
+			$('#tLine').on('keyup',function(){topLine = $(this).val();drawReadyCanvas();});
+			$('#bLine').on('keyup',function(){bottomLine = $(this).val();drawReadyCanvas();});
 
 			//highliting the thumbnials
 			$('.scroller ul li img').on('click', this ,function(){
-				console.log(this.src);
+				//console.log(this.src);
 				$("img").removeClass("selected");
 				$(this).addClass("selected");
 				fImage.src = this.src;
-				drawCanvas();
+				drawReadyCanvas();
 			});
 
 			$('#fileName').on('keyup', function(){
@@ -78,7 +85,7 @@ $('#memeCanvas').ready(function(){
 				$('#memeName').val(memeN); 
 			});
 			
-			$('select').change(function(){fontSize = this.value;drawCanvas();});
+			$('select').change(function(){fontSize = this.value;drawReadyCanvas();});
 			
 			//move the picture rollbar
 			$('#lArrow').on("click", function(){
@@ -90,23 +97,23 @@ $('#memeCanvas').ready(function(){
 			});
 
 			//moving top text box
-			$('#tMoveRight').click(function(){xTop += 5;drawCanvas();});
-			$('#tMoveLeft').click(function(){xTop -= 5;drawCanvas();});
-			$('#tMoveUp').click(function(){yTop -= 5;drawCanvas();});
-			$('#tMoveDown').click(function(){yTop += 5;drawCanvas();});
+			$('#tMoveRight').click(function(){xTop += 5;drawReadyCanvas();});
+			$('#tMoveLeft').click(function(){xTop -= 5;drawReadyCanvas();});
+			$('#tMoveUp').click(function(){yTop -= 5;drawReadyCanvas();});
+			$('#tMoveDown').click(function(){yTop += 5;drawReadyCanvas();});
 
 			//moving bottom text box
-			$('#bMoveDown').click(function(){yBottom += 5;drawCanvas();});
-			$('#bMoveUp').click(function(){yBottom -= 5;drawCanvas();});
-			$('#bMoveLeft').click(function(){xBottom -= 5;drawCanvas();});
-			$('#bMoveRight').click(function(){xBottom += 5;drawCanvas();});
+			$('#bMoveDown').click(function(){yBottom += 5;drawReadyCanvas();});
+			$('#bMoveUp').click(function(){yBottom -= 5;drawReadyCanvas();});
+			$('#bMoveLeft').click(function(){xBottom -= 5;drawReadyCanvas();});
+			$('#bMoveRight').click(function(){xBottom += 5;drawReadyCanvas();});
 
 			//selecting Color
 			$('.radioColor').click(function(){
-				if($('#colorO').is(':checked')){fontColor = "Orange"; drawCanvas();}
-				if($('#colorR').is(':checked')){fontColor = "Red";drawCanvas();}
-				if($('#colorG').is(':checked')){fontColor = "Green";drawCanvas();}
-				if($('#colorW').is(':checked')){fontColor = "White";drawCanvas();}
+				if($('#colorO').is(':checked')){fontColor = "Orange"; drawReadyCanvas();}
+				if($('#colorR').is(':checked')){fontColor = "Red";drawReadyCanvas();}
+				if($('#colorG').is(':checked')){fontColor = "Green";drawReadyCanvas();}
+				if($('#colorW').is(':checked')){fontColor = "White";drawReadyCanvas();}
 			});
-			drawCanvas();
+			drawReadyCanvas();
 });
