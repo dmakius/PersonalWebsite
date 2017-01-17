@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+ # meme Routes
   get 'memes/all' => 'memes#all'
   resources :memes
   
