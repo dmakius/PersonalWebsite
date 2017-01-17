@@ -14,26 +14,7 @@ $('#memeCanvas').ready(function(){
 			var xBottom = 20, yBottom = 425;
 			var topLine = "", bottomLine = "";
 			var fImage = new Image();
-			var src = 'https://dl.dropboxusercontent.com/1/view/z4w7bxbstdzbqar/Apps/DanielMakover-PersonalWebsite/medium/35_DE.jpg';
-			
-			fImage.crossOrigin = "Anonymous";
-			fImage.onload = function() {
-    			canvas.width = fImage.width;
-    			canvas.height = fImage.height;
-    			ctx.drawImage( fImage, 0, 0 );
-    			localStorage.setItem( "savedImageData", canvas.toDataURL("image/png") );
-			}
-
-
-			fImage.src = src;
-
-			if ( fImage.complete || fImage.complete === undefined ) {
-  				  	fImage.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-    				fImage.src = src;
-			}
-
-			
-			fImage.setAttribute('crossOrigin', 'anonymous');
+			fImage.ImageUtils.crossOrigin = "";		
 			fImage.src = 'https://dl.dropboxusercontent.com/1/view/z4w7bxbstdzbqar/Apps/DanielMakover-PersonalWebsite/medium/35_DE.jpg';
 
 			var scrollerMargin = 0;
@@ -77,6 +58,7 @@ $('#memeCanvas').ready(function(){
 				$("img").removeClass("selected");
 				$(this).addClass("selected");
 				fImage.src = this.src;
+				fImage.ImageUtils.crossOrigin = "";		
 				drawReadyCanvas();
 			});
 
