@@ -14,7 +14,7 @@ $('#memeCanvas').ready(function(){
 			var xBottom = 20, yBottom = 425;
 			var topLine = "", bottomLine = "";
 			var fImage = new Image();
-			fImage.crossOrigin = 'anonymous'; 	
+			fImage.crossOrigin = 'use-credentials'; 	
 			fImage.src = 'https://dl.dropboxusercontent.com/1/view/z4w7bxbstdzbqar/Apps/DanielMakover-PersonalWebsite/medium/35_DE.jpg';
 
 			var scrollerMargin = 0;
@@ -58,7 +58,7 @@ $('#memeCanvas').ready(function(){
 				$("img").removeClass("selected");
 				$(this).addClass("selected");
 				fImage.src = this.src;
-				fImage.crossOrigin = 'anonymous'; 
+				fImage.crossOrigin = 'use-credentials'; 
 				drawReadyCanvas();
 			});
 
