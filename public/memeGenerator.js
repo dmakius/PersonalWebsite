@@ -7,16 +7,18 @@ $('#memeCanvas').ready(function(){
 			canvas.height = 450;
 			canvas.width = 600;
 
-			var fontSize = 24, fontColor = "Orange";
+			var fontSize = 30, fontColor = "Orange";
 
 			//cordiates for the text boxes 
 			var xTop = 20, yTop = 50;
 			var xBottom = 20, yBottom = 425;
 			var topLine = "", bottomLine = "";
-			var fImage = new Image();
-			fImage.crossOrigin = 'use-credentials'; 	
-			fImage.src = 'https://dl.dropboxusercontent.com/1/view/z4w7bxbstdzbqar/Apps/DanielMakover-PersonalWebsite/medium/35_DE.jpg?raw=1';
-
+			
+			var mainImage = new Image();
+			mainImage.src = "";
+			mainImage.crossOrigin = 'Anonymous';
+			
+			
 			var scrollerMargin = 0;
 
 			function download() {
@@ -33,33 +35,34 @@ $('#memeCanvas').ready(function(){
 			
 			 downloadLnk.addEventListener('click', download, false);
 
-			function drawCanvas(){
+			function drawCanvas(image){
 				ctx.clearRect(0,0,HEIGHT, WIDTH);
-				ctx.drawImage(fImage, 0,0, fImage.width, fImage.height, 0, 0, canvas.width, canvas.height);
+				ctx.drawImage(image, 0,0, image.width, image.height, 0, 0, canvas.width, canvas.height);
 				ctx.fillStyle = fontColor;
 				ctx.font = "bold " + fontSize+ "px Arial" ;
 				ctx.fillText(topLine , xTop, yTop);
 				ctx.fillText(bottomLine , xBottom, yBottom);
-				console.log(fImage.src);
-			}
-
-			function drawReadyCanvas(){
-				for(var i = 0; i < 3; i ++){
-					drawCanvas();
-				}
+				// console.log("IMAGE LOCATION: " + image.src);
 			}
 			
-			$('#tLine').on('keyup',function(){topLine = $(this).val();drawReadyCanvas();});
-			$('#bLine').on('keyup',function(){bottomLine = $(this).val();drawReadyCanvas();});
+			$('#tLine').on('keyup',function(){topLine = $(this).val();drawCanvas(mainImage);});
+			$('#bLine').on('keyup',function(){bottomLine = $(this).val();drawCanvas(mainImage);});
 
 			//highliting the thumbnials
 			$('.scroller ul li img').on('click', this ,function(){
-				//console.log(this.src);
 				$("img").removeClass("selected");
 				$(this).addClass("selected");
-				fImage.src = this.src + "?raw=1";
-				fImage.crossOrigin = 'use-credentials'; 
-				drawReadyCanvas();
+				
+				nImage = new Image();
+				nImage.src = this.src; //the start up image
+				
+				mainImage.src = this.src; //the 'global' image
+				
+				nImage.crossOrigin = 'Anonymous'; 
+				nImage.addEventListener("load", function() {
+   					drawCanvas(nImage);
+				}, false);
+
 			});
 
 			$('#fileName').on('keyup', function(){
@@ -67,8 +70,30 @@ $('#memeCanvas').ready(function(){
 				$('#memeName').val(memeN); 
 			});
 			
-			$('select').change(function(){fontSize = this.value;drawReadyCanvas();});
+			$('select').change(function(){fontSize = this.value; drawCanvas(mainImage);});
 			
+			
+
+			//moving top text box
+			$('#tMoveRight').click(function(){xTop += 5; drawCanvas(mainImage);});
+			$('#tMoveLeft').click(function(){xTop -= 5; drawCanvas(mainImage);});
+			$('#tMoveUp').click(function(){yTop -= 5; drawCanvas(mainImage);});
+			$('#tMoveDown').click(function(){yTop += 5; drawCanvas(mainImage);});
+
+			//moving bottom text box
+			$('#bMoveDown').click(function(){yBottom += 5; drawCanvas(mainImage);});
+			$('#bMoveUp').click(function(){yBottom -= 5; drawCanvas(mainImage);});
+			$('#bMoveLeft').click(function(){xBottom -= 5; drawCanvas(mainImage);});
+			$('#bMoveRight').click(function(){xBottom += 5; drawCanvas(mainImage);});
+
+			//selecting Color
+			$('.radioColor').click(function(){
+				if($('#colorO').is(':checked')){fontColor = "Orange"; drawCanvas(mainImage);}
+				if($('#colorR').is(':checked')){fontColor = "Red"; drawCanvas(mainImage);}
+				if($('#colorG').is(':checked')){fontColor = "Green"; drawCanvas(mainImage);}
+				if($('#colorW').is(':checked')){fontColor = "White"; drawCanvas(mainImage);}
+			});
+
 			//move the picture rollbar
 			$('#lArrow').on("click", function(){
 				$('#scroller').animate({marginLeft: scrollerMargin += 155}, "slow");
@@ -77,25 +102,4 @@ $('#memeCanvas').ready(function(){
 			$('#rArrow').on("click", function(){
 				$('#scroller').animate({marginLeft: scrollerMargin -= 155}, "slow");
 			});
-
-			//moving top text box
-			$('#tMoveRight').click(function(){xTop += 5;drawReadyCanvas();});
-			$('#tMoveLeft').click(function(){xTop -= 5;drawReadyCanvas();});
-			$('#tMoveUp').click(function(){yTop -= 5;drawReadyCanvas();});
-			$('#tMoveDown').click(function(){yTop += 5;drawReadyCanvas();});
-
-			//moving bottom text box
-			$('#bMoveDown').click(function(){yBottom += 5;drawReadyCanvas();});
-			$('#bMoveUp').click(function(){yBottom -= 5;drawReadyCanvas();});
-			$('#bMoveLeft').click(function(){xBottom -= 5;drawReadyCanvas();});
-			$('#bMoveRight').click(function(){xBottom += 5;drawReadyCanvas();});
-
-			//selecting Color
-			$('.radioColor').click(function(){
-				if($('#colorO').is(':checked')){fontColor = "Orange"; drawReadyCanvas();}
-				if($('#colorR').is(':checked')){fontColor = "Red";drawReadyCanvas();}
-				if($('#colorG').is(':checked')){fontColor = "Green";drawReadyCanvas();}
-				if($('#colorW').is(':checked')){fontColor = "White";drawReadyCanvas();}
-			});
-			drawReadyCanvas();
 });
