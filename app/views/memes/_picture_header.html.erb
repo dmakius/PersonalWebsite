@@ -1,15 +1,19 @@
-
-  <div class = 'row well'>
-  	<i class ="glyphicon glyphicon-chevron-left thumbnail" id = "lArrow" style = "float:left; margin-top:35px; margin-left:-15px;"></i>
-    <div class = "col-md-11 col-sm-11 col-xs-10 scroll-holder" >
-  		<div id = "scroller" class = "scroller" >
-    		<ul>
-        <!-- adding pictures from dropbox -->
-    			<% @meme.each do |meme|%>
-    				<li><%= image_tag(meme.avatar.url(:medium)) %></li> 
-    			<%end%>
-    		</ul>
-      </div>
-  	</div>
-  	<i class="glyphicon glyphicon-chevron-right thumbnail" id='rArrow' style = "float:right; margin-top:35px; margin-right:-10px;"></i>
+  <style  type="text/css">
+     #slider1 {
+        position:relative;  /* Containers need relative or absolute position. */
+        margin-left:20px;
+        width:95%;
+        height:120px;
+        border-top:1px solid #aaa;
+        border-bottom:1px solid #aaa;
+    }
+  </style>
+   <div id="slider1" style = "margin:auto;">
+     <div class="thumbelina-but horiz left">&#706;</div>
+        <ul>
+          <% @meme.each do |meme|%>
+            <li><%= image_tag(meme.avatar.url(:medium)) %></li>
+          <%end%>
+        </ul>
+      <div class="thumbelina-but horiz right">&#707;</div>
   </div>

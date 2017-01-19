@@ -22,8 +22,6 @@ $('#memeCanvas').ready(function(){
 			
 			var scrollerMargin = 0;
 			
-			
-
 			function download() {
 				memeName = document.getElementById("fileName").value;
 				if(memeName){
@@ -40,20 +38,18 @@ $('#memeCanvas').ready(function(){
 
 			function drawCanvas(image){
 				ctx.clearRect(0,0,HEIGHT, WIDTH);
-				// putImageData(ctx, memeData, 0,0);
 				ctx.drawImage(image, 0,0, image.width, image.height, 0, 0, canvas.width, canvas.height);
 				ctx.fillStyle = fontColor;
 				ctx.font = "bold " + fontSize+ "px Arial" ;
 				ctx.fillText(topLine , xTop, yTop);
 				ctx.fillText(bottomLine , xBottom, yBottom);
-				// console.log("IMAGE LOCATION: " + image.src);
 			}
 			
 			$('#tLine').on('keyup',function(){topLine = $(this).val();drawCanvas(mainImage)});
 			$('#bLine').on('keyup',function(){bottomLine = $(this).val();drawCanvas(mainImage);});
 
 			//highliting the thumbnials
-			$('.scroller ul li img').on('click', this ,function(){
+			$("#slider1 ul li img").on("click", function(){
 				$("img").removeClass("selected");
 				$(this).addClass("selected");
 				
@@ -76,7 +72,6 @@ $('#memeCanvas').ready(function(){
 					console.log("mainImage:" + mainImage.src);
 
 				}, false);
-
 			});
 
 			$('#fileName').on('keyup', function(){

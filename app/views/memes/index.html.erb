@@ -1,3 +1,8 @@
+<!-- support Libraries -->
+<link rel="stylesheet" type="text/css" href="/memeScroller/thumbelina.css" />
+<script type="text/javascript" src="/memeScroller/thumbelina.js"></script>
+<script type = "text/javascript" src = "/memeGenerator.js"></script>
+
 <div class = "container">
  <h2>Meme Generator </h2>
 <div class = "row well"> 
@@ -22,14 +27,14 @@
 
     <!-- Add Text Div -->
     <h4 id = "addText" class = "panel panel-heading">Add Text</h4>
-    <div id = "addTextHolder" class = "collapse">
+    <div id = "addTextHolder" class = "collapse" style = "padding-left:15px;">
       Top Line:<br><input type="text" name="tLine" id = 'tLine'><br><br>
       Button Line:<br> <input type="text" name="bLine" id = 'bLine'><br>
      </div>
       
     <!-- Add Font Color Div -->
     <h4 id = "fontColor" class = "panel panel-heading">Font Size & Color</h4>
-    <div id = "fontColorHolder" class = "collapse">
+    <div id = "fontColorHolder" class = "collapse" style = "padding-left:15px;">
          Font Size:
          <select>
            <% n = 24 %>
@@ -49,7 +54,7 @@
 
     <!-- Move Text Div -->
     <h4 id = "textBoxes" class = "panel panel-heading">Move Text Boxes</h4>
-    <div id = "textBoxHolder" class = "collapse">
+    <div id = "textBoxHolder" class = "collapse" style = "padding-left:15px;">
       <h5>Move Top Text Box </h5>
       <table class= "table">
         <tr>
@@ -61,7 +66,7 @@
           <td><button id = "tMoveRight">RIGHT</button></td>
         </tr>
       </table>
-      
+  
       <h5>Move Bottom Text Box </h5>
       <table class= "table">
         <tr>
@@ -81,7 +86,6 @@
  
 </div>
 
-<script type = "text/javascript" src = "/memeGenerator.js"></script>
 <script>
   $(document).ready(function(){
    $("#addText").on("click", function(){
@@ -92,8 +96,14 @@
       $("#fontColorHolder").toggleClass("collapse");
       });
 
-     $("#textBoxes").on("click", function(){
+    $("#textBoxes").on("click", function(){
       $("#textBoxHolder").toggleClass("collapse");
-      });
+    });
+
+                
+    $('#slider1').Thumbelina({
+      $bwdBut:$('#slider1 .left'),    // Selector to left button.
+      $fwdBut:$('#slider1 .right')    // Selector to right button.
+    });            
  });
 </script>
