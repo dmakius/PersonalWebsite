@@ -20,6 +20,7 @@ $('#memeCanvas').ready(function(){
 			mainImage.src = "";
 			mainImage.crossOrigin = 'Anonymous';
 			
+			var scrollerMargin = 0;
 			
 			
 
