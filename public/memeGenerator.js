@@ -67,6 +67,14 @@ $('#memeCanvas').ready(function(){
    					drawCanvas(nImage);
    					//var imgData = ctx.getImageData(0,0, 450, 600);
    					//console.log(imgData);
+   					console.log("nimage:" +nImage.src);
+
+				}, false);
+
+				mainImage.addEventListener("load", function(){
+					drawCanvas(mainImage);
+					console.log("mainImage:" + mainImage.src);
+
 				}, false);
 
 			});
