@@ -14,12 +14,14 @@ $('#memeCanvas').ready(function(){
 			var xBottom = 20, yBottom = 425;
 			var topLine = "", bottomLine = "";
 			
+			var memeData;
+
 			var mainImage = new Image();
 			mainImage.src = "";
 			mainImage.crossOrigin = 'Anonymous';
 			
 			
-			var scrollerMargin = 0;
+			
 
 			function download() {
 				memeName = document.getElementById("fileName").value;
@@ -37,6 +39,7 @@ $('#memeCanvas').ready(function(){
 
 			function drawCanvas(image){
 				ctx.clearRect(0,0,HEIGHT, WIDTH);
+				// putImageData(ctx, memeData, 0,0);
 				ctx.drawImage(image, 0,0, image.width, image.height, 0, 0, canvas.width, canvas.height);
 				ctx.fillStyle = fontColor;
 				ctx.font = "bold " + fontSize+ "px Arial" ;
@@ -45,7 +48,7 @@ $('#memeCanvas').ready(function(){
 				// console.log("IMAGE LOCATION: " + image.src);
 			}
 			
-			$('#tLine').on('keyup',function(){topLine = $(this).val();drawCanvas(mainImage);});
+			$('#tLine').on('keyup',function(){topLine = $(this).val();drawCanvas(mainImage)});
 			$('#bLine').on('keyup',function(){bottomLine = $(this).val();drawCanvas(mainImage);});
 
 			//highliting the thumbnials
@@ -53,14 +56,16 @@ $('#memeCanvas').ready(function(){
 				$("img").removeClass("selected");
 				$(this).addClass("selected");
 				
-				nImage = new Image();
-				nImage.src = this.src; //the start up image
+				var nImage = new Image();
+				nImage.src = this.src + "?dl=1"; //the start up image
 				
-				mainImage.src = this.src; //the 'global' image
+				mainImage.src = this.src + "?dl=1"; //the 'global' image
 				
 				nImage.crossOrigin = 'Anonymous'; 
 				nImage.addEventListener("load", function() {
    					drawCanvas(nImage);
+   					//var imgData = ctx.getImageData(0,0, 450, 600);
+   					//console.log(imgData);
 				}, false);
 
 			});
@@ -70,10 +75,9 @@ $('#memeCanvas').ready(function(){
 				$('#memeName').val(memeN); 
 			});
 			
+			//changing font size
 			$('select').change(function(){fontSize = this.value; drawCanvas(mainImage);});
 			
-			
-
 			//moving top text box
 			$('#tMoveRight').click(function(){xTop += 5; drawCanvas(mainImage);});
 			$('#tMoveLeft').click(function(){xTop -= 5; drawCanvas(mainImage);});

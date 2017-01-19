@@ -1,4 +1,5 @@
 class MemesController < InheritedResources::Base
+
 	def index
 		@meme = Meme.all
 	end
