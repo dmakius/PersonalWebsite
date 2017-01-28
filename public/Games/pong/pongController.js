@@ -1,6 +1,5 @@
-
-
 document.getElementById("startBtn").addEventListener("click", function(){
+	console.log("clicked");
 	var btn = document.getElementById("startText");
 	if(gameStart == false){
 		startFunction();
