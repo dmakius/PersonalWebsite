@@ -11,38 +11,21 @@ font-family:sans-serif;
 }
 
 .glyphicon {
-    font-size: 75px;
+    font-size: 50px;
 }
 </style>
-<script type = "text/javascript" src = "/Games/pongGame.js"></script>
-	
-	<h1>Pong :0)</h1>
+
+
+	<h1>Pong</h1>
 	<canvas id = "myPongCanvas" class='img-responsive'></canvas>
-	
+	<script type = "text/javascript" src = "/Games/pong/pong.js"></script>
 	<br>
 
-	<div class = "hidden-md hidden-lg">
-		<div>
-			<!-- up button -->
-			<div id = "upBtn">
-				<span class = "glyphicon glyphicon-circle-arrow-up" style = "float:left;"></span>
-			</div>
 
-			<!-- down button -->
-			<div id = "downBtn">
-				<span class = "glyphicon glyphicon-circle-arrow-down" style = "float:right;"></span>
-			</div>
-		</div>
-			<br>
-
-			<!-- Start Button -->
-			<button id = "startBtn"  class = "btn btn-default btn-lrg" style = "display: block; margin:auto;">
-				<span id = "startText">Start</span>
-			</button>	
-	</div>
-
-
-
+<%if mobile_device?%>
+	<%= render "onscreenController" %>
+	<script type="text/javascript" src = "/Games/pong/pongController.js"></script>
+<%end%>
 
 <script type = "text/javascript">
 window.addEventListener("keydown", function(e) { 

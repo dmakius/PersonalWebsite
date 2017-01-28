@@ -1,5 +1,3 @@
-var ready = function() {
-
 	var HEIGHT = 500, WIDTH = 700, keys = [], canvas, ctx, score = 0, computerScore= 0, intro = true;
 	var gameStart  = false;
 	canvas = document.getElementById("myPongCanvas");
@@ -171,44 +169,10 @@ function moveDown(){
 	console.log("moveDown");
 }
 
-document.getElementById("startBtn").addEventListener("click", function(){
-	var btn = document.getElementById("startText");
-	if(gameStart == false){
-		startFunction();
-		btn.innerHTML = "Pause";
-	}else if(pause == false){
-		pause = true;
-		btn.innerHTML = "Resume";
-	}else if(pause ==true){
-		pause = false;
-		btn.innerHTML = "Pause";
-	}	
-	
-});
-
-document.getElementById("downBtn").addEventListener("touchstart", function(){
-	movingDown = true;
-});
-document.getElementById("downBtn").addEventListener("touchend", function(){
-	movingDown = false;
-});
-
-document.getElementById("upBtn").addEventListener("touchstart", function(){
-	movingUp = true;
-});
-document.getElementById("upBtn").addEventListener("touchend", function(){
-	movingUp = false;
-});
-
-
-
 document.body.addEventListener("keydown", function(e){
 	keys[e.keyCode] = true});
 
 document.body.addEventListener("keyup", function(e){
 	keys[e.keyCode] = false});
 	
-	mainLoop();	
-}
-
-$(document).ready(ready);
+mainLoop();	
