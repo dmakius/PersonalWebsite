@@ -1,4 +1,3 @@
-var ready = function()  {
 var canvas, ctx, WIDTH = 700, HEIGHT = 500;
 canvas = document.getElementById("mySnakeCanvas");
 ctx = canvas.getContext("2d");
@@ -150,7 +149,7 @@ function drawFrame(){
 }
 
 function pauseGame(){
-	console.log("Puase");
+	console.log("Pause");
 }
 
 //keyboard controllers
@@ -161,35 +160,4 @@ document.body.addEventListener("keyup", function(e){
 	keys[e.keyCode] = false});
 
 
-//touch screen controllers 
-document.getElementById("downBtn").addEventListener("touchstart", function(){
-	d = "down";
-});
-document.getElementById("upBtn").addEventListener("touchstart", function(){
-	d = "up";
-});
-document.getElementById("rightBtn").addEventListener("touchstart", function(){
-	d = "right";
-});
-document.getElementById("leftBtn").addEventListener("touchstart", function(){
-	d = "left";
-});
-
-//puase button
-document.getElementById("pauseBtn").addEventListener("click", function(){
-	var btn = document.getElementById("pauseText");
-	if(pause == false){
-		pause = true;
-		btn.innerHTML = "Resume";
-	}else if(pause ==true){
-		pause = false;
-		btn.innerHTML = "Pause";
-	}	
-	
-});
-
 _init_snake();
-
-}	 
-$(document).ready(ready);
-// $(document).on('page:load', ready);

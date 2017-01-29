@@ -1,4 +1,4 @@
-<h1>Snake</h1>
+
 <style>
 h1 {
 font-family:sans-serif;
@@ -21,64 +21,20 @@ font-family:sans-serif;
 	float:right;
 }
 </style>
-<div class = gameHolder><canvas id = "mySnakeCanvas" class='img-responsive'></canvas></div>
 
-<script type = "text/javascript" src = "/Games/snake.js"></script>
+<h1>Snake</h1>
+<canvas id = "mySnakeCanvas" class='img-responsive'></canvas>
+
+<script type = "text/javascript" src = "/Games/snake/snake.js"></script>
+
+<% if mobile_device? %>
+	<%= render "onscreenController" %>
+	<script type="text/javascript" src = "/Games/snake/snakeController.js"></script>
+<% end %>
 
 <script type = "text/javascript">
-
 window.addEventListener("keydown", function(e) { 
 // space and arrow keys if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) 
 	{ e.preventDefault(); } 
 }, false);
-
 </script>
-
-<!-- on screen controllers -->
-<div class = "hidden-md hidden-lg">
-	<br>
-	<div class = "row">
-		<div class= "col-xs-1 col-sm-1"></div>
-		<div class= "col-xs-6 col-sm-6">
-			<table>
-				<tr>
-					<td></td>
-					<td>
-						<div id = "upBtn">
-							<span class = "glyphicon glyphicon-circle-arrow-up"></span>
-						</div>
-					</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<div id = "leftBtn"> 
-							<span class = "glyphicon glyphicon-circle-arrow-left"></span>
-						</div>
-					</td>
-					<td></td>
-					<td>
-						<div  id = "rightBtn">
-							<span class = "glyphicon glyphicon-circle-arrow-right"></span>
-						</div>
-					</td>
-				</tr>
-				</tr>
-					<td></td>
-					<td>
-						<div id = "downBtn">
-							<span class = "glyphicon glyphicon-circle-arrow-down"></span>
-						</div>
-					</td>
-					<td></td>
-				</tr>
-			</table>
-		</div>
-			
-		<div class = "col-xs-4 col-sm-4">
-			<button id = "pauseBtn"  class = "btn btn-default btn-lrg">
-				<span id = "pauseText">Pause</span>
-			</button>	
-		</div>
-	</div>
-</div>
