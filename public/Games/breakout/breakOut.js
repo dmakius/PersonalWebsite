@@ -201,7 +201,6 @@ function renderFrame(){
 		over = false;
 	}	
 }
-
 //keyboard buttons
 document.body.addEventListener("keydown", function(e){
 	keys[e.keyCode] = true});

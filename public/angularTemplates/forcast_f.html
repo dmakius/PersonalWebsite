@@ -13,23 +13,29 @@
 	<button class = "btn btn-info"><a href = '#forcast_c' style = "color:white;">Celcius</a></button><br><hr>
 
 	<div class = "row" style="margin-top:-15px">
-		<div class= "col-md-6" style ="margin-left:25px;">
+		<div class= "col-md-6">
 		<table>
 			<tr><h2>Today's Forecast for: {{city}} </h2></tr>
-			<tr><td><strong>The Temperautre is: </strong> {{convertToFahrenheit(forecast.list[0].temp.day)}} F </td></tr>
+			<tr>
+				<td><strong>Temperautre: </strong> {{convertToFahrenheit(forecast.list[0].temp.day)}} F </td>
+				<td></td>
+			</tr>
 			
 			<tr>	
 				<td ><strong>High: </strong> {{convertToFahrenheit(forecast.list[0].temp.max)}} F</td>
-				<td ><strong>Weather Conditions: </strong> {{forecast.list[0].weather[0].description}}</td>
+				<td></td>
+				<td style = "padding-left:15px;" ><strong>Weather: </strong> {{forecast.list[0].weather[0].description}}</td>
 			</tr>
 			
 			<tr>
 				<td><strong>Low:</strong> {{convertToFahrenheit(forecast.list[0].temp.min)}} F</td>
-				<td><strong>Wind:</strong> {{forecast.list[0].speed}} mph</td>
+				<td></td>
+				<td style = "padding-left:15px;"><strong>Wind:</strong> {{forecast.list[0].speed}} mph</td>
 			</tr>
 			
 			<tr>
 				<td><strong>Humidity: </strong>{{forecast.list[0].humidity}} %</td>
+				<td></td>
 			</tr>
 		</table>
 	</div>
@@ -44,9 +50,9 @@
 	<div class = "container row">
 	<h4>Upcoming Forecast</h4>
 	<div ng-repeat= "w in forecast.list| limitTo:7 | startFrom : 1" >
-		<div class = " col-md-2 panel panel-heading dataPanel">
+		<div class = "col-md-2 panel panel-heading dataPanel">
 			<strong>{{convertDate(w.dt) | date: 'EEE'}}</strong>
-			<div class = "panel panel-default dateData" style = "display:none;" >
+			<div class = "panel panel-default dateData" style = "display:none; padding-left:15px; padding-top:15px;" >
 				<p><strong>High:</strong> {{convertToFahrenheit(w.temp.max)}} F</p>
 				<p><strong>Low:</strong> {{convertToFahrenheit(w.temp.min)}} F</p>
 				<p><em>{{w.weather[0].description}}</em></p>
