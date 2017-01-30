@@ -1,4 +1,3 @@
-var ready = function() {
 var canvas, ctx, WIDTH  = 700, HEIGHT = 500, collision  = null, score = 0, lives = 3, over = false;
 
 canvas = document.getElementById("myBreakoutCanvas");
@@ -203,34 +202,6 @@ function renderFrame(){
 	}	
 }
 
-
-//on screen buttons
-document.getElementById("rightBtn").addEventListener("touchstart", function(){
-	movingRight = true;
-});
-document.getElementById("rightBtn").addEventListener("touchend", function(){
-	movingRight = false;
-});
-
-document.getElementById("leftBtn").addEventListener("touchstart", function(){
-	movingLeft = true;
-});
-document.getElementById("leftBtn").addEventListener("touchend", function(){
-	movingLeft = false;
-});
-
-//pause buttons
-document.getElementById("startBtn").addEventListener("click", function(){
-	var btn = document.getElementById("startText");
-	if(pause == false){
-		pause = true;
-		btn.innerHTML = "Resume";
-	}else if(pause ==true){
-		pause = false;
-		btn.innerHTML = "Pause";
-	}	
-});
-
 //keyboard buttons
 document.body.addEventListener("keydown", function(e){
 	keys[e.keyCode] = true});
@@ -239,5 +210,3 @@ document.body.addEventListener("keyup", function(e){
 	keys[e.keyCode] = false});
 	
 _init_breakout();
-}
-$(document).ready(ready);
