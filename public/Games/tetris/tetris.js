@@ -44,6 +44,7 @@ var rowsCleared = 0;
 //the main loop, repeats every 
 function update(time = 0){
 	if(pause == false){
+		mobileControls();
 		const deltaTime = time - lastTime;
 		lastTime = time;
 		dropCounter += deltaTime;
@@ -260,7 +261,6 @@ function arenaSweep(){
 
 function playerDrop(){
 	player.pos.y ++;
-	mobileControls();
 	if(collide(arena, player)){
 		player.pos.y--;						//puts player back in 'bounds'						
 		merge(arena, player);				//merge the peices to the arena
@@ -299,44 +299,6 @@ document.addEventListener("keydown", function(e){
 	else if (e.keyCode == 39){ playerMove(1);}
 	else if (e.keyCode == 38){ playerRotate(1);}
 	else if (e.keyCode == 81){ playerRotate(-1);}
-});
-
-//onscreen controllers
-document.getElementById("rightBtn").addEventListener("touchstart", function(){
-	pMRight = true;
-});
-document.getElementById("rightBtn").addEventListener("touchend", function(){
-	pMRight = false;
-});
-document.getElementById("leftBtn").addEventListener("touchstart", function(){
-	pMLeft = true;
-});
-document.getElementById("leftBtn").addEventListener("touchend", function(){
-	pMLeft = false;
-});
-document.getElementById("downBtn").addEventListener("touchstart", function(){
-	pMDown = false;
-});
-document.getElementById("downBtn").addEventListener("touchend", function(){
-	pMDown = false;
-});
-document.getElementById("upBtn").addEventListener("touchstart", function(){
-	pMUp = true;	
-});
-document.getElementById("upBtn").addEventListener("touchend", function(){
-	pMUp = false;
-});
-//pause button
-document.getElementById("pauseBtn").addEventListener("touchstart", function(){
-	var btn = document.getElementById("pauseText");
-	if(pause == false){
-		pause = true;
-		btn.innerHTML = "Resume";
-	}else if(pause ==true){
-		pause = false;
-		btn.innerHTML = "Pause";
-	}	
-	
 });
 
 
