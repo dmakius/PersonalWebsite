@@ -30,7 +30,7 @@ document.getElementById("upBtn").addEventListener("touchstart", function(){
 	movingUp = true;
 });
 document.getElementById("upBtn").addEventListener("touchend", function(){
-	movingDown = false;
+	movingUp = false;
 });
 
 document.getElementById("downBtn").addEventListener("touchstart", function(){
