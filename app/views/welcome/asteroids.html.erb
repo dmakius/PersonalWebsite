@@ -19,6 +19,7 @@ font-family:sans-serif;
 <script type = "text/javascript" src = "/Games/asteroids/asteroids.js"></script>
 
 <%if mobile_device?%>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
 	<%= render "onscreenController2"%>
 	<script src = "/Games/asteroids/asteroidsController.js"></script>
 <%end%>
