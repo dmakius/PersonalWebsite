@@ -1,0 +1,73 @@
+<style>
+#shootBtn{
+		display:block;
+		margin:auto;
+}
+.glyphicon.glyphicon-one-fine-full-dot {
+    margin-bottom: -.8em;
+    overflow: hidden;
+}
+.glyphicon.glyphicon-one-fine-full-dot:before {
+    content:"\25cf";
+    font-size: 3em;
+}
+.glyphicon.glyphicon-one-fine-empty-dot {
+    margin-bottom: -.8em;
+    overflow: hidden;
+    margin-top: -25px;
+}
+.glyphicon.glyphicon-one-fine-empty-dot:before {
+    content:"\25cb";
+    font-size: 3em;
+}
+</style>	
+	<br>
+	<div class = "row">
+		<div class= "col-xs-1 col-sm-1"></div>
+		<div class= "col-xs-6 col-sm-6">
+			<table>
+				<tr>
+					<td></td>
+					<td>
+						<div class = "no-zoom" id = "upBtn">
+							<span class = "glyphicon glyphicon-circle-arrow-up"></span>
+						</div>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<div class = "no-zoom"  id = "leftBtn"> 
+							<span class = "glyphicon glyphicon-circle-arrow-left"></span>
+						</div>
+					</td>
+					<td></td>
+					<td>
+						<div class = "no-zoom" id = "rightBtn">
+							<span class = "glyphicon glyphicon-circle-arrow-right"></span>
+						</div>
+					</td>
+				</tr>
+				</tr>
+					<td></td>
+					<td>
+						<div class = "no-zoom"  id = "downBtn">
+							<span class = "glyphicon glyphicon-circle-arrow-down"></span>
+						</div>
+					</td>
+					<td></td>
+				</tr> 
+			</table>
+		</div>
+			
+		<div class = "col-xs-4 col-sm-4">
+			<button id = "shootBtn"  class = "glyphicon glyphicon-one-fine-dot ">
+				 <span id = "shootBtnText" class="glyphicon glyphicon-one-fine-empty-dot"></span>
+			</button>	
+		</div>
+	</div>
+	<div class = "row">
+			<button id = "startBtn"  class = "btn btn-default btn-lrg" style = "display:block; margin:auto;">
+				<span id = "startText">Start</span>
+			</button>	
+	</div>

@@ -4,7 +4,8 @@ var score = 0, life = 100;
 var hpBoost = false;
 var fFactor = randRange(10,-10); 
 
-var intro = true, pause = false, gameOver = false, gameOverCounter = 200;
+var movingUp = false, movingDown = false, movingLeft = false, movingRight = false;
+var intro = true, pause = true, gameOver = false, gameOverCounter = 200;
 
 
 //the player object
@@ -46,9 +47,8 @@ var enemyHitSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite
 var healthSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/health.mp3");
 var hurtSound = new Audio("https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/playerHurt.mp3");
 
-
-for(var i = 0; i < 2; i++)
-{
+//initilize starting bullets
+for(var i = 0; i < 2; i++){
 	var bullet = new Object;
 	bullets.push(bullet);
 }
@@ -92,26 +92,18 @@ function mainLoop(){
 }
 
 function updateFrame(){	
-//moving the player object/image
-	
-	if(keys[38]){//going up
-		player.y -= 5;
-	}
-	if(keys[40]){//going down
-		player.y += 5;
-	}
-	
-	if(keys[37]){//going right
-		player.x -= 5;
-	}
-	
-	if(keys[39]){//going left
-		player.x += 5;
-	}
-	if(keys[90]){//going left
-		pause = true;
-		mainSound.pause();
-	}
+	//moving the player object/image
+	if(keys[38]){player.y -= 5;}
+	if(keys[40]){player.y += 5;}
+	if(keys[37]){player.x -= 5;}
+	if(keys[39]){player.x += 5;}
+	if(keys[90]){pause = true; mainSound.pause();}
+
+	//mobile controllers
+	if(movingUp == true){player.y -= 5;}
+	if(movingDown == true){player.y += 5;}
+	if(movingLeft == true){player.x -= 5;}
+	if(movingRight == true){player.x += 5;}
 	
 	document.onkeydown = onKeyDown;
 	document.onkeyup = onKeyUp;
@@ -256,7 +248,7 @@ function drawFrame(){
 		ctx.fillText("Health: " + life,550, 25);	
 }
 function introScreen(){
-	introSound.play();
+	//introSound.play();
 	ctx.fillStyle = "Black";
 	ctx.fillRect(0,0, canvas.width, canvas.height);
 	ctx.fillStyle = "Orange";

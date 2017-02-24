@@ -8,6 +8,9 @@ font-family:sans-serif;
 	margin-left:auto;
 	margin-right:auto;
 	}
+.glyphicon{
+	font-size:50px;
+}
 </style>
 <h1>Asteroids</h1>
 
@@ -15,8 +18,14 @@ font-family:sans-serif;
 
 <script type = "text/javascript" src = "/Games/asteroids/asteroids.js"></script>
 
+<%if mobile_device?%>
+	<%= render "onscreenController2"%>
+	<script src = "/Games/asteroids/asteroidsController.js"></script>
+<%end%>
+
 <script type = "text/javascript">
 window.addEventListener("keydown", function(e) 
 { // space and arrow keys if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) 
 { e.preventDefault(); } }, false);
 </script>
+
