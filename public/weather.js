@@ -95,7 +95,7 @@ weatherApp.controller("forcastController",['$scope', '$resource','mainService',f
 	}
 	
 	$scope.convertToCelcius = function(degK){
-		return Math.round((degK -273));
+		return Math.round((degK - 273));
 	}
 
 	$scope.convertDate = function(ts){
