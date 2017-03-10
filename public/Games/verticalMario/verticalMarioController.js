@@ -3,18 +3,24 @@ document.getElementById("rightBtn").addEventListener("touchstart", function(){
     movingRight = true;
 });
 document.getElementById("rightBtn").addEventListener("touchend", function(){
-    movinRight = false;
+    movingRight = false;
 });
-
 document.getElementById("leftBtn").addEventListener("touchstart", function(){
 	movingLeft = true;
+	  console.log(movingLeft);
 });
 document.getElementById("leftBtn").addEventListener("touchend", function(){
 	movingLeft = false;
+	console.log(movingLeft);
 });
 
-document.getElementById("shootBtn").addEventListener("click", function(){
-	playerJump = true;
+document.getElementById("shootBtn").addEventListener("touchstart", function(){
+	if(!playerJump){
+		playerJump = true;
+		player.body.velocity.y = -175;
+		console.log("jumping: " + playerJump);
+	}
+	
 });
 
 //pause button

@@ -13,27 +13,27 @@ var playerJump = false;
 
 Game.gameState.prototype = {
     create: function(){
-      // console.log("gamestate create");
-      // console.log(this);
-      gameOverTimer = null;
+    // console.log("gamestate create");
+    // console.log(this);
+    gameOverTimer = null;
       
-      //console.log(this.game.time.now);
-      //console.log(gameOverTimer);
-    	this.timer = this.game.time.events.loop(3000, this.addPlatforms, this); 
+    //console.log(this.game.time.now);
+    //console.log(gameOverTimer);
+    this.timer = this.game.time.events.loop(3000, this.addPlatforms, this); 
 
-  		this.game.physics.startSystem(Phaser.Physics.ARCADE);
+  	this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-      //background 
- 		 background = this.game.add.sprite(0,0, 'background');
+    //background 
+ 		background = this.game.add.sprite(0,0, 'background');
 
-      //add sounds
-      coinSound = this.game.add.audio('getCoin');
-      jumpSound = this.game.add.audio('jump');
-      mainSound = this.game.add.audio('main');
-      deadSound = this.game.add.audio('dead');
+    //add sounds
+    coinSound = this.game.add.audio('getCoin');
+    jumpSound = this.game.add.audio('jump');
+    mainSound = this.game.add.audio('main');
+    deadSound = this.game.add.audio('dead');
 
-      //play music
-      // mainSound.play();
+    //play music
+    // mainSound.play();
  		
     player = this.game.add.sprite(100, 220, 'mario');
     player.dead = false;
@@ -87,12 +87,13 @@ Game.gameState.prototype = {
 
     update:function (){
     //collisions
- 		this.game.physics.arcade.collide(player, platform1, this.jumpFrame);
+ 		this.game.physics.arcade.collide(player, platform1, this.jumpReset);
  		this.game.physics.arcade.overlap(coins, platform1, this.coinAlign);
  		this.game.physics.arcade.overlap(player, coins, this.collectCoin, null, this);
 
  		//controlling the player
- 		if((this.cursors.up.isDown && player.body.wasTouching.down)||(playerJump && player.body.wasTouching.down)) {
+ 		if(this.cursors.up.isDown && player.body.wasTouching.down){
+      console.log(this.cursors.up.isDown);
  			//jumpSound.play();
       console.log("player Jumped!");
       player.body.velocity.y = -175;
@@ -149,16 +150,12 @@ Game.gameState.prototype = {
          // console.log("game restarted");
           this.game.state.start("gameState");
         }
-      
-
-
+  
         //out-of-bounds coins
         coins.forEach(function(coin){
         	if(coin.y >= 450){
         		coin.y = -50; 
         		coin.x = Math.floor(Math.random()*400);
-        	//	console.log("coin moved");
-        	//	console.log("coin x:" + coin.x + " coin y: " + coin.y);
         	}
         });
      },
@@ -176,6 +173,7 @@ Game.gameState.prototype = {
     	if(typeof(y) == "undefined"){
         	y = -this.tileHeight;
     	}
+
 	    //Work out how many tiles we need to fit across the whole screen
 	    var tilesNeeded = Math.ceil(this.game.world.width / this.tileWidth);
 	 
@@ -190,19 +188,20 @@ Game.gameState.prototype = {
 	        }           
 	    }
 	},
-    coinAlign: function(coin, platform){
-		//console.log("coin aligned");
+  
+  coinAlign: function(coin, platform){
 		coin.y -= 30;
 	},
-    jumpFrame: function(){
-    playerJump = false;
+  
+  jumpReset: function(){
+     playerJump = false;
+    console.log("playerJump: " + playerJump);
 	},
 
 	addBrick: function(x, y) {
-   	 	// Create a pipe at the position x and y
    		var tile = platform1.getFirstDead();
    		tile.reset(x,y);
-   		tile.body.velocity.y = 0;
+   		tile.body.velocity.y = 30;
    		tile.body.immovable = true;
    		tile.checkWorldBounds = true;
     	tile.outOfBoundsKill = true; 
@@ -222,7 +221,6 @@ Game.gameState.prototype = {
     var scoreFont = "18px Arial";
     this.scoreLabel = this.game.add.text(20, 20, " SCORE: 0", {font: scoreFont, fill: "#fff"}); 
     this.scoreLabel.align = 'center';
- 
 	},
 
 	incrementScore: function(){
