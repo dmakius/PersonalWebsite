@@ -130,6 +130,8 @@ Game.gameState.prototype = {
         //console.log("player dead");
           mainSound.stop();
           deadSound.play();
+          movingLeft = false;
+          movingRight = false;
           player.body.y = -450;
           player.body.gravity.y = 0;
           player.body.velocity.y = 0;
