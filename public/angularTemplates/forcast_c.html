@@ -44,19 +44,28 @@
 		</div>	
 	</div>
 </div>
-	<div class = "container row">
+	<div class = "container">
+	<div class = "row">
 	<h4>Upcoming Forecast</h4>
 	<div ng-repeat= "w in forecast.list| limitTo:7 | startFrom : 1" >
 		<div class = " col-md-2 panel panel-heading dataPanel">
-			<strong>{{convertDate(w.dt) | date: 'EEE'}}</strong>
+			<i class = "glyphicon glyphicon-chevron-right"/><strong> {{convertDate(w.dt) | date: 'EEE'}}</strong>
 			<div class = "panel panel-default dateData" style = "display:none;padding-left:15px; padding-top:15px;" >
-				<p><strong>High:</strong> {{convertToCelcius(w.temp.max)}} F</p>
-				<p><strong>Low:</strong> {{convertToCelcius(w.temp.min)}} F</p>
-				<p><em>{{w.weather[0].description}}</em></p>
-				<p><strong>humidity:</strong> {{w.humidity}} %</p>
+				<div class=  "row">
+						<div class = "col-md-3 col-sm-3 col-xs-4">	
+							<p><strong>High:</strong> {{convertToCelsius(w.temp.max)}} F</p>
+							<p><strong>Low:</strong> {{convertToCelsius(w.temp.min)}} F</p>
+							<p><strong>humidity:</strong> {{w.humidity}} %</p>
+						</div>
+						<div class = "col-md-9 col-sm-9 col-xs-8">
+							<img src = "{{getWeatherImage(w.weather[0].id)}}" />
+						</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	</div>
+</div>
 <hr>
 
 <script>
@@ -70,6 +79,7 @@
 		$(document).unbind().on("click", ".dataPanel", function(){
 			console.log("clicked");
 			$(this).find("div").first().toggle("display:none;");
+			$(this).find("i").toggle("display:none;");
 		});
 		});
 	});
