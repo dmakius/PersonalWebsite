@@ -2,6 +2,8 @@
 #marioGame{margin-top:25px;} 
 #marioGame canvas {display : block;   margin : auto;}
 .testClass{border:5px solid red;}
+.glyphicon {font-size: 50px;}
+
 </style>
 
 <script  type='text/javascript' src = "/Games/verticalMario/phaser.min.js"></script>
@@ -9,12 +11,13 @@
 <script  type='text/javascript' src = "/Games/verticalMario/preloadState.js"></script>
 <script  type='text/javascript' src = "/Games/verticalMario/gameState.js"></script>
 
-
-
 <h2>Vertical Mario</h2>
 <div id = "marioGame"></div>
 
-
+<%if mobile_device? %>
+	<%= render("onscreenController2") %>
+	<script src = "/Games/verticalMario/verticalMarioController.js"></script>
+<% end %>
 <script>
 $(document).ready(function(){
 	//startings instance of game
@@ -28,7 +31,7 @@ $(document).ready(function(){
 	//starts game
 	game.state.start('bootState');
 
-	game.stage.canvas.id = 'myCanvases';	
+	//game.stage.canvas.id = 'myCanvas';	
 	console.log("testing");
  	$('#myCanvas').addClass('img-responsive');
 
@@ -36,8 +39,4 @@ $(document).ready(function(){
 	window.addEventListener("keydown", function(e) { 
 	{ e.preventDefault(); } }, false);
 	});
-</script>
-<script>
-
-
 </script>
