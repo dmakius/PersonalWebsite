@@ -41,40 +41,40 @@ Game.gameState.prototype = {
     //player.body.collideWorldBounds = true;
     this.game.physics.arcade.enable(player);
 
-       	player.forward = true;
-       	player.inair = false;
+    player.forward = true;
+    player.inair = false;
        
-       	player.body.gravity.y = 200;
-        player.body.velocity.x = 0;
-        player.body.friction.x = 0.1;
+    player.body.gravity.y = 200;
+    player.body.velocity.x = 0;
+    player.body.friction.x = 0.1;
 
         //player.body.collideWorldBounds = true;
-        player.animations.add('right', [9, 10, 11,], 10, true);
-        player.animations.add('left', [0, 1, 2,], 10, true);
-        player.animations.add('jumpleft', [4], 10, true);
-		    player.animations.add('jumpright', [7], 10, true);
-        player.animations.add('standright', [6], 10, true);
-        player.animations.add('standleft', [5], 10, true);
-        player.animations.play('standright');
+    player.animations.add('right', [9, 10, 11,], 10, true);
+    player.animations.add('left', [0, 1, 2,], 10, true);
+    player.animations.add('jumpleft', [4], 10, true);
+		player.animations.add('jumpright', [7], 10, true);
+    player.animations.add('standright', [6], 10, true);
+    player.animations.add('standleft', [5], 10, true);
+    player.animations.play('standright');
 
-        this.game.camera.follow(player);
+    this.game.camera.follow(player);
 
- 		 platform1 = this.game.add.group();
- 		 platform1.enableBody = true;
-     platform1.createMultiple(250, 'wall');
+ 		platform1 = this.game.add.group();
+ 		platform1.enableBody = true;
+    platform1.createMultiple(250, 'wall');
 
-    	coins = this.game.add.group();
-    	coins.enableBody = true;
+    coins = this.game.add.group();
+    coins.enableBody = true;
 
-    	for(var i = 0; i < 10 ; i++){
-    		var coin = coins.create(this.randomNumX() , this.randomNumY() ,"coin");
-    		coin.scale.setTo(0.75,0.75);
-    		coin.body.velocity.y = 30;
-    	}
+    for(var i = 0; i < 10 ; i++){
+    	var coin = coins.create(this.randomNumX() , this.randomNumY() ,"coin");
+    	coin.scale.setTo(0.75,0.75);
+    	coin.body.velocity.y = 30;
+    }
     	
  		//Get the dimensions of the tile we are using
-    	this.tileWidth = this.game.cache.getImage('wall').width;
-    	this.tileHeight = this.game.cache.getImage('wall').height;
+    this.tileWidth = this.game.cache.getImage('wall').width;
+    this.tileHeight = this.game.cache.getImage('wall').height;
     //	console.log("brick width: " + this.tileWidth);
     //	console.log("brick height: " + this.tileHeight);
 
@@ -86,8 +86,6 @@ Game.gameState.prototype = {
   },
 
     update:function (){
-    // console.log("gamestate update");
-    // console.log(this);
     //collisions
  		this.game.physics.arcade.collide(player, platform1, this.jumpFrame);
  		this.game.physics.arcade.overlap(coins, platform1, this.coinAlign);
@@ -202,7 +200,7 @@ Game.gameState.prototype = {
    	 	// Create a pipe at the position x and y
    		var tile = platform1.getFirstDead();
    		tile.reset(x,y);
-   		tile.body.velocity.y = 30;
+   		tile.body.velocity.y = 0;
    		tile.body.immovable = true;
    		tile.checkWorldBounds = true;
     	tile.outOfBoundsKill = true; 

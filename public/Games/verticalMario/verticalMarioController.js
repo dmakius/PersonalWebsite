@@ -13,7 +13,7 @@ document.getElementById("leftBtn").addEventListener("touchend", function(){
 	movingLeft = false;
 });
 
-document.getElementById("shootBtn").addEventListener("touchstart", function(){
+document.getElementById("shootBtn").addEventListener("click", function(){
 	playerJump = true;
 });
 
