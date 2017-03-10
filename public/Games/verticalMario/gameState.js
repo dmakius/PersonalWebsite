@@ -1,20 +1,24 @@
 Game.gameState = function(game){
-
+    console.log(this);
 };
 
 var platform1, background, player;
 var spacing = 100, score = 0;
 var coins;
 var coinSound, jumpSound, mainSound, deadSound;
-var gameOver = false, gameOverTimer;
+var gameOver = false, gameOverTimer, pause = false;
+var movingLeft = false, movingRight = false;
+var playerJump = false;
 
 
 Game.gameState.prototype = {
     create: function(){
+      // console.log("gamestate create");
+      // console.log(this);
       gameOverTimer = null;
       
-      console.log(this.game.time.now);
-      console.log(gameOverTimer);
+      //console.log(this.game.time.now);
+      //console.log(gameOverTimer);
     	this.timer = this.game.time.events.loop(3000, this.addPlatforms, this); 
 
   		this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -29,9 +33,7 @@ Game.gameState.prototype = {
       deadSound = this.game.add.audio('dead');
 
       //play music
-      mainSound.play();
-      console.log("TESTING");
-      console.log(mainSound.play());
+      // mainSound.play();
  		
     player = this.game.add.sprite(100, 220, 'mario');
     player.dead = false;
@@ -59,7 +61,7 @@ Game.gameState.prototype = {
 
  		 platform1 = this.game.add.group();
  		 platform1.enableBody = true;
-    platform1.createMultiple(250, 'wall');
+     platform1.createMultiple(250, 'wall');
 
     	coins = this.game.add.group();
     	coins.enableBody = true;
@@ -73,31 +75,34 @@ Game.gameState.prototype = {
  		//Get the dimensions of the tile we are using
     	this.tileWidth = this.game.cache.getImage('wall').width;
     	this.tileHeight = this.game.cache.getImage('wall').height;
-    	console.log("brick width: " + this.tileWidth);
-    	console.log("brick height: " + this.tileHeight);
+    //	console.log("brick width: " + this.tileWidth);
+    //	console.log("brick height: " + this.tileHeight);
 
 		this.initPlatforms();
 		this.createScore();
 
 		this.cursors = this.game.input.keyboard.createCursorKeys();
-        this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);		
-    },
+    this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);		
+  },
 
     update:function (){
+    // console.log("gamestate update");
+    // console.log(this);
     //collisions
  		this.game.physics.arcade.collide(player, platform1, this.jumpFrame);
  		this.game.physics.arcade.overlap(coins, platform1, this.coinAlign);
  		this.game.physics.arcade.overlap(player, coins, this.collectCoin, null, this);
 
  		//controlling the player
- 		if(this.cursors.up.isDown && player.body.wasTouching.down) {
- 			jumpSound.play();
+ 		if((this.cursors.up.isDown && player.body.wasTouching.down)||(playerJump && player.body.wasTouching.down)) {
+ 			//jumpSound.play();
+      console.log("player Jumped!");
       player.body.velocity.y = -175;
-    }else if(this.cursors.left.isDown){
+    }else if(this.cursors.left.isDown || movingLeft === true){
       player.forward = false;
       player.body.velocity.x = -100;
       player.animations.play('left');
-    }else if(this.cursors.right.isDown){
+    }else if(this.cursors.right.isDown || movingRight === true){
       player.forward = true;
       player.body.velocity.x = 100;
       player.animations.play('right');
@@ -109,22 +114,22 @@ Game.gameState.prototype = {
       player.animations.play("standright");
     }
 
-        //adding jumping frames
-        if(player.body.touching.down == false){
-        	if(player.forward == true){
-        		player.animations.play("jumpright");
-        	}else{
-        		player.animations.play("jumpleft");
+
+    //adding jumping frames
+    if(player.body.touching.down == false){
+        if(player.forward == true){
+        	player.animations.play("jumpright");
+        }else{
+        	player.animations.play("jumpleft");
     		}
-    	}
+    }
        
-       if(player.body.y >= 500){
-        
-        player.dead = true;
-        gameOver = true;
+    if(player.body.y >= 500){  
+      player.dead = true;
+      gameOver = true;
        
-        if(player.dead){
-          console.log("player dead");
+      if(player.dead){
+        //console.log("player dead");
           mainSound.stop();
           deadSound.play();
           player.body.y = -450;
@@ -141,7 +146,7 @@ Game.gameState.prototype = {
         if(this.game.time.now >= gameOverTimer + 4000 && gameOver == true){
           gameOverTimer = null;
           gameOver = false;
-          console.log("game restarted");
+         // console.log("game restarted");
           this.game.state.start("gameState");
         }
       
@@ -152,18 +157,18 @@ Game.gameState.prototype = {
         	if(coin.y >= 450){
         		coin.y = -50; 
         		coin.x = Math.floor(Math.random()*400);
-        		console.log("coin moved");
-        		console.log("coin x:" + coin.x + " coin y: " + coin.y);
+        	//	console.log("coin moved");
+        	//	console.log("coin x:" + coin.x + " coin y: " + coin.y);
         	}
         });
      },
 
     collectCoin: function(player, coin){
       coinSound.play();
-     	console.log("coin collected");
+     	//console.log("coin collected");
      	coin.y = -50;
      	coin.x = this.randomNumX();
-     	console.log("coin x:" + coin.x + " coin y: " + coin.y);
+     	//console.log("coin x:" + coin.x + " coin y: " + coin.y);
      	this.incrementScore();
      },
     
@@ -185,12 +190,12 @@ Game.gameState.prototype = {
 	        }           
 	    }
 	},
-	coinAlign: function(coin, platform){
-		console.log("coin aligned");
+    coinAlign: function(coin, platform){
+		//console.log("coin aligned");
 		coin.y -= 30;
 	},
-
-	jumpFrame: function(player, brick){
+    jumpFrame: function(){
+    playerJump = false;
 	},
 
 	addBrick: function(x, y) {
@@ -208,14 +213,13 @@ Game.gameState.prototype = {
     	var top = this.tileHeight;
     	//Keep creating platforms until they reach (near) the top of the screen
     	for(var y = bottom; y > top - this.tileHeight - 200; y = y - spacing){
-        	console.log(y);
+        //	console.log(y);
         	this.addPlatforms(y);
     	}
 	},
 
 	createScore: function(){
     var scoreFont = "18px Arial";
- 
     this.scoreLabel = this.game.add.text(20, 20, " SCORE: 0", {font: scoreFont, fill: "#fff"}); 
     this.scoreLabel.align = 'center';
  

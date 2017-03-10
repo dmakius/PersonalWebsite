@@ -20,40 +20,39 @@
     content:"\25cb";
     font-size: 2em;
 }
+.roundButton{
+	height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: 2px solid #000;
+}
 </style>	
-	<br>
-	<div class = "row">
-		<div class= "col-xs-1 col-sm-1"></div>
-		<div class= "col-xs-6 col-sm-6">
-			<table>
+<br>
+<div class = "row">
+	<div class= "col-xs-1 col-sm-1"></div>
+	<div class= "col-xs-6 col-sm-6">
+		<table>
+			<tr>
+				<td></td>
+				<td> 
+					<button class = "roundButton" id = "upBtn"></button>
+					</div>
+				</td>
+				<td></td>	
+			</tr>
 				<tr>
-					<td></td>
 					<td>
-						<div class = "no-zoom" id = "upBtn">
-							<span class = "glyphicon glyphicon-circle-arrow-up"></span>
-						</div>
-					</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<div class = "no-zoom"  id = "leftBtn"> 
-							<span class = "glyphicon glyphicon-circle-arrow-left"></span>
-						</div>
+						<button class = "roundButton" id = "leftBtn"></button>
 					</td>
 					<td></td>
 					<td>
-						<div class = "no-zoom" id = "rightBtn">
-							<span class = "glyphicon glyphicon-circle-arrow-right"></span>
-						</div>
+						<button class = "roundButton" id = "rightBtn"></button>
 					</td>
 				</tr>
 				</tr>
 					<td></td>
 					<td>
-						<div class = "no-zoom"  id = "downBtn">
-							<span class = "glyphicon glyphicon-circle-arrow-down"></span>
-						</div>
+						<button class = "roundButton" id = "downBtn"></button>
 					</td>
 					<td></td>
 				</tr> 
@@ -61,8 +60,7 @@
 		</div>
 			
 		<div class = "col-xs-4 col-sm-4">
-				 <span id = "shootBtn" class="glyphicon glyphicon-one-fine-empty-dot" 
-				 style = "display:block; margin:auto; font-size:35px;"></span>
+				<button id = "shootBtn" class="roundButton" style = "float:right; margin-top:20px;"></button>
 		</div>
 	</div>
 	<div class = "row">

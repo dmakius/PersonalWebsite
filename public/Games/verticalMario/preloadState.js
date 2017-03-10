@@ -1,16 +1,23 @@
 Game.preloadState = function(game){
 	//WTF?
+	console.log(this);
 	this.preloadBar = null;
-
 };
 
 
 Game.preloadState.prototype = {
 	preload:function(){
-	
-		//this.preloadBar = this.add.sprite(this.world.centerX,this.world.centerY, 'preloaderBar');
-		//this.preloaderBar.anchor.setTo(0.5, 0.5);
+		this.game.stage.backgroundColor = '#182d3b';
 
+		// this.game.load.onLoadStart.add(loadStart, this);
+  // 		this.game.load.onFileComplete.add(fileComplete, this);
+  //   	this.game.load.onLoadComplete.add(loadComplete, this);
+
+		var scoreFont = "32px Arial";
+    	this.loading = this.game.add.text(this.game.world.centerX, this.game.world.centerY, " LOADING......", {font: scoreFont, fill: "#fff"}); 
+		this.loading.anchor.setTo(0.5, 0.5);
+		//this.preloadBar = this.add.sprite(this.world.centerX,this.world.centerY, 'preloaderBar');
+		//this.preloaderBar
 		
 		//WTF
 		this.time.advancedTiming = true;
@@ -30,14 +37,14 @@ Game.preloadState.prototype = {
   		this.game.load.image('wall', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/wall.png');
   		this.game.load.image('background', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/bg.png');
   		this.game.load.image('coin', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/coin.png');
-  		this.game.load.spritesheet('mario', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/mario_small_frame.png', 32, 32);
-
-  		
+  		this.game.load.spritesheet('mario', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/mario_small_frame.png', 32, 32);	
 	},
 	
 	create:function(){
-		console.log();
-		//go to game state
 		this.state.start('gameState')
 	}
+
+
+    //	You can listen for each of these events from Phaser.Loader
+   
 }
