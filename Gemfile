@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby "2.2.1" #for production deployements change to 2.2.4
+ruby "2.2.4" #for production deployements change to 2.2.4
 
 gem 'rails', '4.2.4'
 
