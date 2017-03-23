@@ -14,24 +14,13 @@
 </head>
 <body>
 
-<div class = "container">
-
-
-
+  <div class = "container">
     <%= render "layouts/header" %>
+      <%= yield %>
+    <%= render "layouts/footer" %>
 
-		<%= yield %>
-
-
-			<div class = "col-md-12 logo" id = "footer" style = "align:center;">
-				<span class = "logoText">Powered by HaShem</span>
-				<span class="glyphicon glyphicon-copyright-mark" style = "color:black; font-size:24px;"></span>
-			</div>
-
-
-	<br>
-	</div>
-</div>
-</div>
+  </div>
+  <br>
+  <br>
 </body>
 </html>
