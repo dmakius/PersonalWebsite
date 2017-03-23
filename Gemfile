@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-ruby "2.2.4" #for production deployements change to 2.2.4
 gem 'rails', '4.2.4'
 
 #database
@@ -14,7 +13,6 @@ gem 'devise'
 
 # mobile compatibility for games
 gem 'mobylette', '~> 3.5'
-
 gem 'mail_form', '~> 1.5', '>= 1.5.1'
 gem 'aws-sdk'
 gem 'uglifier', '>= 1.3.0'
