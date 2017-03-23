@@ -18,7 +18,7 @@ ActiveAdmin.register Meme do
 	    end
 	end
 
-	index do 
+	index do
 		column :id
 		column "Images" do |meme|
    			image_tag(meme.avatar(:thumb))
@@ -35,7 +35,7 @@ ActiveAdmin.register Meme do
 	    end
 	    f.actions
 	end
-	
+
 	##for the view page
 	show do |ad|
       attributes_table do

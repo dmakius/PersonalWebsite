@@ -4,8 +4,18 @@ ActiveAdmin.register Picture do
         params.permit!
       end
     end
-  
 
+  index do
+      column :id
+      column "Images" do |pic|
+          image_tag(pic.url, size: "100")
+        end
+      column :location do |pic|
+          pic.url
+        end
+      column :created_at
+      actions
+    end
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

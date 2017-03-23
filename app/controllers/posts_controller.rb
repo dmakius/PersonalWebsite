@@ -6,16 +6,17 @@ class PostsController < ApplicationController
         format.json{ render json: @post}
       end
   end
- 
+
  def show
       @post = Post.find(params[:id])
+      
   end
 
   def new
       @post = Post.new
       @category = Category.all
   end
-  
+
   def edit
       @post = Post.find(params[:id])
   end
@@ -28,10 +29,10 @@ class PostsController < ApplicationController
         render 'new'
     end
   end
-  
+
   def update
       @post = Post.find(params[:id])
-      
+
       if @post.update(post_params)
         redirect_to @post
       else
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
       @post.destroy
       redirect_to posts_path
   end
-  
+
   private
   def post_params
       params.require(:post).permit(:title, :body, :category_id, :admin_user_id)
