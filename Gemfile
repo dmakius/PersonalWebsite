@@ -1,9 +1,8 @@
 source 'http://rubygems.org'
-ruby "2.2.4" #for production deployements change to 2.2.4
-
+ruby "2.2.1" #for production deployements change to 2.2.4
 gem 'rails', '4.2.4'
 
-#database 
+#database
 gem 'pg'
 
 #ActiveAdmin
@@ -56,4 +55,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
