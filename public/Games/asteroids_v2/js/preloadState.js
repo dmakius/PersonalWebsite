@@ -42,7 +42,7 @@ Asteroids.PreloadState = {
     this.game.load.spritesheet('newPlayer', '/Games/asteroids_v2/assets/newPlayer5.png', 31, 24.8, 5);
 
     //font
-    this.game.load.bitmapFont('newFont', '/Games/asteroids_v2/assets/fonts/font.png', '/Games/asteroids2/assets/fonts/font.fnt');
+    this.game.load.bitmapFont('newFont', '/Games/asteroids_v2/assets/fonts/font.png', '/Games/asteroids_v2/assets/fonts/font.fnt');
   },
 
   create: function(){
