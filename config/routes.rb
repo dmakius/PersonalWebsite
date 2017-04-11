@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get '/verticalmario' => 'welcome#verticalmario'
 
   get '/asteroids' => 'welcome#asteroids'
+  get '/asteroids2' => 'welcome#asteroids2'
 
   get 'welcome/home'
   get 'home/download_pdf'

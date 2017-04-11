@@ -2,7 +2,7 @@ Game.gameState = function(game){
     console.log(this);
 };
 
-var platform1, background, player;
+var platform1, background, player, goomba;
 var spacing = 100, score = 0;
 var coins;
 var coinSound, jumpSound, mainSound, deadSound;
@@ -16,14 +16,14 @@ Game.gameState.prototype = {
     // console.log("gamestate create");
     // console.log(this);
     gameOverTimer = null;
-      
+
     //console.log(this.game.time.now);
     //console.log(gameOverTimer);
-    this.timer = this.game.time.events.loop(3000, this.addPlatforms, this); 
+    this.timer = this.game.time.events.loop(3000, this.addPlatforms, this);
 
   	this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    //background 
+    //background
  		background = this.game.add.sprite(0,0, 'background');
 
     //add sounds
@@ -34,16 +34,20 @@ Game.gameState.prototype = {
 
     //play music
     // mainSound.play();
- 		
+
     player = this.game.add.sprite(100, 220, 'mario');
     player.dead = false;
  		player.enableBody = true;
     //player.body.collideWorldBounds = true;
     this.game.physics.arcade.enable(player);
 
+    // goomba = this.game.add.sprite(100, 220, "goomba");
+    // player.dead = false;
+ 	  //player.enableBody = true;
+
     player.forward = true;
     player.inair = false;
-       
+
     player.body.gravity.y = 200;
     player.body.velocity.x = 0;
     player.body.friction.x = 0.1;
@@ -71,7 +75,7 @@ Game.gameState.prototype = {
     	coin.scale.setTo(0.75,0.75);
     	coin.body.velocity.y = 30;
     }
-    	
+
  		//Get the dimensions of the tile we are using
     this.tileWidth = this.game.cache.getImage('wall').width;
     this.tileHeight = this.game.cache.getImage('wall').height;
@@ -82,7 +86,7 @@ Game.gameState.prototype = {
 		this.createScore();
 
 		this.cursors = this.game.input.keyboard.createCursorKeys();
-    this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);		
+    this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   },
 
     update:function (){
@@ -122,11 +126,11 @@ Game.gameState.prototype = {
         	player.animations.play("jumpleft");
     		}
     }
-       
-    if(player.body.y >= 500){  
+
+    if(player.body.y >= 500){
       player.dead = true;
       gameOver = true;
-       
+
       if(player.dead){
         //console.log("player dead");
           mainSound.stop();
@@ -150,11 +154,11 @@ Game.gameState.prototype = {
          // console.log("game restarted");
           this.game.state.start("gameState");
         }
-  
+
         //out-of-bounds coins
         coins.forEach(function(coin){
         	if(coin.y >= 450){
-        		coin.y = -50; 
+        		coin.y = -50;
         		coin.x = Math.floor(Math.random()*400);
         	}
         });
@@ -168,7 +172,7 @@ Game.gameState.prototype = {
      	//console.log("coin x:" + coin.x + " coin y: " + coin.y);
      	this.incrementScore();
      },
-    
+
     addPlatforms: function(y) {
     	if(typeof(y) == "undefined"){
         	y = -this.tileHeight;
@@ -176,23 +180,23 @@ Game.gameState.prototype = {
 
 	    //Work out how many tiles we need to fit across the whole screen
 	    var tilesNeeded = Math.ceil(this.game.world.width / this.tileWidth);
-	 
+
 	    //Add a hole randomly somewhere
 	    var hole = Math.floor(Math.random() * (tilesNeeded - 3)) + 1;
-	 
+
 	    //Keep creating tiles next to each other until we have an entire row
 	    //Don't add tiles where the random hole is
 	    for (var i = 0; i < tilesNeeded; i++){
 	        if (i != hole && i != hole + 1 && i != hole + 2 && i != hole + 3){
-	            this.addBrick(i * this.tileWidth, y); 
-	        }           
+	            this.addBrick(i * this.tileWidth, y);
+	        }
 	    }
 	},
-  
+
   coinAlign: function(coin, platform){
 		coin.y -= 30;
 	},
-  
+
   jumpReset: function(){
      playerJump = false;
     console.log("playerJump: " + playerJump);
@@ -204,7 +208,7 @@ Game.gameState.prototype = {
    		tile.body.velocity.y = 30;
    		tile.body.immovable = true;
    		tile.checkWorldBounds = true;
-    	tile.outOfBoundsKill = true; 
+    	tile.outOfBoundsKill = true;
 	},
 
 	initPlatforms: function(){
@@ -219,13 +223,13 @@ Game.gameState.prototype = {
 
 	createScore: function(){
     var scoreFont = "18px Arial";
-    this.scoreLabel = this.game.add.text(20, 20, " SCORE: 0", {font: scoreFont, fill: "#fff"}); 
+    this.scoreLabel = this.game.add.text(20, 20, " SCORE: 0", {font: scoreFont, fill: "#fff"});
     this.scoreLabel.align = 'center';
 	},
 
 	incrementScore: function(){
-    	score += 100;   
-    	this.scoreLabel.text =  "SCORE: " +score;      
+    	score += 100;
+    	this.scoreLabel.text =  "SCORE: " +score;
 	},
 
 	randomNumX: function(){
@@ -234,5 +238,5 @@ Game.gameState.prototype = {
   randomNumY: function(){
     return (Math.floor(Math.random() * -200));
   }
- 	
+
 }
