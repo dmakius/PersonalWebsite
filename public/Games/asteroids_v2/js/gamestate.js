@@ -1,7 +1,6 @@
 var Asteroids = Asteroids || {};
 
 Asteroids.GameState = {
-  console.log("test");
   init: function(){
     this.BULLET_SPEED = 150;
   },
