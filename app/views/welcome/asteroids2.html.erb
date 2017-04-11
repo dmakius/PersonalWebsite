@@ -16,12 +16,12 @@
 <script type='text/javascript' src = "/Games/asteroids_v2/js/prefabs/healthUp.js"></script>
 <script type='text/javascript' src = "/Games/asteroids_v2/js/prefabs/rock.js"></script>
 
-<h2>Asteroids 2</h2>
+<h2>Asteroids</h2>
 <div id = "asteroidsGame"></div>
 
 <%if mobile_device? %>
-	<!-- <%= render("onscreenController2") %> -->
-	<!-- <script src = "/Games/asteroids2/asteroidsController.js"></script> -->
+	<%= render("onscreenController2") %>
+	<script src = "/Games/asteroids_v2/asteroids_v2Controller.js"></script>
 <% end %>
 <script>
   var Asteroids = Asteroids || {};

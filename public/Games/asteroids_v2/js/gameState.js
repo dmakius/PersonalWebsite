@@ -73,28 +73,26 @@ Asteroids.GameState = {
       }
 
       //updating the player
-      if(this.cursors.up.isDown){
+      if(this.cursors.up.isDown || movingUp){
         this.player.body.velocity.y = -100;
       }
-      if(this.cursors.down.isDown){
+      if(this.cursors.down.isDown || movingDown){
         this.player.body.velocity.y = 100;
       }
-      if(this.cursors.left.isDown){
+      if(this.cursors.left.isDown || movingLeft){
         this.player.body.velocity.x = -100;
       }
-      if(this.cursors.right.isDown){
+      if(this.cursors.right.isDown || movingRight){
         this.player.body.velocity.x = 100;
       }
-      if(this.fire.isDown && !this.player.dead){
+      if((this.fire.isDown || playerFire) && !this.player.dead){
         this.createBullet(this);
       }
   },
-
   initScoreAndHealth: function(){
     this.game.scoreBoard =  this.game.add.bitmapText(10, 10, "newFont", "SCORE: " + this.score , 24);
     this.game.healthboard = this.game.add.bitmapText(this.game.world.bounds.width - 160, 10, "newFont", "HEALTH: " + this.player.health +"%" , 24);
   },
-
   initRocks: function(){
     //console.log('initRocks');
     this.rocks = this.add.group();
@@ -152,7 +150,6 @@ Asteroids.GameState = {
       var healthUp = new Asteroids.HealthUp(this.game, rock.x, rock.y);
       this.health.add(healthUp);
     }
-
     //create explosion
     rock.explosionSound.play();
 
@@ -165,12 +162,10 @@ Asteroids.GameState = {
 
     rock.body.x = 500;
     rock.body.y = Math.floor(Math.random()* 300);
-
     //update players score
     this.score += 100;
     this.game.scoreBoard.setText("SCORE: " + this.score);
   },
-
   damagePlayer: function(player, enemy){
     if (this.game.time.now > this.playerInvinciblityTime){
       if(enemy.key === 'newBadGuy'){
@@ -188,7 +183,6 @@ Asteroids.GameState = {
       this.playerInvinciblityTime = this.game.time.now + 700;
     }
   },
-
   playerDead: function(player){
     this.mainMusic.stop();
     this.playerDeadSound.play();
@@ -204,18 +198,16 @@ Asteroids.GameState = {
     this.game.gameOverText.anchor.setTo(0.5);
     this.game.time.events.add(Phaser.Timer.SECOND * 4, this.resetGame, this);
   },
-
   resetGame: function(){
-   this.game.state.start("MenuState")
+   gameStart = false;
+   this.game.state.start("MenuState");
   },
-
   playerRecover: function(player, healthUp){
     healthUp.HealthUpSound.play();
     healthUp.kill();
     player.health = 100;
     this.game.healthboard.setText("HEALTH: " + player.health + "%");
   },
-
   damageAlien: function(bullet, alien){
     bullet.kill();
     alien.alienHitSound.play();

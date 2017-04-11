@@ -24,7 +24,7 @@ Asteroids.MenuState = {
   },
 
   update: function(){
-    if(this.start.isDown){
+    if(this.start.isDown || gameStart == true){
       this.intoMusic.stop();
       this.game.state.start("GameState");
     }
