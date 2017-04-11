@@ -1,3 +1,7 @@
+var gameStart = false, pause = false;
+var playerFire = false;
+var movingRight = false, movingLeft = false, movingUp = false, movingDown = false;
+
 var Asteroids = Asteroids || {};
 Asteroids.BootState = {
   init: function(){
