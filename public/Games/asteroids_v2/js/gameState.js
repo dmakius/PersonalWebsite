@@ -88,13 +88,11 @@ Asteroids.GameState = {
       if(this.fire.isDown && !this.player.dead){
         this.createBullet(this);
       }
-
   },
 
   initScoreAndHealth: function(){
     this.game.scoreBoard =  this.game.add.bitmapText(10, 10, "newFont", "SCORE: " + this.score , 24);
     this.game.healthboard = this.game.add.bitmapText(this.game.world.bounds.width - 160, 10, "newFont", "HEALTH: " + this.player.health +"%" , 24);
-    this.game.scoreBoard.style.fill = 0xFF0000;
   },
 
   initRocks: function(){
