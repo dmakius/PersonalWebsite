@@ -29,20 +29,20 @@ Asteroids.PreloadState = {
     this.game.load.audio('playerHurt',"https://s3-us-west-2.amazonaws.com/makoverwebsite/GameMusic/playerHurt.mp3");
 
     //load image files
-    this.game.load.image('player', '/Games/asteroids2/assets/ship.jpg');
-    this.game.load.image('space', '/Games/asteroids2/assets/space.jpg');
-    this.game.load.image('bullet', '/Games/asteroids2/assets/bullet.jpg');
-    this.game.load.image('rock', '/Games/asteroids2/assets/rock.jpg');
-    this.game.load.image('healthUp', '/Games/asteroids2/assets/healthUp.jpg');
-    this.game.load.image('explosion', '/Games/asteroids2/assets/explosion.jpg');
-    this.game.load.image('rockParticle', '/Games/asteroids2/assets/rockParticle.png');
-    this.game.load.image('explosionParticle', '/Games/asteroids2/assets/explosionParticle.png');
-    this.game.load.image('badguy', '/Games/asteroids2/assets/bad_guy.jpg');
-    this.game.load.spritesheet('newBadGuy', '/Games/asteroids2/assets/brainy_idle.jpg', 100, 42, 8);
-    this.game.load.spritesheet('newPlayer', '/Games/asteroids2/assets/newPlayer5.png', 31, 24.8, 5);
+    this.game.load.image('player', '/Games/asteroids_v2/assets/ship.jpg');
+    this.game.load.image('space', '/Games/asteroids_v2/assets/space.jpg');
+    this.game.load.image('bullet', '/Games/asteroids_v2/assets/bullet.jpg');
+    this.game.load.image('rock', '/Games/asteroids_v2/assets/rock.jpg');
+    this.game.load.image('healthUp', '/Games/asteroids_v2/assets/healthUp.jpg');
+    this.game.load.image('explosion', '/Games/asteroids_v2/assets/explosion.jpg');
+    this.game.load.image('rockParticle', '/Games/asteroids_v2/assets/rockParticle.png');
+    this.game.load.image('explosionParticle', '/Games/asteroids_v2/assets/explosionParticle.png');
+    this.game.load.image('badguy', '/Games/asteroids_v2/assets/bad_guy.jpg');
+    this.game.load.spritesheet('newBadGuy', '/Games/asteroids_v2/assets/brainy_idle.jpg', 100, 42, 8);
+    this.game.load.spritesheet('newPlayer', '/Games/asteroids_v2/assets/newPlayer5.png', 31, 24.8, 5);
 
     //font
-    this.game.load.bitmapFont('newFont', '/Games/asteroids2/assets/fonts/font.png', '/Games/asteroids2/assets/fonts/font.fnt');
+    this.game.load.bitmapFont('newFont', '/Games/asteroids_v2/assets/fonts/font.png', '/Games/asteroids2/assets/fonts/font.fnt');
   },
 
   create: function(){

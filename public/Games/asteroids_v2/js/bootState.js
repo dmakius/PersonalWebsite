@@ -6,9 +6,9 @@ Asteroids.BootState = {
 
   preload: function(){
     console.log("preload bootState");
-    this.game.load.image('background', '/Games/asteroids2/assets/background.png');
-		this.game.load.image('preloader', '/Games/asteroids2/assets/preloader.png');
-    this.game.load.image('space', '/Games/asteroids2/assets/space.jpg');
+    this.game.load.image('background', '/Games/asteroids_v2/assets/background.png');
+		this.game.load.image('preloader', '/Games/asteroids_v2/assets/preloader.png');
+    this.game.load.image('space', '/Games/asteroids_v2/assets/space.jpg');
   },
 
   create: function(){
