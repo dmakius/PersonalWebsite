@@ -4,11 +4,11 @@
 </style>
 
 <!-- importing game states -->
-<script type='text/javascript' src = "/Games/asteroids2/phaser.min.js"></script>
-<script type='text/javascript' src = "/Games/asteroids2/bootState.js"></script>
-<script type='text/javascript' src = "/Games/asteroids2/preloadState.js"></script>
-<script type='text/javascript' src = "/Games/asteroids2/menuState.js"></script>
-<script type='text/javascript' src = "/Games/asteroids2/gameState.js"></script>
+<script type='text/javascript' src = "/Games/asteroids2/js/phaser.min.js"></script>
+<script type='text/javascript' src = "/Games/asteroids2/js/bootState.js"></script>
+<script type='text/javascript' src = "/Games/asteroids2/js/preloadState.js"></script>
+<script type='text/javascript' src = "/Games/asteroids2/js/menuState.js"></script>
+<script type='text/javascript' src = "/Games/asteroids2/js/gameState.js"></script>
 
 <!-- importing prefabs -->
 <script type='text/javascript' src = "/Games/asteroids2/js/prefabs/alien.js"></script>
@@ -20,8 +20,8 @@
 <div id = "asteroidsGame"></div>
 
 <%if mobile_device? %>
-	<%= render("onscreenController2") %>
-	<script src = "/Games/asteroids2/asteroidsController.js"></script>
+	<!-- <%= render("onscreenController2") %> -->
+	<!-- <script src = "/Games/asteroids2/asteroidsController.js"></script> -->
 <% end %>
 <script>
   var Asteroids = Asteroids || {};
