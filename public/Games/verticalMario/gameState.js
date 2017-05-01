@@ -8,10 +8,12 @@ VerticalMario.GameState = {
     var mario = new VerticalMario.Mario(this.game, 100, 250);
     this.player.add(mario);
 
+    this.mainTheme = this.game.add.audio('mainTheme');
     this.coinSound = this.game.add.audio('getCoin');
     this.deadSound = this.game.add.audio('dead');
     this.hitHeadSound = this.game.add.audio('hitHead');
     this.squishEnemySound = this.game.add.audio('squishEnemy');
+    this.mainTheme.play();
 
     this.createInitialPlatform();
     this.createGoombas();
@@ -34,12 +36,21 @@ VerticalMario.GameState = {
   this.game.physics.arcade.collide(this.coins, this.initPlatforms, this.fixCoins, null, this);
 
   if(!this.player.alive){
-
     this.restartTimer = this.game.time.events.loop(3000, this.restart, this);
   }
 
   this.initPlatforms.update();
   this.coins.update();
+
+
+
+if(this.player.children[0].body.y >= 500){
+   this.mainTheme.stop();
+   this.deadSound.play();
+   startGame = false;
+   this.game.state.start('MenuState');
+   this.game.time.events.add(Phaser.Timer.SECOND * 2000, this.restart, this);
+  }
 },
 
 addRow: function(){
@@ -111,7 +122,8 @@ playerCollision: function(badGuy, player){
     player.score += 200;
     this.game.scoreBoard.setText("SCORE: " + player.score);
   }else{
-    this.deadSound.play()
+    this.mainTheme.stop();
+    this.deadSound.play();
     player.dead = true;
     player.animations.play('dead');
     player.body.velocity.x = 0;
@@ -149,8 +161,8 @@ killSprite: function(badGuy){
 },
 
 restart: function(){
+  console.log('restarting');
   startGame = false;
-  restartPauseText();
   this.game.state.start('MenuState');
 },
 

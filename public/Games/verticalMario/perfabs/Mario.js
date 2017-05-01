@@ -58,12 +58,5 @@ VerticalMario.Mario.prototype.update = function(){
           this.animations.play("jumpLeft");
         }
     }
-
-    if(this.body.y >= 500){
-      this.deadSound.play();
-      startGame = false;
-      restartPauseText();
-      this.game.state.start('MenuState');
-    }
   }
 };
