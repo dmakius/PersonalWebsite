@@ -1,23 +1,22 @@
-//init the Game Object
-var Game = {};
+var VerticalMario = VerticalMario || {};
 
-Game.bootState = function(game){
-	console.log(this);
-};
+VerticalMario.BootState = {
+  init: function(){
+    console.log("Boostate init");
+  },
 
-Game.bootState.prototype = {
-	init:function(){
-	},
+  preload: function(){
+    this.game.load.image('background','/Games/VerticalMario/assets/bg.png');
+    this.game.load.image('preloader', '/Games/VerticalMario/assets/preloader.png');
+    this.game.load.bitmapFont('gameFont', '/Games/VerticalMario/assets/fonts/font.png', '/Games/VerticalMario/assets/fonts/font.fnt');
+    this.game.load.bitmapFont('marioFont', '/Games/VerticalMario/assets/fonts/mario20_0.png', '/Games/VerticalMario/assets/fonts/mario20.fnt');
+  },
 
-	preloader:function(){
-	},
+  create: function(){
+    this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    this.game.scale.pageAlignHorizontally = true;
+    this.game.scale.pageAlignVertically = true;
 
-	create:function(){
-		//scale the canvas to fit page
-		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-		this.scale.pageAlignHorizontally = true;
-   	this.scale.pageAlignVertically = true;
-		//go to Preload State
-		this.state.start('preloadState');
-	}
+    this.game.state.start('PreloadState');
+  }
 }

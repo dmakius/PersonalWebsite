@@ -1,242 +1,169 @@
-Game.gameState = function(game){
-    console.log(this);
-};
+var VerticalMario = VerticalMario || {};
 
-var platform1, background, player, goomba;
-var spacing = 100, score = 0;
-var coins;
-var coinSound, jumpSound, mainSound, deadSound;
-var gameOver = false, gameOverTimer, pause = false;
-var movingLeft = false, movingRight = false;
-var playerJump = false;
+VerticalMario.GameState = {
+  create: function(){
+    this.background = this.game.add.sprite(0,0, 'background');
 
+    this.player = this.game.add.group();
+    var mario = new VerticalMario.Mario(this.game, 100, 250);
+    this.player.add(mario);
 
-Game.gameState.prototype = {
-    create: function(){
-    // console.log("gamestate create");
-    // console.log(this);
-    gameOverTimer = null;
+    this.coinSound = this.game.add.audio('getCoin');
+    this.deadSound = this.game.add.audio('dead');
+    this.hitHeadSound = this.game.add.audio('hitHead');
+    this.squishEnemySound = this.game.add.audio('squishEnemy');
 
-    //console.log(this.game.time.now);
-    //console.log(gameOverTimer);
-    this.timer = this.game.time.events.loop(3000, this.addPlatforms, this);
+    this.createInitialPlatform();
+    this.createGoombas();
+    this.createCoins();
 
-  	this.game.physics.startSystem(Phaser.Physics.ARCADE);
-
-    //background
- 		background = this.game.add.sprite(0,0, 'background');
-
-    //add sounds
-    coinSound = this.game.add.audio('getCoin');
-    jumpSound = this.game.add.audio('jump');
-    mainSound = this.game.add.audio('main');
-    deadSound = this.game.add.audio('dead');
-
-    //play music
-    // mainSound.play();
-
-    player = this.game.add.sprite(100, 220, 'mario');
-    player.dead = false;
- 		player.enableBody = true;
-    //player.body.collideWorldBounds = true;
-    this.game.physics.arcade.enable(player);
-
-    // goomba = this.game.add.sprite(100, 220, "goomba");
-    // player.dead = false;
- 	  //player.enableBody = true;
-
-    player.forward = true;
-    player.inair = false;
-
-    player.body.gravity.y = 200;
-    player.body.velocity.x = 0;
-    player.body.friction.x = 0.1;
-
-        //player.body.collideWorldBounds = true;
-    player.animations.add('right', [9, 10, 11,], 10, true);
-    player.animations.add('left', [0, 1, 2,], 10, true);
-    player.animations.add('jumpleft', [4], 10, true);
-		player.animations.add('jumpright', [7], 10, true);
-    player.animations.add('standright', [6], 10, true);
-    player.animations.add('standleft', [5], 10, true);
-    player.animations.play('standright');
-
-    this.game.camera.follow(player);
-
- 		platform1 = this.game.add.group();
- 		platform1.enableBody = true;
-    platform1.createMultiple(250, 'wall');
-
-    coins = this.game.add.group();
-    coins.enableBody = true;
-
-    for(var i = 0; i < 10 ; i++){
-    	var coin = coins.create(this.randomNumX() , this.randomNumY() ,"coin");
-    	coin.scale.setTo(0.75,0.75);
-    	coin.body.velocity.y = 30;
-    }
-
- 		//Get the dimensions of the tile we are using
-    this.tileWidth = this.game.cache.getImage('wall').width;
-    this.tileHeight = this.game.cache.getImage('wall').height;
-    //	console.log("brick width: " + this.tileWidth);
-    //	console.log("brick height: " + this.tileHeight);
-
-		this.initPlatforms();
-		this.createScore();
-
-		this.cursors = this.game.input.keyboard.createCursorKeys();
-    this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    //this.spinyTimer = this.game.time.events.loop(1000, this.addSpiny, this);
+    this.goombaTimer = this.game.time.events.loop(5000, this.addGoomba, this);
+    this.rowTimer = this.game.time.events.loop(6200, this.addRow, this);
+    this.game.scoreBoard = this.game.add.bitmapText(10, 10, "marioFont", "SCORE: 0" , 16);
   },
 
-    update:function (){
-    //collisions
- 		this.game.physics.arcade.collide(player, platform1, this.jumpReset);
- 		this.game.physics.arcade.overlap(coins, platform1, this.coinAlign);
- 		this.game.physics.arcade.overlap(player, coins, this.collectCoin, null, this);
-
- 		//controlling the player
- 		if(this.cursors.up.isDown && player.body.wasTouching.down){
-      console.log(this.cursors.up.isDown);
- 			//jumpSound.play();
-      console.log("player Jumped!");
-      player.body.velocity.y = -175;
-    }else if(this.cursors.left.isDown || movingLeft === true){
-      player.forward = false;
-      player.body.velocity.x = -100;
-      player.animations.play('left');
-    }else if(this.cursors.right.isDown || movingRight === true){
-      player.forward = true;
-      player.body.velocity.x = 100;
-      player.animations.play('right');
-    }else if(player.forward == false ){
-      player.body.velocity.x = 0;
-      player.animations.play("standleft");
-    }else if( player.forward == true ){
-      player.body.velocity.x = 0;
-      player.animations.play("standright");
-    }
-
-
-    //adding jumping frames
-    if(player.body.touching.down == false){
-        if(player.forward == true){
-        	player.animations.play("jumpright");
-        }else{
-        	player.animations.play("jumpleft");
-    		}
-    }
-
-    if(player.body.y >= 500){
-      player.dead = true;
-      gameOver = true;
-
-      if(player.dead){
-        //console.log("player dead");
-          mainSound.stop();
-          deadSound.play();
-          movingLeft = false;
-          movingRight = false;
-          player.body.y = -450;
-          player.body.gravity.y = 0;
-          player.body.velocity.y = 0;
-          gameOverTimer = this.game.time.now;
-          //console.log("game over time: " + gameOverTimer);
-          player.dead = false;
-        }
-      }
-      //onsole.log("game time:" + this.game.time.now);
-      // console.log("game Over Time:" + gameOverTimer);
-
-        if(this.game.time.now >= gameOverTimer + 4000 && gameOver == true){
-          gameOverTimer = null;
-          gameOver = false;
-         // console.log("game restarted");
-          this.game.state.start("gameState");
-        }
-
-        //out-of-bounds coins
-        coins.forEach(function(coin){
-        	if(coin.y >= 450){
-        		coin.y = -50;
-        		coin.x = Math.floor(Math.random()*400);
-        	}
-        });
-     },
-
-    collectCoin: function(player, coin){
-      coinSound.play();
-     	//console.log("coin collected");
-     	coin.y = -50;
-     	coin.x = this.randomNumX();
-     	//console.log("coin x:" + coin.x + " coin y: " + coin.y);
-     	this.incrementScore();
-     },
-
-    addPlatforms: function(y) {
-    	if(typeof(y) == "undefined"){
-        	y = -this.tileHeight;
-    	}
-
-	    //Work out how many tiles we need to fit across the whole screen
-	    var tilesNeeded = Math.ceil(this.game.world.width / this.tileWidth);
-
-	    //Add a hole randomly somewhere
-	    var hole = Math.floor(Math.random() * (tilesNeeded - 3)) + 1;
-
-	    //Keep creating tiles next to each other until we have an entire row
-	    //Don't add tiles where the random hole is
-	    for (var i = 0; i < tilesNeeded; i++){
-	        if (i != hole && i != hole + 1 && i != hole + 2 && i != hole + 3){
-	            this.addBrick(i * this.tileWidth, y);
-	        }
-	    }
-	},
-
-  coinAlign: function(coin, platform){
-		coin.y -= 30;
-	},
-
-  jumpReset: function(){
-     playerJump = false;
-    console.log("playerJump: " + playerJump);
-	},
-
-	addBrick: function(x, y) {
-   		var tile = platform1.getFirstDead();
-   		tile.reset(x,y);
-   		tile.body.velocity.y = 30;
-   		tile.body.immovable = true;
-   		tile.checkWorldBounds = true;
-    	tile.outOfBoundsKill = true;
-	},
-
-	initPlatforms: function(){
-    	var bottom = this.game.world.height - this.tileHeight - 100;
-    	var top = this.tileHeight;
-    	//Keep creating platforms until they reach (near) the top of the screen
-    	for(var y = bottom; y > top - this.tileHeight - 200; y = y - spacing){
-        //	console.log(y);
-        	this.addPlatforms(y);
-    	}
-	},
-
-	createScore: function(){
-    var scoreFont = "18px Arial";
-    this.scoreLabel = this.game.add.text(20, 20, " SCORE: 0", {font: scoreFont, fill: "#fff"});
-    this.scoreLabel.align = 'center';
-	},
-
-	incrementScore: function(){
-    	score += 100;
-    	this.scoreLabel.text =  "SCORE: " +score;
-	},
-
-	randomNumX: function(){
-		return (Math.floor(Math.random() * 400));
-	},
-  randomNumY: function(){
-    return (Math.floor(Math.random() * -200));
+  update: function(){
+   if(this.player.alive){
+        this.game.physics.arcade.collide(this.player, this.initPlatforms, this.brickCollision, null, this);
+        this.game.physics.arcade.collide(this.badGuys, this.player, this.playerCollision, null, this);
+        this.game.physics.arcade.overlap(this.coins, this.player, this.collectCoin, null, this);
   }
 
+  this.game.physics.arcade.collide(this.badGuys, this.initPlatforms, this.realignBadGuy, null, this);
+  this.game.physics.arcade.collide(this.coins, this.initPlatforms, this.fixCoins, null, this);
+
+  if(!this.player.alive){
+
+    this.restartTimer = this.game.time.events.loop(3000, this.restart, this);
+  }
+
+  this.initPlatforms.update();
+  this.coins.update();
+},
+
+addRow: function(){
+  var gap = Math.floor(Math.random()*20);
+  for(var x = 0; x < 24; x++){
+    if(x <= gap || x >= gap + 4){
+      var platform = new VerticalMario.InitPlatforms(this, 32*x,-25);
+    }
+    this.initPlatforms.add(platform);
+  }
+},
+
+createGoombas:function(){
+  this.badGuys = this.game.add.group();
+  this.badGuys.enableBody = true;
+  var goomba = new VerticalMario.Goomba(this.game, 100, 50);
+  var goomba2 = new VerticalMario.Goomba(this.game, 400, 200);
+  this.badGuys.add(goomba);
+  this.badGuys.add(goomba2);
+},
+
+addGoomba: function(){
+  var r = Math.random();
+  if(r >= 0.5){
+    ranX = 100;
+  }else{
+    ranX = 500;
+  }
+  var goomba = new VerticalMario.Goomba(this.game, ranX, -50);
+  this.badGuys.add(goomba);
+},
+
+addSpiny: function(){
+  var spiny = new VerticalMario.Spiny(this.game, 100, 20);
+  this.badGuys.add(spiny);
+},
+
+createCoins: function(){
+  this.coins = this.game.add.group();
+  this.coins.enableBody = true;
+  for(var x = 0; x<3; x++){
+    var ranX = Math.floor(Math.random() * 650);
+    var ranY = Math.floor(Math.random()* 350);
+    var coin = new VerticalMario.Coin(this.game, ranX, ranY);
+    this.coins.add(coin);
+  }
+},
+
+fixCoins: function(coin, platform){
+  coin.y += 20;
+},
+
+collectCoin: function(coin, player){
+  coin.relocate();
+  this.coinSound.play();
+  player.score += 200;
+  this.game.scoreBoard.setText("SCORE: " + player.score);
+},
+
+playerCollision: function(badGuy, player){
+  if(badGuy.body.touching.up){
+    this.squishEnemySound.play();
+    badGuy.animations.play('dead');
+    badGuy.body.velocity.x = 0;
+    this.pointsUp = this.game.add.image(badGuy.body.x, badGuy.body.y - 10, '200pts');
+    this.game.time.events.add(Phaser.Timer.SECOND * 0.5, this.killPointSprite, this, this.pointsUp);
+    this.game.time.events.add(Phaser.Timer.SECOND * 0.5, this.killSprite, this, badGuy);
+    player.body.velocity.y = -50;
+    player.score += 200;
+    this.game.scoreBoard.setText("SCORE: " + player.score);
+  }else{
+    this.deadSound.play()
+    player.dead = true;
+    player.animations.play('dead');
+    player.body.velocity.x = 0;
+    player.body.velocity.y = -50;
+    this.player.alive = false;
+  }
+},
+
+brickCollision: function(player, brick){
+  if(brick.body.touching.down){
+    this.hitHeadSound.play();
+    var brickBounce = this.game.add.tween(brick.body);
+    brickBounce.to({x:brick.body.x, y:brick.body.y - 10}, 100, Phaser.Easing.Linear.None);
+    this.game.physics.arcade.collide(this.badGuys, brick, this.flipBadGuy, null,);
+    brickBounce.onComplete.addOnce(function(){
+      brickBounce.to({x:brick.body.x, y:brick.body.y + 17}, 100, Phaser.Easing.Linear.None);
+      brickBounce.start();
+    });
+    brickBounce.start();
+  }
+},
+
+flipBadGuy: function(brick, spiny){
+  console.log(spiny);
+  console.log(spiny);
+},
+
+killPointSprite: function(pointSprite){
+  pointSprite.kill();
+},
+
+killSprite: function(badGuy){
+  console.log(badGuy);
+  badGuy.kill();
+},
+
+restart: function(){
+  startGame = false;
+  restartPauseText();
+  this.game.state.start('MenuState');
+},
+
+createInitialPlatform: function(){
+  this.initPlatforms = this.game.add.group();
+  for(var y = 0; y < 5; y ++){
+    var gap = Math.floor(Math.random()*20);
+    for(var x = 0; x < 24; x++){
+      if(x <= gap || x >= gap + 4){
+        var platform = new VerticalMario.InitPlatforms(this, 32*x,125*y);
+      }
+      this.initPlatforms.add(platform);
+    }
+  }
+  }
 }

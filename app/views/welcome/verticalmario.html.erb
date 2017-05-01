@@ -1,43 +1,43 @@
 <style>
 #marioGame{margin-top:25px;}
-#marioGame canvas {display : block;   margin : auto;}
+#verticalMario canvas {display : block;   margin-left:auto; margin-right:auto;}
 .testClass{border:5px solid red;}
 .glyphicon {font-size: 50px;}
-
 </style>
 
 <script  type='text/javascript' src = "/Games/verticalMario/phaser.min.js"></script>
 <script  type='text/javascript' src = "/Games/verticalMario/bootState.js"></script>
 <script  type='text/javascript' src = "/Games/verticalMario/preloadState.js"></script>
+<script  type='text/javascript' src = "/Games/verticalMario/menuState.js"></script>
 <script  type='text/javascript' src = "/Games/verticalMario/gamestate.js"></script>
 
+<script  type='text/javascript' src = "/Games/verticalMario/perfabs/Coin.js"></script>
+<script  type='text/javascript' src = "/Games/verticalMario/perfabs/Platform.js"></script>
+<script  type='text/javascript' src = "/Games/verticalMario/perfabs/Mario.js"></script>
+<script  type='text/javascript' src = "/Games/verticalMario/perfabs/Spiny.js"></script>
+<script  type='text/javascript' src = "/Games/verticalMario/perfabs/Goomba.js"></script>
+
 <h2>Vertical Mario</h2>
-<div id = "marioGame"></div>
+<div id = "verticalMario"></div>
 
 <%if mobile_device? %>
 	<%= render("onscreenController2") %>
 	<script src = "/Games/verticalMario/verticalMarioController.js"></script>
 <% end %>
+
 <script>
+  var VerticalMario = VerticalMario || {};
+	var pause = false, startGame = false, movingRight = false, movingLeft = false, playerJump = false;
 
-$(document).ready(function(){
-	//startings instance of game
-	var game = new Phaser.Game(450, 400, Phaser.CANVAS, 'marioGame');
+   VerticalMario.game = new Phaser.Game(700, 500, Phaser.AUTO,'verticalMario');
+   VerticalMario.game.state.add('BootState', VerticalMario.BootState);
+   VerticalMario.game.state.add('PreloadState', VerticalMario.PreloadState);
+   VerticalMario.game.state.add('MenuState', VerticalMario.MenuState);
+   VerticalMario.game.state.add('GameState', VerticalMario.GameState);
 
-	//loading gamy states
-	game.state.add('bootState', Game.bootState);
-	game.state.add('preloadState', Game.preloadState);
-	game.state.add('gameState', Game.gameState);
-
-	//starts game
-	game.state.start('bootState');
-
-	//game.stage.canvas.id = 'myCanvas';
-	console.log("testing");
- 	$('#myCanvas').addClass('img-responsive');
+   VerticalMario.game.state.start('BootState');
 
 	//turn of scrolling from keyboard
 	window.addEventListener("keydown", function(e) {
 	{ e.preventDefault(); } }, false);
-	});
 </script>

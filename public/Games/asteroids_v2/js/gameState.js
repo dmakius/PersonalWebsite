@@ -154,7 +154,7 @@ Asteroids.GameState = {
     rock.explosionSound.play();
 
     var emitter = this.game.add.emitter(rock.x, rock.y, 50);
-    emitter.makeParticles('rockParticle');
+    emitter.makeParticles('rockPaifrticle');
     emitter.minParticleSpeed.setTo(-50, -50);
     emitter.maxParticleSpeed.setTo(50, 50);
     emitter.gravity = 0;
