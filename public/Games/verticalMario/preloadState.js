@@ -9,14 +9,14 @@ VerticalMario.PreloadState = {
     this.preloadBar.anchor.setTo(0.5, 0.5);
     this.load.setPreloadSprite(this.preloadBar);
 
-    this.game.load.spritesheet('mario', '/Games/VerticalMario/assets/mario_small.png', 32, 32);
-    this.game.load.spritesheet('goomba', '/Games/VerticalMario/assets/goomba.png', 32, 32);
-    this.game.load.spritesheet('spiny', '/Games/VerticalMario/assets/spiny.gif', 32,32);
-    this.game.load.image('coin', '/Games/VerticalMario/assets/coin.png');
+    this.game.load.spritesheet('mario', '/Games/verticalMario/assets/mario_small.png', 32, 32);
+    this.game.load.spritesheet('goomba', '/Games/verticalMario/assets/goomba.png', 32, 32);
+    this.game.load.spritesheet('spiny', '/Games/verticalMario/assets/spiny.gif', 32,32);
+    this.game.load.image('coin', '/Games/verticalMario/assets/coin.png');
 
-    this.game.load.image('brick', '/Games/VerticalMario/assets/block.png', 32, 32);
-    this.game.load.image('main_title', '/Games/VerticalMario/assets/main_title.gif');
-    this.game.load.image('200pts','/Games/VerticalMario/assets/200.gif');
+    this.game.load.image('brick', '/Games/verticalMario/assets/block.png', 32, 32);
+    this.game.load.image('main_title', '/Games/verticalMario/assets/main_title.gif');
+    this.game.load.image('200pts','/Games/verticalMario/assets/200.gif');
 
     //SOUNDS
     this.game.load.audio('mainTheme', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/platformerGame/assets/sounds/main-theme.mp3');
