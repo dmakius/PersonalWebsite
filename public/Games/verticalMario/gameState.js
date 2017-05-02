@@ -7,6 +7,7 @@ VerticalMario.GameState = {
     this.player = this.game.add.group();
     var mario = new VerticalMario.Mario(this.game, 100, 250);
     this.player.add(mario);
+    alreadDead = false;
 
     this.mainTheme = this.game.add.audio('mainTheme');
     this.coinSound = this.game.add.audio('getCoin');
@@ -46,7 +47,7 @@ VerticalMario.GameState = {
 
 if(this.player.children[0].body.y >= 500){
    this.mainTheme.stop();
-   this.deadSound.play();
+   if(!alreadDead){this.deadSound.play();}
    startGame = false;
    this.game.state.start('MenuState');
    this.game.time.events.add(Phaser.Timer.SECOND * 2000, this.restart, this);
@@ -124,6 +125,7 @@ playerCollision: function(badGuy, player){
   }else{
     this.mainTheme.stop();
     this.deadSound.play();
+    alreadDead = true;
     player.dead = true;
     player.animations.play('dead');
     player.body.velocity.x = 0;

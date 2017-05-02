@@ -27,7 +27,8 @@
 
 <script>
   var VerticalMario = VerticalMario || {};
-	var pause = false, startGame = false, movingRight = false, movingLeft = false, playerJump = false;
+	var pause = false, startGame = false, movingRight = false, movingLeft = false;
+	var playerJump = false, alreadDead = false;
 
    VerticalMario.game = new Phaser.Game(700, 500, Phaser.AUTO,'verticalMario');
    VerticalMario.game.state.add('BootState', VerticalMario.BootState);
