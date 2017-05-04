@@ -7,7 +7,7 @@ VerticalMario.Spiny = function(game, x, y) {
   this.game.physics.arcade.enable(this);
   this.outOfBoundsKill = true;
   this.body.gravity.y = 100;
-  this.body.y = 100;
+  this.body.y = 50;
   this.body.velocity.x = 150;
 
   this.hit = false;
@@ -40,6 +40,10 @@ VerticalMario.Spiny.prototype.update = function(){
 
   if(this.body.x >= this.game.world.width || this.body.x <= 0){
     this.body.velocity.x *= -1;
+  }
+
+  if(this.hit){
+    this.body.velocity.x = 0;
   }
 
   if(this.body.y >= 500){

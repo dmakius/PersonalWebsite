@@ -20,7 +20,7 @@ VerticalMario.GameState = {
     this.createGoombas();
     this.createCoins();
 
-    //this.spinyTimer = this.game.time.events.loop(1000, this.addSpiny, this);
+    this.spinyTimer = this.game.time.events.loop(10000, this.addSpiny, this);
     this.goombaTimer = this.game.time.events.loop(5000, this.addGoomba, this);
     this.rowTimer = this.game.time.events.loop(6200, this.addRow, this);
     this.game.scoreBoard = this.game.add.bitmapText(10, 10, "marioFont", "SCORE: 0" , 16);
@@ -42,8 +42,6 @@ VerticalMario.GameState = {
 
   this.initPlatforms.update();
   this.coins.update();
-
-
 
 if(this.player.children[0].body.y >= 500){
    this.mainTheme.stop();
@@ -85,7 +83,13 @@ addGoomba: function(){
 },
 
 addSpiny: function(){
-  var spiny = new VerticalMario.Spiny(this.game, 100, 20);
+  var r = Math.random();
+  if(r >= 0.5){
+    ranX = 100;
+  }else{
+    ranX = 500;
+  }
+  var spiny = new VerticalMario.Spiny(this.game, ranX, 20);
   this.badGuys.add(spiny);
 },
 
@@ -112,7 +116,7 @@ collectCoin: function(coin, player){
 },
 
 playerCollision: function(badGuy, player){
-  if(badGuy.body.touching.up){
+  if(badGuy.body.touching.up && badGuy.key != 'spiny'){
     this.squishEnemySound.play();
     badGuy.animations.play('dead');
     badGuy.body.velocity.x = 0;
@@ -122,7 +126,7 @@ playerCollision: function(badGuy, player){
     player.body.velocity.y = -50;
     player.score += 200;
     this.game.scoreBoard.setText("SCORE: " + player.score);
-  }else{
+  }else if(!badGuy.hit){
     this.mainTheme.stop();
     this.deadSound.play();
     alreadDead = true;
@@ -148,9 +152,13 @@ brickCollision: function(player, brick){
   }
 },
 
-flipBadGuy: function(brick, spiny){
-  console.log(spiny);
-  console.log(spiny);
+flipBadGuy: function(brick, badGuy){
+  console.log(badGuy);
+  if(badGuy.key == 'spiny'){
+    badGuy.hit = true;
+    badGuy.body.velocity.x = 0;
+    badGuy.body.checkCollision.down = false;
+  }
 },
 
 killPointSprite: function(pointSprite){
@@ -163,7 +171,6 @@ killSprite: function(badGuy){
 },
 
 restart: function(){
-  console.log('restarting');
   startGame = false;
   this.game.state.start('MenuState');
 },
