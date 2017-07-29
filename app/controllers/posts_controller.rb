@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-      @post = Post.all.order("created_at desc")
+      @post = Post.all.order("created_at desc").paginate(:page => params[:page], :per_page => 5);
       respond_to do |format|
         format.html
         format.json{ render json: @post}
@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
  def show
       @post = Post.find(params[:id])
-      
+
   end
 
   def new

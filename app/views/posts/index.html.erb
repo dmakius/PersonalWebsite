@@ -8,8 +8,9 @@
 				<p><small><strong>Category: </strong><%= post.category.name %></small></p>
 				<p><%= truncate(post.body.html_safe, :length => 80, :escape => false)%></p>
 				<%= link_to "Read More", post %>
-				<hr>  
+				<hr>
 			</div>
 		</div>
-	<%end%>
+	<% end %>
+	<%= will_paginate @post %>
 </div>
