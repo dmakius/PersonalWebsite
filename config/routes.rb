@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'weather' => 'welcome#weather'
   get 'contact/index'
 
+
+
   #picture Routes
   get 'pictures/sketches'
   get 'pictures/pics'
@@ -38,6 +40,8 @@ Rails.application.routes.draw do
 
   get '/asteroids' => 'welcome#asteroids'
   get '/asteroids2' => 'welcome#asteroids2'
+
+  get '/translate' => 'welcome#translate'
 
   get 'welcome/home'
   get 'home/download_pdf'

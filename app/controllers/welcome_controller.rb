@@ -4,19 +4,19 @@ include Mobylette::RespondToMobileRequests
 
   def home
   end
-   
+
   def mmrunner
   end
-  
+
   def asteroids
   end
-  
+
   def snake
   end
 
   def tetris
   end
-  
+
   def breakout
   end
 
@@ -33,6 +33,9 @@ include Mobylette::RespondToMobileRequests
   end
 
   def verticalmario
+  end
+
+  def translate
   end
 
 end

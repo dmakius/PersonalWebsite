@@ -1,0 +1,30 @@
+<script src = "angular.min.js"></script>
+<script src = "/angularApps/translate.js"></script>
+<div ng-app="translator" ng-controller = "trnsController as trns">
+  <br>
+    <div class = "container well">
+      <h4>TRANSLATOR APP</h4>
+      <h6>POWERED BY ANGULARJS & THE YANDEX API</h6>
+      <div class="row">
+        <div class="col-md-6">
+            <form name="transInput">
+          <textarea type="text"  placeholder="Please enter text to translate"
+          ng-model= "input" class="form-control" style="height:150px;font-size:24px;" ng-keyup="trns.sendToAPI(input)">
+          </textarea>
+          Translate to: <select name="languages" class="selectpicker form-control" ng-model="transTo" ng-change="trns.sendToAPI(input)">
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="it">Italian</option>
+            <option value="de">German</option>
+          </select>
+        </form>
+        <br>
+      </div>
+        <div class="col-md-6">
+          <textarea type="text" placeholder="Translation"   ng-model= "output" class="form-control" style="height:150px;font-size:24px;" >
+             {{output}}
+          </textarea>
+        </div>
+    </div>
+  </div>
+</div>
