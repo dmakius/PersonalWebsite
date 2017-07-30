@@ -9,15 +9,15 @@
 					<table style="width:100%">
 						<tr>
 							<td><strong>Temp: </strong></td>
-							<td>{{convertToCelcius(forecast.list[0].temp.day)}} F</td>
+							<td>{{convertToCelcius(forecast.list[0].temp.day)}} C</td>
 						</tr>
 						<tr>
 							<td><strong>High: </strong></td>
-							<td>{{convertToCelcius(forecast.list[0].temp.max)}} F</td>
+							<td>{{convertToCelcius(forecast.list[0].temp.max)}} C</td>
 						</tr>
 						<tr>
 							<td><strong>low: </strong></td>
-							<td>{{convertToCelcius(forecast.list[0].temp.min)}} F</td>
+							<td>{{convertToCelcius(forecast.list[0].temp.min)}} C</td>
 						</tr>
 					</table>
 				</div>
@@ -89,8 +89,7 @@
 			});
 		});
 
-		$(document).unbind().on("click", ".dataPanel", function(){
-			console.log("clicked");
+		$(document).on("click", ".dataPanel", function(){
 			$(this).find("div").first().toggle("display:none;");
 			$(this).find("i").toggle("display:none;");
 		});

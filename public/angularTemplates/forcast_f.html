@@ -88,11 +88,9 @@
 				return text === "Open Map" ? "Close Map" : "Open Map";
 			});
 		});
-
-		$(document).unbind().on("click", ".dataPanel", function(){
-			console.log("clicked");
-			$(this).find("div").first().toggle("display:none;");
-			$(this).find("i").toggle("display:none;");
-		});
-	});
+		 $(document).on("click", ".dataPanel", function(){
+		 		$(this).find("div").first().toggle("display:none;");
+				$(this).find("i").toggle("display:none;");
+	 	});
+ 	});
 </script>
