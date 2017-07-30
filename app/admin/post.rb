@@ -17,7 +17,7 @@ ActiveAdmin.register Post do
     f.inputs do
         f.input :title
         f.input :category
-        f.input :body, :as => :ckeditor
+        f.input :body
         f.submit :style => "margin-left:15px;"
     end
   end
