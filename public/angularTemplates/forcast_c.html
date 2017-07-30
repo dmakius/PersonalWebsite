@@ -84,6 +84,7 @@
 	$(document).ready(function(){
 		$("#map").on("click", function(){
 			$("iframe").toggle("display:none;");
+			$(this).find("i").toggle("display:none;");
 			$("#map h5").text(function(i, text){
 				return text === "Open Map" ? "Close Map" : "Open Map";
 			});
