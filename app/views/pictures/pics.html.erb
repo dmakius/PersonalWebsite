@@ -59,14 +59,13 @@
 	<div id = "bButton" class = "button"><img src = '/arrowL.jpg'></div>
 		<% n = 1%>
 		<% @picture.each do |pic|%>
-			<div id = "picFrame<%=n%>"class = "picFrame"style = "display:none">
-				<img src = "<%= pic.url %>">
-				<div class = "picInfo">
-					<h2><%= pic.title%></h2>
-					<p><%= pic.about%></p>
-				</div>	
-			</div>
-			<% n = n + 1%>	
+			<!-- <div id = "picFrame<%=n%>"class = "picFrame"style = "display:none"> -->
+				<!-- <img src = "<%= pic.url %>"> -->
+				<!-- <div class = "picInfo"> -->
+					<!-- <h2><%= pic.title%></h2> -->
+					<!-- <p><%= pic.about%></p> -->
+				<!-- </div>	 -->
+			<!-- </div> -->
 		<%end%>
 	
 	<div id = "nButton" class = "button"><img src = '/arrowR.jpg'></div>

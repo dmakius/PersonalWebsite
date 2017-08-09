@@ -38,6 +38,12 @@
 	<div class="swiper-scrollbar"></div>
 </div>
 
+<div class="container panel panel-heading panel-info">
+  <h4><i id="open-button" class = "glyphicon glyphicon-chevron-right"></i>Images<i id="close-button" class = "glyphicon glyphicon-remove pull-right" style="display:none;"></i></h4>
+  <div id="header" class="panel-heading" style="display:none; height:200px;">Panel Heading</div>
+  <div class="panel-body" style="display:none;">Panel Content</div>
+</div>
+
 
 <script>
   //initiate the swiper
@@ -47,14 +53,28 @@
     loop: true,
 
     // If we need pagination
-    pagination: '.swiper-pagination',
+    // pagination: '.swiper-pagination',
 
     // Navigation arrows
     nextButton: '.swiper-button-next',
     prevButton: '.swiper-button-prev',
 
     // And if we need scrollbar
-    scrollbar: '.swiper-scrollbar',
+    // scrollbar: '.swiper-scrollbar',
   });
+  $("#open-button").on('click', function(){
+    console.log("working");
+    $("#header").toggle("display:none;");
+    $("#open-button").toggle("display:none;");
+     $("#close-button").toggle("display:none;");
+  });
+$("#close-button").on('click', function(){
+    console.log("working");
+    $("#header").toggle("display:none;");
+    $("#open-button").toggle("display:none;");
+    $("#close-button").toggle("display:none;");
+  });
+
+
   </script>
 </body>
