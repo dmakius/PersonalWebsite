@@ -1,22 +1,50 @@
-<h1>Mega Man Runner</h1>
+
 <style>
 h1 {
 font-family:sans-serif;
+display : block;   
+margin-left:auto; 
+margin-right:auto;
 }
+.glyphicon {font-size: 50px;}
 
-#myCanvas{
-	border:1px solid black; 
-	display:block; 
-	margin-left:auto;
-	margin-right:auto;
-	}
+#MMRunner canvas {display : block;   margin-left:auto; margin-right:auto;}
 </style>
-<div class = gameHolder><canvas id = "myCanvas"></canvas></div>
 
-<script type = "text/javascript" src = "/Games/mmRunner.js"></script>
+<script type="text/javascript" src="/Games/mmRunner/src/js/phaser.min.js"></script>
+<script src="/Games/mmRunner/src/js/BootState.js"></script>
+<script src="/Games/mmRunner/src/js/PreloadState.js"></script>
+<script src="/Games/mmRunner/src/js/Gamestate.js"></script>
+<script src="/Games/mmRunner/src/js/MenuState.js"></script>
 
-<script type = "text/javascript">
-window.addEventListener("keydown", function(e) 
-{ // space and arrow keys if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) 
-{ e.preventDefault(); } }, false);
+<script src="/Games/mmRunner/src/js/prefabs/Megaman.js"></script>
+<script src="/Games/mmRunner/src/js/prefabs/Platform.js"></script>
+<script src="/Games/mmRunner/src/js/prefabs/Platform2.js"></script>
+<script src="/Games/mmRunner/src/js/prefabs/Bullet.js"></script>
+<script src="/Games/mmRunner/src/js/prefabs/BadGuy.js"></script>
+<script src="/Games/mmRunner/src/js/prefabs/Explosion.js"></script>
+
+<h2>Mega Man Runner</h2>
+<div id = "MMRunner"></div>
+
+<%if mobile_device? %>
+	<%= render("onscreenController2") %>
+	<script src = "/Games/mmRunner/src/js/MMRunnerController.js"></script>
+<% end %>
+
+<script>
+   var MMRunner = MMRunner || {};
+   var pause = false, startGame = false, movingRight = false, movingLeft = false; movingDown = false;
+   var playerJump = false, alreadDead = false, playerShoot = false;
+
+   MMRunner.game = new Phaser.Game(700, 500, Phaser.AUTO, 'MMRunner');
+   MMRunner.game.state.add('BootState', MMRunner.BootState);
+   MMRunner.game.state.add('PreloadState', MMRunner.PreloadState);
+   MMRunner.game.state.add('MenuState', MMRunner.MenuState);
+   MMRunner.game.state.add('GameState', MMRunner.GameState);
+   MMRunner.game.state.start('BootState');
+
+   window.addEventListener("keydown", function(e) 
+	{ // space and arrow keys if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) 
+	{ e.preventDefault(); } }, false);
 </script>
