@@ -17,7 +17,7 @@ MMRunner.PreloadState = {
     this.game.load.image('platform3', '/Games/mmRunner/assets/platform3.png');
     this.game.load.image('platform4', '/Games/mmRunner/assets/platform4.png');
     this.game.load.image('explosionParticle', '/Games/mmRunner/assets/explosionParticle.png');
-    this.game.load.spritesheet('badGuy1', '/Games/mmRunner/assets/badGuy1.png',34,16);
+    this.game.load.spritesheet('badGuy1', '/Games/mmRunner/assets/badguy1.png',34,16);
     this.game.load.spritesheet('explosion1' , '/Games/mmRunner/assets/explosion2.png', 28,31);
 
     //audio files
