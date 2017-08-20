@@ -58,5 +58,13 @@ VerticalMario.Mario.prototype.update = function(){
           this.animations.play("jumpLeft");
         }
     }
+
+    //moving out of bounds
+    if(this.body.x >= 700){
+      this.body.x = -9;
+    }
+    if(this.body.x <= -10){
+      this.body.x = 700;
+    }
   }
 };
