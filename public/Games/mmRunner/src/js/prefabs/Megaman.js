@@ -161,6 +161,7 @@ MMRunner.Megaman.prototype.update = function(){
   if(this.body.y >= 600){
     this.deadSound.play();
     MMRunner.GameState.gameMusic.stop();
+    startGame = false;
     this.game.state.start('MenuState');
   }
 
