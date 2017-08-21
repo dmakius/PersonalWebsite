@@ -27,6 +27,8 @@ MMRunner.GameState = {
     this.deadMusic = this.game.add.audio('dead');
     this.gameMusic.play();
     this.createBadGuys();
+
+    this.previousPlatform = false;
     this.floorTimer = this.game.time.events.loop(3250, this.addFloor, this);
     this.platform2Timer = this.game.time.events.loop(3500, this.addplatform2, this);
     this.badGuyTimer = this.game.time.events.loop(2000, this.addBadGuys, this);
@@ -93,7 +95,6 @@ MMRunner.GameState = {
   resetGame: function(){
     startGame = false;
     this.game.state.start('MenuState');
-
   },
 
   overalping: function(player, floor){
@@ -144,10 +145,20 @@ MMRunner.GameState = {
   },
 
   addFloor: function(){
-    var gap = Math.random();
-    if(gap < 0.75){
+    //ensure that you will never have a gap that is too wide
+    if(!this.previousPlatform){
       var floorPiece = new MMRunner.Platform(this.game, 800, 420);
       this.floor.add(floorPiece);
+      this.previousPlatform = true;
+    }else{
+      var gap = Math.random();
+      if(gap < 0.75){
+        this.previousPlatform = true;
+        var floorPiece = new MMRunner.Platform(this.game, 800, 420);
+        this.floor.add(floorPiece);
+      }else{
+        this.previousPlatform = false;
+      }
     }
   }
 }
