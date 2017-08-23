@@ -7,7 +7,7 @@ MMRunner.Explosion = function(game, x , y){
   this.game.physics.arcade.enable(this);
   this.outOfBoundsKill = true;
   this.enableBody = true;
-  this.animations.add('explosion', [0,1,2,3], 16, true);
+  this.animations.add('explosion',  [0,1,2], 12, true);
   this.animations.play('explosion');
   this.exlosionTime = this.game.time.now + 1000;
 }

@@ -17,8 +17,14 @@ MMRunner.PreloadState = {
     this.game.load.image('platform3', '/Games/mmRunner/assets/platform3.png');
     this.game.load.image('platform4', '/Games/mmRunner/assets/platform4.png');
     this.game.load.image('explosionParticle', '/Games/mmRunner/assets/explosionParticle.png');
+    this.game.load.image('healthBar', '/Games/mmRunner/assets/health.png');
+
     this.game.load.spritesheet('badGuy1', '/Games/mmRunner/assets/badguy1.png',34,16);
     this.game.load.spritesheet('explosion1' , '/Games/mmRunner/assets/explosion.png', 16,16);
+
+    this.game.load.spritesheet('healthUpSmall', '/Games/mmRunner/assets/small_health_up.png', 12,10);
+    this.game.load.spritesheet('healthUpLarge', '/Games/mmRunner/assets/large_health_up.png', 14.5,14);
+
 
     //audio files
     this.game.load.audio('shoot', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/MmRunner/shoot.wav');
@@ -27,6 +33,9 @@ MMRunner.PreloadState = {
     this.game.load.audio('badGuyHit', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/MmRunner/badGuyHit.wav');
     this.game.load.audio('playerHit', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/MmRunner/hit.wav');
     this.game.load.audio('wily', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/MmRunner/wily.mp3');
+    this.game.load.audio('healthUpLarge', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/MmRunner/largeHealthUp.wav');
+    this.game.load.audio('healthUpSmall', 'https://s3-us-west-2.amazonaws.com/makoverwebsite/MmRunner/smallHealthUp.wav');
+
   }, 
 
   create: function(){
