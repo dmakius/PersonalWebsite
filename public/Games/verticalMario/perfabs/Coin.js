@@ -1,10 +1,13 @@
 var VerticalMario = VerticalMario || {};
 
 VerticalMario.Coin = function(game, x ,y){
-  Phaser.Sprite.call(this, game, x, y, 'coin');
+  Phaser.Sprite.call(this, game, x, y, 'coins');
   this.game.physics.arcade.enable(this);
   this.body.velocity.y = 20;
   this.anchor.setTo(0.5);
+  this.scale.setTo(2);
+  this.animations.add('flashing', [0,1,2,3], 5, true);
+  this.animations.play('flashing');
 }
 
 VerticalMario.Coin.prototype = Object.create(Phaser.Sprite.prototype);
