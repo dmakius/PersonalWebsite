@@ -20,6 +20,8 @@ VerticalMario.GameState = {
     this.createGoombas();
     this.createCoins();
 
+    this.score = 0;
+
     this.spinyTimer = this.game.time.events.loop(10000, this.addSpiny, this);
     this.goombaTimer = this.game.time.events.loop(5000, this.addGoomba, this);
     this.rowTimer = this.game.time.events.loop(6200, this.addRow, this);
@@ -47,7 +49,7 @@ if(this.player.children[0].body.y >= 500){
    this.mainTheme.stop();
    if(!alreadDead){this.deadSound.play();}
    startGame = false;
-   this.game.state.start('MenuState');
+   this.game.state.start('ScoreState');
    this.game.time.events.add(Phaser.Timer.SECOND * 2000, this.restart, this);
   }
 },
@@ -111,8 +113,8 @@ fixCoins: function(coin, platform){
 collectCoin: function(coin, player){
   coin.relocate();
   this.coinSound.play();
-  player.score += 200;
-  this.game.scoreBoard.setText("SCORE: " + player.score);
+  this.score += 200;
+  this.game.scoreBoard.setText("SCORE: " +  this.score );
 },
 
 playerCollision: function(badGuy, player){
@@ -124,8 +126,8 @@ playerCollision: function(badGuy, player){
     this.game.time.events.add(Phaser.Timer.SECOND * 0.5, this.killPointSprite, this, this.pointsUp);
     this.game.time.events.add(Phaser.Timer.SECOND * 0.5, this.killSprite, this, badGuy);
     player.body.velocity.y = -50;
-    player.score += 200;
-    this.game.scoreBoard.setText("SCORE: " + player.score);
+    this.score += 200;
+    this.game.scoreBoard.setText("SCORE: " +  this.score);
   }else if(!badGuy.hit){
     this.mainTheme.stop();
     this.deadSound.play();
@@ -172,7 +174,7 @@ killSprite: function(badGuy){
 
 restart: function(){
   startGame = false;
-  this.game.state.start('MenuState');
+  this.game.state.start('ScoreState');
 },
 
 createInitialPlatform: function(){

@@ -5,7 +5,6 @@ VerticalMario.Mario = function(game, x, y){
   this.anchor.setTo(0.5);
   this.scale.setTo(1.25);
   this.game.physics.arcade.enable(this);
-  this.score = 0;
   this.enableBody = true;
   this.body.gravity.y = 175;
   this.facingRight = true;
