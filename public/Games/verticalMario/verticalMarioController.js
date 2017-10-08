@@ -21,16 +21,14 @@ document.getElementById("shootBtn").addEventListener("touchend", function(){
 
 //pause button
 document.getElementById("startBtn").addEventListener("touchstart", function(){
-	console.log("START Pressed");
   startGame = true;
 	//console.log(player);
 	var btn = document.getElementById("startText");
 	 if(pause == false){
 	 	pause = true;
-	 	btn.innerHTML = "Pause";
+	 	btn.innerHTML = "Start";
 	 }else if(pause == true){
 	 	pause = false;
-	 	btn.innerHTML = "Resume";
 	 }
 });
 document.getElementById("startText").innerHTML = "Start";

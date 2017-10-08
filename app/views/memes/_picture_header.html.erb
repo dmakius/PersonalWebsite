@@ -11,9 +11,13 @@
    <div id="slider1" style = "margin:auto;">
      <div class="thumbelina-but horiz left">&#706;</div>
         <ul>
-          <% @meme.each do |meme|%>
-            <li><%= image_tag(meme.avatar.url(:medium)) %></li>
-          <%end%>
+          <% if @meme %>
+            <% @meme.each do |meme|%>
+              <li><%= image_tag(meme.avatar.url(:medium)) %></li>
+            <%end%>
+          <% else %>
+            <h2>No Pictures Present</h2>
+          <% end %>
         </ul>
       <div class="thumbelina-but horiz right">&#707;</div>
   </div>

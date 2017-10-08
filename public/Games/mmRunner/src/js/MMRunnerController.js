@@ -40,10 +40,9 @@ document.getElementById("startBtn").addEventListener("touchstart", function(){
 	var btn = document.getElementById("startText");
 	 if(pause == false){
 	 	pause = true;
-	 	btn.innerHTML = "Pause";
+	 	btn.innerHTML = "Start";
 	 }else if(pause == true){
 	 	pause = false;
-	 	btn.innerHTML = "Resume";
 	 }
 });
 document.getElementById("startText").innerHTML = "Start";

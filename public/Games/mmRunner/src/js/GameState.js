@@ -144,7 +144,7 @@ MMRunner.GameState = {
 
   resetGame: function(){
     startGame = false;
-    this.game.state.start('MenuState');
+    this.game.state.start('ScoreState');
   },
 
   overalping: function(player, floor){

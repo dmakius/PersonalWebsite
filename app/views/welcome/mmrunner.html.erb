@@ -16,6 +16,7 @@ margin-right:auto;
 <script src="/Games/mmRunner/src/js/PreloadState.js"></script>
 <script src="/Games/mmRunner/src/js/GameState.js"></script>
 <script src="/Games/mmRunner/src/js/MenuState.js"></script>
+<script src="/Games/mmRunner/src/js/ScoreState.js"></script>
 
 <script src="/Games/mmRunner/src/js/prefabs/Megaman.js"></script>
 <script src="/Games/mmRunner/src/js/prefabs/Platform.js"></script>
@@ -44,6 +45,7 @@ margin-right:auto;
    MMRunner.game.state.add('PreloadState', MMRunner.PreloadState);
    MMRunner.game.state.add('MenuState', MMRunner.MenuState);
    MMRunner.game.state.add('GameState', MMRunner.GameState);
+   MMRunner.game.state.add('ScoreState', MMRunner.ScoreState);
    MMRunner.game.state.start('BootState');
 
    window.addEventListener("keydown", function(e) 

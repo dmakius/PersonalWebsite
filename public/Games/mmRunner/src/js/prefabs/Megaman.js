@@ -162,8 +162,8 @@ MMRunner.Megaman.prototype.update = function(){
     this.deadSound.play();
     MMRunner.GameState.gameMusic.stop();
     startGame = false;
-    this.game.state.start('MenuState');
-  }
+    this.game.state.start('ScoreState');
+  } 
 
   if(this.dead){
     this.kill();
