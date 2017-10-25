@@ -25,8 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'ckeditor'
 gem 'will_paginate'
 
-gem "paperclip", "~> 5.0.0.beta1"
-gem "paperclip-dropbox", ">= 1.1.7"
+gem "paperclip"
 gem "figaro"
 
 #Bootstrap Gems

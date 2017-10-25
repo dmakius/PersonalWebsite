@@ -1,6 +1,16 @@
 var VerticalMario = VerticalMario || {};
 VerticalMario.ScoreState = {
   create: function(){
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/posts",
+        success: function(data){
+
+          console.log(data);
+        }
+    }); 
+
     //TODO: get data from API
     this.highScores = [
     {name:"HaShem", score:1},
