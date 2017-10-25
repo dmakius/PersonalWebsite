@@ -1,7 +1,21 @@
 var VerticalMario = VerticalMario || {};
 
 VerticalMario.GameState = {
+
+  init: function(){
+    this.highScores = [];
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/gamescores",
+        success: function(data){
+          VerticalMario.GameState.highScores = data;
+        }
+      }); 
+  },
   create: function(){
+
+
     this.background = this.game.add.sprite(0,0, 'background');
 
     this.player = this.game.add.group();

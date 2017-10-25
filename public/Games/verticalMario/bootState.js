@@ -2,8 +2,9 @@ var VerticalMario = VerticalMario || {};
 
 VerticalMario.BootState = {
   init: function(){
-    console.log("Boostate init");
+     console.log("fetching data init");
   },
+
 
   preload: function(){
     this.game.load.image('background','/Games/verticalMario/assets/bg.png');
