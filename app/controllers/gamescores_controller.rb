@@ -7,3 +7,4 @@ class GamescoresController < ApplicationController
 	end
 
 end
+ 
