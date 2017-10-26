@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610163107) do
+ActiveRecord::Schema.define(version: 20171026143733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,14 +71,6 @@ ActiveRecord::Schema.define(version: 20160610163107) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "games", force: :cascade do |t|
-    t.text     "game"
-    t.text     "user"
-    t.integer  "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "memes", force: :cascade do |t|
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
@@ -104,15 +96,16 @@ ActiveRecord::Schema.define(version: 20160610163107) do
     t.integer  "category_id"
   end
 
-  create_table "resumes", force: :cascade do |t|
-    t.string   "name"
+  create_table "sketches", force: :cascade do |t|
+    t.string   "title"
     t.string   "url"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.string   "doc_file_name"
-    t.string   "doc_content_type"
-    t.integer  "doc_file_size"
-    t.datetime "doc_updated_at"
+    t.text     "about"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "sketch_image_file_name"
+    t.string   "sketch_image_content_type"
+    t.integer  "sketch_image_file_size"
+    t.datetime "sketch_image_updated_at"
   end
 
   add_foreign_key "categories", "posts"
