@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 
   <%if mobile_device?%>
-		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <!-- disable zoom and pinch for mobile devices -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="HandheldFriendly" content="true"/>
 	<%else%>
 		 <meta name="viewport" content="width=device-width">
 	<%end%>

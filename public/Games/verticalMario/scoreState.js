@@ -2,16 +2,7 @@ var VerticalMario = VerticalMario || {};
 VerticalMario.ScoreState = {
   create: function(){
     this.highScores = VerticalMario.GameState.highScores;
-    //TODO: get data from API
-    // this.highScores = [
-    // {name:"HaShem", score:1},
-    // {name:"The Rebbe", score:7770},
-    // {name:"HaMedina", score:19480},
-    // {name:"Mitzvah Man", score:6130},
-    // {name:"Mr. Mench", score: 2353},
-    // {name:"Chaim" , score:180}
-    // ];
-
+   
     console.log("Scores from API");
     console.log(this.highScores);
 
@@ -22,7 +13,7 @@ VerticalMario.ScoreState = {
     this.highScores.push(newScore);
     console.log("Player added");
     console.log(this.highScores);
-    //TODO: UPDATE API
+ 
     //TODO: allow USER to select name
 
     this.AHighScores = [];
@@ -43,13 +34,13 @@ VerticalMario.ScoreState = {
     var sC = this.game;
 
     this.background = this.game.add.sprite(0,0, 'background');
-    
-    this.game.title = this.game.add.bitmapText(this.game.world.centerX, 50, "gameFont", "HighScores" , 36);
+     
+    this.game.title = this.game.add.bitmapText(this.game.world.centerX, 50, "gameFont", "High Scores" , 36);
     this.game.title.anchor.setTo(0.5);
 
     this.hsSpace = 100;
     for(var x = 0; x < 5;x++){
-      this.game.add.bitmapText(20, 50*x + 100, "gameFont", this.AHighScores[x].username , 28);
+      this.game.add.bitmapText(50, 50*x + 100, "gameFont", this.AHighScores[x].username , 28);
       this.game.add.bitmapText(550, 50*x + 100, "gameFont", this.AHighScores[x].score , 28);
     }
 

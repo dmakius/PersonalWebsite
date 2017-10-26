@@ -3,6 +3,7 @@ var VerticalMario = VerticalMario || {};
 VerticalMario.GameState = {
 
   init: function(){
+    //fetch data from API
     this.highScores = [];
     $.ajax({
         type: "GET",
@@ -14,8 +15,6 @@ VerticalMario.GameState = {
       }); 
   },
   create: function(){
-
-
     this.background = this.game.add.sprite(0,0, 'background');
 
     this.player = this.game.add.group();
@@ -28,7 +27,7 @@ VerticalMario.GameState = {
     this.deadSound = this.game.add.audio('dead');
     this.hitHeadSound = this.game.add.audio('hitHead');
     this.squishEnemySound = this.game.add.audio('squishEnemy');
-    this.mainTheme.play();
+   // this.mainTheme.play();
 
     this.createInitialPlatform();
     this.createGoombas();
