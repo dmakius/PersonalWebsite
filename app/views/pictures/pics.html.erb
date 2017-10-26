@@ -1,95 +1,73 @@
+<!-- importing external libraries -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+
+<!-- custom on page css -->
 <style>
-	#holder{
-		margin-left:100px;
-		margin-top:50px;
-		vertical-align:center;
-		width:1000px;
-		height:500px;
-		background-color:#919AEF;
-		border:1px double black;
-	}
-	
-	.button img{width:50px; height:50px;}
-	
-	#nButton{
-		float:right;
-		margin-top:-200px;
-	}
-	#bButton{
-		float:left;
-		margin-top:235px;
-	}
-	
-	.picInfo{	
-		border:4px double black;
-	}
-	
-	.picFrame{
-		margin-left:75px;
-		margin-top:50px;
-		width:850px;
-		height:400px; 
-	}
-	
-	.picFrame img {
-		margin:0;
-		width:500px;
-		height:400px;
-		border: 1px solid black;
-	}
-	.picInfo{
-		margin-top:-350px;
-		margin-left:525px;
-		height:250px;
-		width:350px;
-		background-color:#F3F7EC;
-	}
-	
-	
-	.picInfo p {margin:10px; font-family:sans-serif;}
-	.picInfo h2 {margin:10px;font-family:sans-serif;}
-	
-	.picFrame div{
-		display:block;
-	}
+.swiper-container {
+    width: 350px;
+    height: 400px;
+}
+.swipe-pic{
+	height:90%;
+	width:70%;
+	display:block;
+	margin:auto;
+}
 </style>
 
-
-<div id = "holder">
-	<div id = "bButton" class = "button"><img src = '/arrowL.jpg'></div>
-		<% n = 1%>
+<br>
+<!-- Slider main container -->
+<div class="swiper-container" style = "width:100%; height:700px;">
+	<!-- Additional required wrapper -->
+   <div class="swiper-wrapper">
+   <!-- Slides -->
 		<% @picture.each do |pic|%>
-			<!-- <div id = "picFrame<%=n%>"class = "picFrame"style = "display:none"> -->
-				<!-- <img src = "<%= pic.url %>"> -->
-				<!-- <div class = "picInfo"> -->
-					<!-- <h2><%= pic.title%></h2> -->
-					<!-- <p><%= pic.about%></p> -->
-				<!-- </div>	 -->
-			<!-- </div> -->
-		<%end%>
-	
-	<div id = "nButton" class = "button"><img src = '/arrowR.jpg'></div>
+	      	<div class="swiper-slide"><img src = "<%= pic.url %>" class = "img-responsive swipe-pic"></div>
+	    <% end %>
+	</div>
+
+	<!-- If we need pagination -->
+	<div class="swiper-pagination"></div>
+
+	<!-- If we need navigation buttons -->
+	<div class="swiper-button-prev"></div>
+	<div class="swiper-button-next"></div>
+
+	<!-- If we need scrollbar -->
+	<div class="swiper-scrollbar"></div>
 </div>
 
-<script type = "text/javascript">
-	$(document).ready(function(){
-		var n = 1;
-		$('#picFrame' + n + '').css('display', 'block');
-	
-		$('#bButton').click(function(){
-			n -= 1;
-			n = Math.max(1, n);
-			//alert(n);
-			$('#picFrame' + n).fadeIn("slow").css('display', 'block');
-			$('#picFrame' + (n + 1) + '').fadeOut("slow").css('display', 'none');
-			
-		});
-		$('#nButton').click(function(){
-			n += 1;
-			n = Math.min(6,n);
-			//alert(n);
-			$('#picFrame' + n).fadeIn("slow").css('display', 'block');
-			$('#picFrame' +(n - 1)+ '').fadeOut("slow").css('display', 'none');
-		});
-	});
-</script>
+<script>
+  //initiate the swiper
+  var mySwiper = new Swiper ('.swiper-container', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+
+    // If we need pagination
+    // pagination: '.swiper-pagination',
+
+    // Navigation arrows
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+
+    // And if we need scrollbar
+    // scrollbar: '.swiper-scrollbar',
+  });
+  $("#open-button").on('click', function(){
+    console.log("working");
+    $("#header").toggle("display:none;");
+    $("#open-button").toggle("display:none;");
+     $("#close-button").toggle("display:none;");
+  });
+$("#close-button").on('click', function(){
+    console.log("working");
+    $("#header").toggle("display:none;");
+    $("#open-button").toggle("display:none;");
+    $("#close-button").toggle("display:none;");
+  });
+
+
+  </script>
+</body>
