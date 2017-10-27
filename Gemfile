@@ -5,7 +5,7 @@ gem 'rails', '4.2.4'
 gem 'pg'
 
 #ActiveAdmin
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin'
 gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 gem 'ransack',     github: 'activerecord-hackery/ransack'
 gem 'formtastic',  github: 'justinfrench/formtastic'
