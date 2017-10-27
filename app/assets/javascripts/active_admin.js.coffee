@@ -1,1 +1,1 @@
-#= require active_admin/project
+#= require active_admin/base
