@@ -14,7 +14,7 @@ gem 'devise'
 # mobile compatibility for games
 gem 'mobylette', '~> 3.5'
 gem 'mail_form', '~> 1.5', '>= 1.5.1'
-gem "aws-sdk", ">= 2.0"
+gem 'aws-sdk', '< 2.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'

@@ -23,7 +23,9 @@
    <div class="swiper-wrapper">
    <!-- Slides -->
 		<% @picture.each do |pic|%>
-	      	<div class="swiper-slide"><img src = "<%= pic.url %>" class = "img-responsive swipe-pic"></div>
+	      	<div class="swiper-slide">
+            <%= image_tag(pic.sketch_image(:medium), :class=>"img-responsive swipe-pic" )%>
+          </div>
 	    <% end %>
 	</div>
 

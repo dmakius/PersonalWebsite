@@ -4,6 +4,7 @@ class SketchesController < ApplicationController
 	end
 
 	def new
+		puts "Making a new SKEtCH"
 		@sketch = Sketch.new
 	end
 

@@ -4,6 +4,6 @@ class PicturesController < ApplicationController
   end
 
   def pics
-    @picture = Picture.all
+    @picture = Sketch.all
   end 
 end

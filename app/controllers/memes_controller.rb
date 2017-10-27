@@ -30,7 +30,7 @@ class MemesController < InheritedResources::Base
 	end
 	 
 	def destroy
-		@meme = Meme.find(params[:id])
+		@meme = Meme.find(params[:id]) 
 	    @meme.destroy
 	    respond_to do |format|
 	      format.html { redirect_to memes_url, notice: 'Picture was successfully destroyed.' }

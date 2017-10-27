@@ -14,15 +14,18 @@ ActiveAdmin.register Sketch do
 
 	controller do
 	    def permitted_params
-	      params.permit sketch: [:sketch_image]
+	      params.permit sketch: [:sketch_image, :title, :about]
 	    end
 	end
+	
 	#for the index page
 	index do
 		column :id
 		column "Sketches" do |sketch|
    			image_tag(sketch.sketch_image(:thumb))
   		end
+  		column :title
+        column :about
 		column :created_at
  		actions
 	end
@@ -33,8 +36,6 @@ ActiveAdmin.register Sketch do
 			f.input :sketch_image, :required => false, :as => :file
 			f.input :title
 			f.input :about
-	    	
-
 	      # Will preview the image when the object is edited
 	    end
 	    f.actions
@@ -42,12 +43,5 @@ ActiveAdmin.register Sketch do
 	
 	##for the view page
 	
-	show do |ad|
-      attributes_table do
-        row "Sketch" do |sketch|
-   			image_tag(sketch.sketch_image(:medium))
-        end
-        # Will display the image on show object page
-      end
-    end
+	
 end
