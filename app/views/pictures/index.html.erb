@@ -24,7 +24,7 @@
    <!-- Slides -->
 		<% @picture.each do |pic|%>
 	      	<div class="swiper-slide">
-            <%= image_tag(pic.sketch_image(:medium), :class=>"img-responsive swipe-pic" )%>
+            <%= image_tag(pic.sketch_image(:large), :class=>"img-responsive swipe-pic" )%>
           </div>
 	    <% end %>
 	</div>
