@@ -1,9 +1,5 @@
 class PicturesController < ApplicationController
-  def sketches
-  	 @picture = Picture.all
+  def index
+  	   @picture = Sketch.all
   end
-
-  def pics
-    @picture = Sketch.all
-  end 
 end

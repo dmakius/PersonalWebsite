@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :categories
   resources :contacts
+  resources :pictures
   resources :sketches
 
   resources :gamescores
