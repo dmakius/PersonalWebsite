@@ -38,12 +38,12 @@ $('#memeCanvas').ready(function(){
 
 			function drawCanvas(image){
 				ctx.clearRect(0,0,HEIGHT, WIDTH);
-				ctx.drawImage(image, 0,0, image.width, image.height, 0, 0, canvas.width, canvas.height);xw
+				ctx.drawImage(image, 0,0, image.width, image.height, 0, 0, canvas.width, canvas.height);
 				ctx.font = "bold " + fontSize+ "px Arial";
  			 	ctx.fillStyle = fontColor;
  			 	ctx.strokeStyle = 'black';
     			ctx.lineWidth = 6;
-    			
+
     			ctx.strokeText(topLine, xTop, yTop);
 				ctx.fillText(topLine , xTop, yTop);
 
