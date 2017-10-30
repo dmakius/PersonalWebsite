@@ -38,11 +38,19 @@ $('#memeCanvas').ready(function(){
 
 			function drawCanvas(image){
 				ctx.clearRect(0,0,HEIGHT, WIDTH);
-				ctx.drawImage(image, 0,0, image.width, image.height, 0, 0, canvas.width, canvas.height);
-				ctx.fillStyle = fontColor;
-				ctx.font = "bold " + fontSize+ "px Arial" ;
+				ctx.drawImage(image, 0,0, image.width, image.height, 0, 0, canvas.width, canvas.height);xw
+				ctx.font = "bold " + fontSize+ "px Arial";
+ 			 	ctx.fillStyle = fontColor;
+ 			 	ctx.strokeStyle = 'black';
+    			ctx.lineWidth = 6;
+    			
+    			ctx.strokeText(topLine, xTop, yTop);
 				ctx.fillText(topLine , xTop, yTop);
+
+				ctx.strokeText(bottomLine, xBottom, yBottom);
 				ctx.fillText(bottomLine , xBottom, yBottom);
+
+
 			}
 			
 			$('#tLine').on('keyup',function(){topLine = $(this).val();drawCanvas(mainImage)});
