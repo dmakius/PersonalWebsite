@@ -7,7 +7,7 @@ $('#memeCanvas').ready(function(){
 			canvas.height = 450;
 			canvas.width = 600;
 
-			var fontSize = 30, fontColor = "Orange";
+			var fontSize = 30, fontColor = "White";
 
 			//cordiates for the text boxes 
 			var xTop = 20, yTop = 50;
@@ -21,6 +21,7 @@ $('#memeCanvas').ready(function(){
 			mainImage.crossOrigin = 'Anonymous';
 			
 			var scrollerMargin = 0;
+			initCanvas();
 			
 			function download() {
 				memeName = document.getElementById("fileName").value;
@@ -35,12 +36,25 @@ $('#memeCanvas').ready(function(){
 			};
 			
 			 downloadLnk.addEventListener('click', download, false);
+			 function initCanvas(){
+			 	console.log("Init canvas");
+				ctx.font = "bold " + fontSize+ "px Arial";
+ 			 	ctx.fillStyle = fontColor;
+ 			 	ctx.strokeStyle = 'black';
+ 			 	ctx.textAlign="center";
+    			ctx.lineWidth = 2;
+    			var sampleText = "Please select an image"
+    			ctx.strokeText(sampleText, canvas.width / 2, canvas.height / 2);
+				ctx.fillText(sampleText , 200, 200);
+			 }
+
 
 			function drawCanvas(image){
 				ctx.clearRect(0,0,HEIGHT, WIDTH);
 				ctx.drawImage(image, 0,0, image.width, image.height, 0, 0, canvas.width, canvas.height);
 				ctx.font = "bold " + fontSize+ "px Arial";
  			 	ctx.fillStyle = fontColor;
+ 			 	ctx.textAlign="left";
  			 	ctx.strokeStyle = 'black';
     			ctx.lineWidth = 6;
 
