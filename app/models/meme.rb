@@ -1,4 +1,5 @@
 class Meme < ActiveRecord::Base
+	belongs_to :memeCategory
 	has_attached_file :avatar, styles: {
     thumb: '100x100>',
     square: '200x200#',

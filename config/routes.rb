@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :contacts
   resources :pictures
   resources :sketches
+  resources :memecategories
 
   resources :gamescores
 

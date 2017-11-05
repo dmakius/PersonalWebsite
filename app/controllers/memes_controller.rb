@@ -2,14 +2,19 @@ class MemesController < InheritedResources::Base
 
 	def index
 		@meme = Meme.all
+		@memeCategory = MemeCategory.all
+		puts @memeCategory
 	end
 	
 	def all
 		@meme = Meme.all
+
 	end
 
 	def new
 		@meme = Meme.new
+		@memeCategory = MemeCategory.all
+		puts @memeCategory
 	end
 
 	def create
