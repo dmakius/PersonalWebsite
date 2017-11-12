@@ -1,36 +1,37 @@
 <div class = "row well">
   <div class = "col-md-6">
-        <canvas id= "memeCanvas"  class= "canvas__canvas" style = "height:100%; width:100%; border:1px solid black; background-color:white;" crossOrigin="Anonymous">  
+      <canvas id= "memeCanvas"  class= "canvas__canvas" style = "height:100%; width:100%; border:1px solid black; background-color:white;" crossOrigin="Anonymous">  
           Your browser does not support the CANVAS element.
                   Try the latest Firefox, Google Chrome, Safari or Opera.
-        </canvas>
-    </div>
-    
-    <!-- toolbar DIV -->
-    <div class = "col-md-6">
-        <button class = "btn-primary btn" id = "downloadMeme" style = "width:50%;">
-            <a id="downloadLnk" download="YourFileName.jpg" style = 'color:white;'>Download Meme</a>
-        </button>
-        <button class = "btn-info btn" style = "width:49%;" >
-          <%= link_to 'See All Pictures', memes_all_path, :class => 'railsLink' %>
-        </button>
-   
-   
-        <h5>File Name: </h5>
-        <input type="text" name="tLine" id = 'fileName' class="form-control">
-      <br>
+      </canvas>
+  </div>
+  <div class = "col-md-6">
+    <button class = "btn-primary btn" id = "downloadMeme" style = "width:50%;">
+      <a id="downloadLnk" download="YourFileName.jpg" style = 'color:white;'>Download Meme</a>
+    </button>
+    <button class = "btn-info btn" style = "width:49%;" >
+      <%= link_to 'See All Pictures', memes_all_path, :class => 'railsLink' %>
+    </button>
 
-      <!-- Add Text Div -->
-      <h4 id = "addText" class = "panel panel-heading">Add Text</h4>
-      <div id = "addTextHolder" class = "collapse" style = "padding-left:15px;">
-        Top Line:<br><input type="text" class="form-control" name="tLine" id = 'tLine'><br><br>
-        Button Line:<br> <input type="text" class="form-control" name="bLine" id = 'bLine'><br>
-       </div>
+    <h5>File Name: </h5>
+    <input type="text" name="tLine" id = 'fileName' class="form-control">
+    <br>
+
+    <ul class ="nav nav-pills">
+      <li id = "addText" class="active"><a href="#addTextHolder" data-toggle="tab"> Add Text</a></li>
+      <li id = "fontColor"><a href="#fontColorHolder" data-toggle="tab">Font Size & Color</a></li>
+      <li id = "textBoxes"><a href="#textBoxHolder" data-toggle="tab">Move Text Boxes</a></li>
+    </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="addTextHolder">
+          <br>
+            Top Line:<br><input type="text" class="form-control" name="tLine" id = 'tLine'><br><br>
+            Button Line:<br> <input type="text" class="form-control" name="bLine" id = 'bLine'><br>
+        </div>
         
-      <!-- Add Font Color Div -->
-      <h4 id = "fontColor" class = "panel panel-heading">Font Size & Color</h4>
-      <div id = "fontColorHolder" class = "collapse" style = "padding-left:15px;">
-           Font Size:
+        <div class="tab-pane" id="fontColorHolder">
+           <br>Font Size:
            <select>
              <% n = 24 %>
              <% 10.times do %>
@@ -45,34 +46,33 @@
             <input type="radio" name = "color" id = "colorG"  class= "radioColor" > Green<br>
             <input type="radio" name = "color" id = "colorW"  class= "radioColor" > White<br>
           </form>
+        </div>
+        
+        <div class="tab-pane" id="textBoxHolder">
+          <h5>Move Top Text Box </h5>
+          <table class= "table">
+            <tr>
+              <td><button class= "btn btn-success btn-block" id = "tMoveUp">UP</button></td>
+              <td><button class= "btn btn-success btn-block" id = "tMoveDown" style="float:right;">DOWN</button></td>
+            </tr>
+            <tr>
+              <td><button class= "btn btn-success btn-block" id = "tMoveLeft">LEFT</button></td>
+              <td><button class= "btn btn-success btn-block" id = "tMoveRight" style="float:right;">RIGHT</button></td>
+            </tr>
+          </table>
+          <h5>Move Bottom Text Box </h5>
+          <table class= "table">
+            <tr>
+              <td><button class= "btn btn-success btn-block" id = "bMoveUp">UP</button></td>
+              <td><button class= "btn btn-success btn-block" id = "bMoveDown" style="float:right;">DOWN</button></td>
+            </tr>
+            <tr>
+              <td><button class= "btn btn-success btn-block" id = "bMoveLeft">LEFT</button></td>
+              <td><button class= "btn btn-success btn-block" id = "bMoveRight" style="float:right;">RIGHT</button></td>
+            </tr>
+          </table>
+        </div>
       </div>
 
-      <!-- Move Text Div -->
-      <h4 id = "textBoxes" class = "panel panel-heading">Move Text Boxes</h4>
-      <div id = "textBoxHolder" class = "collapse" style = "padding-left:15px;">
-        <h5>Move Top Text Box </h5>
-        <table class= "table">
-          <tr>
-            <td><button class= "btn btn-success btn-block" id = "tMoveUp">UP</button></td>
-            <td><button class= "btn btn-success btn-block" id = "tMoveDown" style="float:right;">DOWN</button></td>
-          </tr>
-          <tr>
-            <td><button class= "btn btn-success btn-block" id = "tMoveLeft">LEFT</button></td>
-            <td><button class= "btn btn-success btn-block" id = "tMoveRight" style="float:right;">RIGHT</button></td>
-          </tr>
-        </table>
-    
-        <h5>Move Bottom Text Box </h5>
-        <table class= "table">
-          <tr>
-            <td><button class= "btn btn-success btn-block" id = "bMoveUp">UP</button></td>
-            <td><button class= "btn btn-success btn-block" id = "bMoveDown" style="float:right;">DOWN</button></td>
-          </tr>
-          <tr>
-            <td><button class= "btn btn-success btn-block" id = "bMoveLeft">LEFT</button></td>
-            <td><button class= "btn btn-success btn-block" id = "bMoveRight" style="float:right;">RIGHT</button></td>
-          </tr>
-        </table>
-      </div>
-    </div>
+  </div>
 </div>
