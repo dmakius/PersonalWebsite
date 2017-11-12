@@ -80,6 +80,12 @@ ActiveRecord::Schema.define(version: 20171028143554) do
     t.datetime "avatar_updated_at"
   end
 
+  create_table "post_tables", force: :cascade do |t|
+    t.string  "title"
+    t.text    "body"
+    t.integer "category"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
