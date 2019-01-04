@@ -5,7 +5,7 @@
 
 <div class = "container">
  <h2>Meme Generator </h2>
-  <%= render 'memeDashboard' %>
+  <%= render 'memeDashboard2' %>
   <%= render 'picture_header' %>  
  </div>
 
@@ -19,19 +19,6 @@
 
 <script>
   $(document).ready(function(){
-   $("#addText").on("click", function(){
-      $("#addTextHolder").toggleClass("collapse");
-      });
-
-    $("#fontColor").on("click", function(){
-      $("#fontColorHolder").toggleClass("collapse");
-      });
-
-    $("#textBoxes").on("click", function(){
-      $("#textBoxHolder").toggleClass("collapse");
-    });
-
-                
     $('#slider1').Thumbelina({
       $bwdBut:$('#slider1 .left'),    // Selector to left button.
       $fwdBut:$('#slider1 .right')    // Selector to right button.

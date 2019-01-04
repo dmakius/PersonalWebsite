@@ -74,21 +74,8 @@ $('#memeCanvas').ready(function(){
 			$("#slider1 ul li img").on("click", function(){
 				$("img").removeClass("selected");
 				$(this).addClass("selected");
-				
-				var nImage = new Image();
-				nImage.src = this.src + "?dl=1"; //the start up image
-				
-				mainImage.src = this.src + "?dl=1"; //the 'global' image
-				
-				nImage.crossOrigin = 'Anonymous'; 
-				nImage.addEventListener("load", function() {
-   					drawCanvas(nImage);
-   					//var imgData = ctx.getImageData(0,0, 450, 600);
-   					//console.log(imgData);
-   					console.log("nimage:" +nImage.src);
-
-				}, false);
-
+			
+				mainImage.src = this.src + "?dl=1"; 
 				mainImage.addEventListener("load", function(){
 					drawCanvas(mainImage);
 					console.log("mainImage:" + mainImage.src);
