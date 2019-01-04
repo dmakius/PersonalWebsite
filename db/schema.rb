@@ -87,6 +87,12 @@ ActiveRecord::Schema.define(version: 20171031030228) do
     t.string   "category"
   end
 
+  create_table "post_tables", force: :cascade do |t|
+    t.string  "title"
+    t.text    "body"
+    t.integer "category"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
