@@ -118,7 +118,7 @@ VerticalMario.GameState = {
 
   createKoopas: function(){
       this.shellEnemies = this.game.add.group();
-      var koopa = new VerticalMario.Koopa(this.game, 50, 200);
+      var koopa = new VerticalMario.Koopa(this.game, 250, 100);
       this.shellEnemies.add(koopa);
   },
   createSpiny: function(){
@@ -175,10 +175,13 @@ VerticalMario.GameState = {
     if(badGuy.body.touching.up && badGuy.key != 'spiny'){
       if(badGuy.key == 'koopa'){
           if(badGuy.flying){
+            console.log("hitting KOOPA");
+            this.squishEnemySound.play();
             badGuy.flying = false;
             badGuy.body.velocity.y = 100;
             player.body.velocity.y = -100;
           }else if(!badGuy.flying){
+            this.squishEnemySound.play();
             player.body.velocity.y = -125;
             badGuy.shell = true
               if(player.body.velocity.x >= 0){
