@@ -8,12 +8,14 @@ MMRunner.Megaman = function(game, x , y){
   this.standingRight = true;
   this.invincible = false;
   this.playerShooting = false;
+  this.sliding = false;
   this.body.gravity.y = 250;
   this.jump = true;
   this.nextShootTime = 0;
   this.shootTime = 0;
   this.dead = false;
   this.health = 100;
+
   this.animations.add('standLeft', Phaser.Animation.generateFrameNames('standRight', 1, 1), 10, true);
   this.animations.add('standRight', Phaser.Animation.generateFrameNames('standLeft', 1, 1), 10, true);
   this.animations.add('shootRight', Phaser.Animation.generateFrameNames('shootRight', 1, 1), 10, true);
@@ -33,7 +35,6 @@ MMRunner.Megaman = function(game, x , y){
  
   this.deadSound = this.game.add.audio('dead');
   this.shootSound = this.game.add.audio('shoot');
-  
 
   this.cursors = game.input.keyboard.createCursorKeys();
   this.shootKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -44,6 +45,7 @@ MMRunner.Megaman.prototype.constructor = MMRunner.Megaman;
 MMRunner.Megaman.prototype.hitTimer = 0;
 
 MMRunner.Megaman.prototype.update = function(){
+  this.sliding = false;
   this.body.velocity.x = 0;
   this.body.gravity.y = 250;
   this.body.height = 48;
@@ -65,13 +67,15 @@ MMRunner.Megaman.prototype.update = function(){
       this.standingRight = true;
       this.body.height = 46;
       if(this.playerShooting){
-        this.animations.play('shootRunRight');
+      this.animations.play('shootRunRight');
       }else{
          this.animations.play('runningRight');
       }
   }else if(this.cursors.down.isDown || movingDown){
+    this.sliding = true;
      this.body.height = 42;
     if(this.standingRight){
+
       this.body.velocity.x = 150;
       this.animations.play('slideRight');
     }else{
@@ -164,6 +168,16 @@ MMRunner.Megaman.prototype.update = function(){
     startGame = false;
     this.game.state.start('ScoreState');
   } 
+
+  //changing body size
+  if(this.jump){
+    this.body.setSize(20,50,0,0);
+  }if(this.sliding){
+    this.body.setSize(25,15,0,5);
+  }else{
+    this.body.setSize(20,23,0,0);
+  }
+  // this.game.debug.body(this);
 
   if(this.dead){
     this.kill();

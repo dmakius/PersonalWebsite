@@ -26,7 +26,7 @@ MMRunner.GameState = {
     this.game.hitBar.drawRect(50, 50, 20, this.game.playerDamage);
     
     this.createFloor();
-    this.createPlatforms();
+    // this.createPlatforms();
     this.score = 0;
 
     this.game.scoreBoard = this.game.add.bitmapText(10, 10, "marioFont", "SCORE: " + this.score , 16);
@@ -172,10 +172,10 @@ MMRunner.GameState = {
     }
   },
 
-  createPlatforms: function(){
-    this.platforms = this.game.add.group();
-    this.platforms.enableBody = true;
-  },
+  // createPlatforms: function(){
+  //   this.platforms = this.game.add.group();
+  //   this.platforms.enableBody = true;
+  // },
 
   createBadGuys: function(){
     this.badGuys = this.game.add.group();
@@ -191,7 +191,7 @@ MMRunner.GameState = {
   addplatform2: function(){
     var ranY = Math.floor(Math.random()* 300 + 100);
     var plat2 = new MMRunner.Platform2(this.game, 800, ranY);
-    this.platforms.add(plat2);
+    this.floor.add(plat2);
   },
 
   addFloor: function(){
