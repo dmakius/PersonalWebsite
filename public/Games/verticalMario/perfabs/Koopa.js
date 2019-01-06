@@ -1,13 +1,13 @@
 var VerticalMario = VerticalMario || {}
 
-VerticalMario.Koopa = function(game, x, y) {
+VerticalMario.Koopa = function(game, x, y, direction) {
   Phaser.Sprite.call(this, game, x, y, 'koopa');
   this.anchor.setTo(0.5);
   this.scale.setTo(1.25);
   this.game.physics.arcade.enable(this);
   this.outOfBoundsKill = true;
   this.body.gravity.y = 100;
-  this.body.velocity.x = 35;
+  
   this.hit = false;
   this.flying = true;
   this.shell = false;
@@ -19,7 +19,15 @@ VerticalMario.Koopa = function(game, x, y) {
   this.animations.add('flyingRight', [2,3], 5, true);
   this.animations.add('flyingLeft', [6,7], 5, true);
   this.animations.add('shell', [8],1, true);
-  this.animations.play('flyingRight');
+
+  //determin what direction the koopa goes
+  if(direction > 0.5){
+    this.body.velocity.x = 35;
+    this.animations.play('flyingRight');
+  }else{
+    this.body.velocity.x = -35;
+    this.animations.play('flyingLeft');
+  }
 }
 
 VerticalMario.Koopa.prototype = Object.create(Phaser.Sprite.prototype);
@@ -29,6 +37,11 @@ VerticalMario.Koopa.prototype.update = function(){
   //debug
   //this.game.debug.bodyInfo(this, 32, 32);
   //this.game.debug.body(this);
+
+  //prevents koopa from not moving
+  if(this.body.velocity.x == 0){
+    this.body.velocity.x = 50;
+  }
 
 //sprite looping sideways
   if(this.body.x > 710){
@@ -41,15 +54,16 @@ VerticalMario.Koopa.prototype.update = function(){
   if(this.body.touching.down && this.flying){
     this.body.velocity.y = -100;
   }
-
+  
+  //selecting the correct animation
   if(this.flying){
-      if(this.body.velocity.x >= 0){
+      if(this.body.velocity.x > 0){
         this.animations.play('FlyingRight');
       }else {
         this.animations.play('FlyLeft');
       }
   }else if(!this.flying){
-    if(this.body.velocity.x >= 0){
+    if(this.body.velocity.x > 0){
       this.animations.play('walkingRight');
       }else {
         this.animations.play('walkingLeft');
@@ -66,6 +80,6 @@ VerticalMario.Koopa.prototype.update = function(){
   }
   //killing koopa from off screen
   if(this.body.y >= 550){
-    this.kill();
+    this.destroy();
   }
 }

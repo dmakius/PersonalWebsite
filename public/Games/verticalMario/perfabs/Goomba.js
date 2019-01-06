@@ -17,14 +17,25 @@ VerticalMario.Goomba.prototype = Object.create(Phaser.Sprite.prototype);
 VerticalMario.Goomba.prototype.constructor = VerticalMario.Goomba;
 
 VerticalMario.Goomba.prototype.update = function(){
+
+  //sprite looping sideways
+  if(this.body.x > 710){
+    this.body.x = -5;
+  }
+  if(this.body.x < -10){
+    this.body.x = 705;
+  }
+
   if(this.body.x >= this.game.world.width || this.body.x <= 0){
     this.body.velocity.x *= -1;
   }
-  if(this.body.y >= this.game.world.height + 50){
-    this.kill();
-  }
-
-  if(this.body.velocity.x == 0 && !this.dead){
+  
+  if(this.body.velocity.x == 0){
     this.body.velocity.x = 50;
   }
+
+  if(this.body.y >= this.game.world.height + 50){
+    this.destroy();
+  }
+
 }

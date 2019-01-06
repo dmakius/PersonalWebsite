@@ -35,15 +35,15 @@ VerticalMario.GameState = {
     this.createGoombas();
     this.createCoins();
     this.createKoopas();
-    this.createSpiny();
+    // this.createSpiny();
 
     this.score = 0;
 
     //enemy timers////////////
-     this.rowTimer = this.game.time.events.loop(7000, this.addRow, this);
-     this.spinyTimer = this.game.time.events.loop(20000, this.addSpiny, this);
-     this.goombaTimer = this.game.time.events.loop(5000, this.addGoomba, this);
-     this.koopaTimer = this.game.time.events.loop(10000, this.addKoopa, this);
+    this.rowTimer = this.game.time.events.loop(7000, this.addRow, this);
+     // this.spinyTimer = this.game.time.events.loop(20000, this.addSpiny, this);
+    this.goombaTimer = this.game.time.events.loop(5000, this.addGoomba, this);
+    this.koopaTimer = this.game.time.events.loop(10000, this.addKoopa, this);
     ////////////////////////
 
     this.game.scoreBoard = this.game.add.bitmapText(10, 10, "marioFont", "SCORE: 0" , 16);
@@ -81,15 +81,18 @@ VerticalMario.GameState = {
 
 
   shellCollision:function(shellEnemy, badGuy){
-    //console.log(shellEnemy.animations.currentAnim);
-    if(shellEnemy.animations.currentAnim.name == 'shell' && badGuy.hit == false){
+    console.log("Koopa colliding with goomba");
+    if(shellEnemy.animations.currentAnim.name == 'shell'){
+        console.log("SHELL colliding with goomba");
         badGuy.hit = false;
-        console.log("hitting with SHELL!")
         this.flipBadGuy(shellEnemy, badGuy);
         this.pointsUp = this.game.add.image(badGuy.body.x, badGuy.body.y - 20, '200pts');
         this.game.time.events.add(Phaser.Timer.SECOND * 0.5, this.killPointSprite, this, this.pointsUp);
         this.score += 200;
         this.game.scoreBoard.setText("SCORE: " +  this.score);
+      }else{
+        shellEnemy.body.velocity.x *= -1;
+        badGuy.body.velocity.x *= -1;
       }
   },
   
@@ -144,9 +147,9 @@ VerticalMario.GameState = {
   },
 
   addKoopa: function(){
-    console.log("Koopa Added");
-    var koopa = new VerticalMario.Koopa(this.game, this.randomPlacement(), -100);
-    this.badGuys.add(koopa);
+    var direction = Math.random();
+    var koopa = new VerticalMario.Koopa(this.game, this.randomPlacement(), -110, direction);
+    this.shellEnemies.add(koopa);
   },
 
   createCoins: function(){
