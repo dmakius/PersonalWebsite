@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
  # meme Routes
   get 'memes/all' => 'memes#all'
+  get 'memes/' => 'memes#index'
   resources :memes
 
   #the Home Page
