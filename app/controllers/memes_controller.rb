@@ -9,7 +9,7 @@ class MemesController < InheritedResources::Base
 	def all
 		@meme = Meme.all
 
-	end
+	end 
 
 	def new
 		@meme = Meme.new
